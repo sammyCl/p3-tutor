@@ -1,0 +1,34 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "A session's context is temporary: when it ends it is gone, and nothing carries over unless the program saves it and loads it into the next context. Option b shows the belief that memory between chats is automatic (M3), and d shows the belief that the model updates itself from chats.",
+      "distractors": {"b": "M3", "d": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": 10800,
+      "tolerance": 0,
+      "rationale": "Call 1 reads 3,000 + 100 = 3,100. Call 2 reads 3,100 + 500 = 3,600. Call 3 reads 3,600 + 500 = 4,100. The total is 3,100 + 3,600 + 4,100 = 10,800. An answer of 4,100 counts only the final context and misses that each call re-reads everything."
+    },
+    {
+      "id": "q3",
+      "answer": "d",
+      "rationale": "Everything in the context is re-sent and paid for on every call, and recall degrades as the window fills (context rot), so retrieving a few passages is cheaper and often more accurate even when the manuals would fit. The API does not refuse requests at 100,000 tokens (a), retrieval does not depend on training data (b), and search can miss, so it is not always more accurate (c)."
+    },
+    {
+      "id": "q4",
+      "answer": "compaction",
+      "accepted": ["context compaction", "compacting", "compact", "summarization", "summarisation", "summarizing"],
+      "rationale": "Compaction summarizes a conversation near the limit and starts a new window with the summary. Clearing old tool results and sub-agents are different remedies."
+    },
+    {
+      "id": "q5",
+      "answer": "a",
+      "rationale": "A small, lasting, student-specific preference belongs in notes saved outside the context and read at the start of later sessions. The model does not learn from chats (b), the manuals' search index is for existing documents (c), and the context window empties when the session ends (d, M3).",
+      "distractors": {"d": "M3"}
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "A model keeps nothing between calls or sessions; the context is rebuilt by the program, and with nothing saved the new chat starts empty. Option a (all past chats kept) is M3; option d (facts stored in weights) is a related confusion between training and context; option b assumes a summary exists that nobody saved.",
+      "distractors": {"a": "M3", "b": "M3", "d": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": 6350,
+      "tolerance": 0,
+      "rationale": "Call 1 sees 1,600. Call 2 sees 1,600 + 50 + 200 = 1,850. Call 3 sees 1,850 + 50 + 1,000 = 2,900. Total 1,600 + 1,850 + 2,900 = 6,350. Answering 2,900 counts only the last call, and 1,600 + 200 + 1,000 + 100 = 2,900 shows the history is not being resent; 6,350 is the sum of what was read each time."
+    },
+    {
+      "id": "q3",
+      "answer": "c",
+      "rationale": "Retrieval puts only the relevant few passages into the context, so each call stays small and cheap, while the full manuals stay in storage. Putting everything in (a) costs the full manual tokens on every call and buries the useful passage (M7); a single summary page (b) loses the detail students ask about; notes (d) do not make a model memorise anything.",
+      "distractors": {"a": "M7", "d": "M8"}
+    },
+    {
+      "id": "q4",
+      "answer": "Each call resends the whole history, so the 20th call's input includes everything added in the 19 earlier steps.",
+      "accepted": [
+        "The context grows every step, and the whole history is sent again each call.",
+        "The program resends all earlier messages every time, so later calls have more input tokens.",
+        "Because the model keeps nothing, the whole conversation so far is sent in again on every call, so it is longer."
+      ],
+      "rationale": "Full credit names that the history is resent and so accumulates, making later inputs longer. 'Longer context' alone, without the reason it grows, is partial. Answers that say the model thinks harder, or the tools get slower, are wrong (M3 if they say the model remembers on its own without cost)."
+    },
+    {
+      "id": "q5",
+      "answer": "Save the completed trainings, because it is a durable fact the next session needs; do not save the free slots, because they change constantly and should be fetched fresh with the calendar tool.",
+      "accepted": [
+        "The training record should be saved; the slots change so they are checked with a tool each time.",
+        "Trainings are saved because they persist, and the slots are not because they go stale and can be looked up again."
+      ],
+      "rationale": "Full credit needs the choice (trainings) and the reason the other is not saved (it changes or goes stale and is fetched fresh by a tool). Choosing trainings with no reason is partial. Choosing the slots is wrong."
+    }
+  ]
+}

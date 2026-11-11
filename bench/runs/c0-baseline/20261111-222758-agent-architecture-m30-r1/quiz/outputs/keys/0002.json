@@ -1,0 +1,37 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The difference is who owns the control flow: in a workflow, predefined code decides the path; in an agent, the model decides its next step and tool use. Picking a, b or d treats tools, model size or memory as the dividing line, which they are not."
+    },
+    {
+      "id": "q2",
+      "answer": "a",
+      "rationale": "The code fixes the sequence (search, call, print) for every request, so it is a workflow. Using a tool or a model, or the number of calls, does not decide it; a workflow can make many calls and an agent could make one."
+    },
+    {
+      "id": "q3",
+      "answer": "d",
+      "rationale": "Booking has known steps in a known order (check calendar, book, confirm), so a fixed workflow is cheaper, more predictable and easier to test. The other options are open-ended, where the needed steps cannot be listed in advance."
+    },
+    {
+      "id": "q4",
+      "answer": "the code",
+      "accepted": ["code", "something else", "the program", "the developer", "the programmer", "predefined code", "the code, not the model", "not the model", "the script", "the Python code", "fixed code"],
+      "rationale": "In a workflow the next step is set by predefined code; the model only produces output within a step. Answering the model shows the belief that any model call makes a system an agent."
+    },
+    {
+      "id": "q5",
+      "answer": "b",
+      "rationale": "Code owns the overall sequence, so the system is a workflow, and the model owns the control flow only inside the answer step, which is an agent step. Calling it a pure agent or a pure workflow ignores one of those facts; three steps in code are not three agents."
+    },
+    {
+      "id": "q6",
+      "answer": 8000,
+      "tolerance": 1,
+      "rationale": "The agent uses 7 x 2,000 = 14,000 tokens and the workflow 3 x 2,000 = 6,000, a difference of 8,000. An answer of 14000 or 6000 gives one system's total, not the difference."
+    }
+  ]
+}

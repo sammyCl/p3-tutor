@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows, agents and who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Some systems built on a language model are called workflows and others are called agents. What separates the two?",
+      "options": [
+        {"id": "a", "text": "A workflow uses few tools, while an agent calls many different tools"},
+        {"id": "b", "text": "A workflow's code fixes the steps, while an agent's model chooses them"},
+        {"id": "c", "text": "A workflow runs without any model, while an agent always has a model"},
+        {"id": "d", "text": "A workflow makes one model call, while an agent makes many model calls"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Your makerspace assistant's code handles every booking question the same way: (1) a model call extracts the machine and date from the question, (2) the program itself calls check_calendar, (3) a second model call writes the reply from the result. The model cannot skip, repeat or add steps. Which description is correct?",
+      "options": [
+        {"id": "a", "text": "An agent, because the model is called more than once per request"},
+        {"id": "b", "text": "An agent, because a tool is used to read the booking calendar"},
+        {"id": "c", "text": "A workflow, because the program's code decides the order of steps"},
+        {"id": "d", "text": "A workflow, because no language model takes part in any step here"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Booking a machine always goes the same way: check the calendar slot, check the student's training record, create the booking, send a confirmation. A wrong booking wastes a student's time, and the sponsor's model budget is small. Which design is the better choice for this part of the assistant?",
+      "options": [
+        {"id": "a", "text": "An agent, so that the model can freely adapt the order of the steps"},
+        {"id": "b", "text": "An agent, so that the design can later cover tasks that nobody planned"},
+        {"id": "c", "text": "An agent, because a booking needs tools and tools call for an agent"},
+        {"id": "d", "text": "A fixed workflow, because the steps are known ahead and never change"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "A fixed workflow for answering a manual question always makes exactly 3 model calls per request. An agent doing the same job averages 5 model calls per request, because each step is a separate call. Assume every call costs the same and ignore how the context grows. Over 200 requests, how many more model calls does the agent make than the workflow?",
+      "unit": "model calls"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O4",
+      "stem": "A student asks, \"My 3D print keeps warping and I don't know why; what should I try?\" In one sentence, why might this request suit an agent better than a fixed workflow?"
+    },
+    {
+      "id": "q6",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Your program makes one model call that labels each question either \"manual question\" or \"booking request\". The program's code then sends the question down one of two fixed pipelines, depending on the label. Who owns the control flow in this system?",
+      "options": [
+        {"id": "a", "text": "The code, because the label only picks among paths the code defined"},
+        {"id": "b", "text": "The model, because its label decides which path the request takes"},
+        {"id": "c", "text": "The model, because it is called first and so sets the whole sequence"},
+        {"id": "d", "text": "The student, because the wording of the question determines the path"}
+      ]
+    }
+  ]
+}

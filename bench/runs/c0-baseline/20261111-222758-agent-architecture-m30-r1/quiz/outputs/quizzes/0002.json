@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows and agents: who owns the control flow?",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which statement best separates an agent from a workflow?",
+      "options": [
+        {"id": "a", "text": "An agent calls tools, and a workflow never calls any tools"},
+        {"id": "b", "text": "An agent uses a larger model, and a workflow uses a smaller one"},
+        {"id": "c", "text": "An agent's model chooses the next step, and a workflow's code does"},
+        {"id": "d", "text": "An agent remembers earlier steps, and a workflow forgets them"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A makerspace assistant handles every question the same way. Python code first searches the manuals, then sends the top three pages and the question to the model in one call, then prints the model's reply. Which description fits?",
+      "options": [
+        {"id": "a", "text": "A workflow, because the code fixes the order of the steps"},
+        {"id": "b", "text": "An agent, because a model writes the final answer text"},
+        {"id": "c", "text": "An agent, because it uses a search tool and a model"},
+        {"id": "d", "text": "A workflow, because it makes only one call to the model"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "The team will build one part of the assistant as a fixed workflow. Which part is the best fit for that?",
+      "options": [
+        {"id": "a", "text": "Working out why a student's 3D print keeps failing"},
+        {"id": "b", "text": "Answering questions that could be in any of the manuals"},
+        {"id": "c", "text": "Deciding what to ask a student who sounds confused"},
+        {"id": "d", "text": "Booking a slot once machine, day and time are given"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O4",
+      "stem": "In a workflow, a model call inside one step writes some text. Who or what decides which step runs after that step: the model or something else? Answer in a few words."
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "In the team's design, fixed code always runs the steps: check the student's training status, answer the question, then log the result. Only the answer step lets the model choose which manual pages to search, and how many times. How should the team describe the whole system?",
+      "options": [
+        {"id": "a", "text": "A pure agent, because the model chooses some searches"},
+        {"id": "b", "text": "A workflow, with one agent step inside its fixed sequence"},
+        {"id": "c", "text": "A pure workflow, because the model never picks any step"},
+        {"id": "d", "text": "A multi-agent system, because it has three separate steps"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "Assume every model call costs 2,000 tokens. A fixed workflow answers a question with exactly 3 model calls. An agent answering the same question averages 7 model calls. On average, how many more tokens does the agent use per question than the workflow?",
+      "unit": "tokens"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The model keeps nothing between sessions; a new session starts with an empty context holding only what the program sends. Any memory of Monday exists only if the program saved it and put it back. Options a and d show M3 (automatic memory of earlier conversations).",
+      "distractors": {"a": "M3", "d": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": "d",
+      "rationale": "Every call re-sends the whole history so far, so the input grows each step and the last call is the longest. The first call is the shortest, since no results exist yet.",
+      "distractors": {"b": "M3"}
+    },
+    {
+      "id": "q3",
+      "answer": 21000,
+      "tolerance": 0,
+      "rationale": "Call 1 sends 3,000; call 2 sends 3,000 + 1,500 = 4,500; call 3 sends 6,000; call 4 sends 7,500. Total 3,000 + 4,500 + 6,000 + 7,500 = 21,000. Answering 7,500 counts only the last call; 10,500 counts the starting context once plus the results once, forgetting that each call re-sends everything."
+    },
+    {
+      "id": "q4",
+      "answer": "It would cost tokens on every call and weaken recall as the context fills (and may not fit); instead retrieve only the relevant manual page or chunk, for example with a search tool, and put just that in the context.",
+      "accepted": [
+        "Too expensive and too long for recall; use retrieval to add only the relevant chunk.",
+        "It will not fit or will be costly and less accurate, so search the manuals and send only the relevant passage."
+      ],
+      "rationale": "Full credit needs the problem (cost on every call, context rot or not fitting) and the alternative (retrieval of only the relevant piece). The reason alone is partial. Saying a bigger window solves it is wrong."
+    },
+    {
+      "id": "q5",
+      "answer": "Save the booking details as a note or record in storage outside the model, such as a file or database the program keeps, and load it into the new session's context.",
+      "accepted": [
+        "Write notes to a memory file that the program reads at the start of the next session.",
+        "Store the draft booking in a database and look it up with a tool in the next session."
+      ],
+      "rationale": "The saved information must live outside the model and context, in storage the program controls (a notes file, database, memory tool), and be put back into the new context. Saying the model just remembers it shows M3."
+    }
+  ]
+}

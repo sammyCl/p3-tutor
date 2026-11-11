@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows, agents and who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which of these most clearly separates an agent from a workflow, when both use a language model?",
+      "options": [
+        {"id": "a", "text": "An agent runs on a larger model than a workflow does"},
+        {"id": "b", "text": "In an agent the model chooses the next step, not the code"},
+        {"id": "c", "text": "An agent can call tools, while a workflow cannot call any"},
+        {"id": "d", "text": "A workflow repeats in a loop, while an agent runs one pass"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which task for the makerspace assistant most needs an agent, because no one can say in advance which steps it will take?",
+      "options": [
+        {"id": "a", "text": "Sending a confirmation message each time a booking is saved"},
+        {"id": "b", "text": "Posting the day's machine schedule to the lab board at 8 am"},
+        {"id": "c", "text": "Helping a student find out why their 3D prints keep warping"},
+        {"id": "d", "text": "Turning a student's booking request into a calendar entry"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Whenever a booking is confirmed, the assistant must check the student's training record, then save the booking, then send a confirmation, always in that order. What is the best design for this part?",
+      "options": [
+        {"id": "a", "text": "A fixed workflow in code that runs the three steps in order"},
+        {"id": "b", "text": "An agent, so that the model picks the order of steps each time"},
+        {"id": "c", "text": "An agent, because only an agent can call the three tools"},
+        {"id": "d", "text": "Three separate agents, each one responsible for a single step"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O4",
+      "stem": "Your code always calls search_manuals once with the student's question, passes the top pages to the model, and shows the model's answer. The model never chooses a tool. Is this an agent or a workflow? Answer with one word."
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "For a task whose steps never change, why does a fixed workflow usually cost less per request than an agent?",
+      "options": [
+        {"id": "a", "text": "A workflow always runs on a cheaper model than an agent"},
+        {"id": "b", "text": "A workflow never needs to call a language model at all"},
+        {"id": "c", "text": "A workflow uses tools that are free, unlike an agent's"},
+        {"id": "d", "text": "A workflow needs no model calls to decide the next step"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "A fixed workflow answers a manual question with 2 model calls per request. An agent doing the same job averages 5 model calls per request. Assume every call costs the same. Over a week of 200 requests, how many more model calls does the agent make than the workflow?",
+      "unit": "model calls"
+    }
+  ]
+}

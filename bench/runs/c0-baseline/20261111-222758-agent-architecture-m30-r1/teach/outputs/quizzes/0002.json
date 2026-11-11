@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student finishes a chat with your makerspace assistant on Monday and opens a new chat on Friday. The program stores nothing about the Monday chat. What does the model know about Monday's chat on Friday?",
+      "options": [
+        {"id": "a", "text": "Everything, because the model keeps all earlier chats in its own memory"},
+        {"id": "b", "text": "A summary, because the model compresses old chats when a session ends"},
+        {"id": "c", "text": "Nothing, because only what the program sends in the context is seen"},
+        {"id": "d", "text": "Only the student's name, because the model keeps identifying details"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your team has a 400-page set of machine manuals and a model whose context window could hold all of it. The sponsor's budget is small. Which design is best for answering a question about one machine setting?",
+      "options": [
+        {"id": "a", "text": "A search tool that returns only the few most relevant passages as a tool result"},
+        {"id": "b", "text": "All 400 pages placed in the system prompt, sent with every single request"},
+        {"id": "c", "text": "All 400 pages placed in the first message only, so that they are sent once"},
+        {"id": "d", "text": "A summary of the manuals placed in the notes store, read on each visit"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A request starts with a 2,000-token context (system prompt, tool definitions and the question). The model is called three times. The first two calls each end with a 100-token tool request, and the third writes the final answer. The first tool result is 500 tokens and the second is 1,500 tokens. Each call is sent the whole conversation so far. Add up the input tokens sent across all three calls.",
+      "unit": "tokens"
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In a long agent run, each step costs more input tokens than the one before, even though the student has typed nothing new. In one or two sentences, why?"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Besides the user's messages and the model's own replies, name one other kind of content that takes up space in the context window on every call."
+    }
+  ]
+}

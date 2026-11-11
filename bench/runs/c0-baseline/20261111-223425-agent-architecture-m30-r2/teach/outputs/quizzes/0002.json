@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student chats with your assistant on Monday and says they are left-handed, which matters for one tool. On Wednesday they open a new chat with the same assistant. As built so far, with no saving of anything, what does the model know on Wednesday?",
+      "options": [
+        {"id": "a", "text": "Everything said Monday, because the model stores each conversation it has"},
+        {"id": "b", "text": "Only a summary of Monday, which the model writes itself before it ends"},
+        {"id": "c", "text": "Nothing about Monday, because the new context holds only what is sent"},
+        {"id": "d", "text": "Everything said Monday, but only if the student asks about it first"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "An agent run makes five model calls. Each tool result adds about 2,000 tokens, and the starting prompt, with tool definitions, is 3,000 tokens. Ignoring the replies, which call sends the most input tokens, and why?",
+      "options": [
+        {"id": "a", "text": "The first call, since it carries the tool definitions the others skip"},
+        {"id": "b", "text": "All five send the same, since the prompt never changes during a run"},
+        {"id": "c", "text": "The middle call, since recall is weakest around the middle of a run"},
+        {"id": "d", "text": "The fifth call, since it re-sends the prompt and all earlier results"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "Your assistant's starting context is 3,000 tokens (system prompt and tool definitions). It makes 4 model calls. Call 1 sends only that starting context. After each of the first 3 calls, a tool result of 1,500 tokens is added and everything is re-sent on the next call. Ignoring the model's own replies, how many input tokens are sent across all 4 calls in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Your 12 machine manuals together are about 3 million tokens. In one or two sentences, why is it a poor design to put all of them in the context on every request, and what should the assistant do instead?"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Your team wants the assistant to resume a half-finished booking conversation in a new session next day. In one or two sentences, name one way to make that possible and say where the saved information lives."
+    }
+  ]
+}

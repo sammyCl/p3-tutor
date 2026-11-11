@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "On Monday a student told your makerspace assistant about a wrist injury. Your program saved nothing when that chat ended. On Tuesday the student opens a new chat. What does the model know about Monday?",
+      "options": [
+        {"id": "a", "text": "Everything said on Monday, since the model keeps all past chats"},
+        {"id": "b", "text": "A short summary that the model wrote itself at the end of Monday"},
+        {"id": "c", "text": "Nothing, because the new chat starts with an empty context window"},
+        {"id": "d", "text": "Only the injury, since important facts are stored in its weights"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "In one run, the system prompt, tool definitions and question total 1,600 tokens, and the program resends everything on each model call. The model makes a 50-token tool request, and a 200-token result comes back. It then makes another 50-token request, and a 1,000-token result comes back. It then writes its final answer. Counting only input, how many tokens did the model read across all three of its calls in this run?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your team has a 400-page set of machine manuals, and the model's context window is large enough to hold all of it. Which design best fits your small model budget?",
+      "options": [
+        {"id": "a", "text": "Put all the manuals in the system prompt, so every answer has the facts"},
+        {"id": "b", "text": "Summarise the manuals into one page and use that page for every answer"},
+        {"id": "c", "text": "Give a search tool that returns a few passages, and add only those"},
+        {"id": "d", "text": "Save the manuals as notes so the model memorises them between sessions"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In one run the tool results are all tiny, yet the model's 20th call costs more than its 2nd call. In one sentence, why?"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "Your assistant needs two facts: a student's completed safety trainings, and tomorrow's free time slots on the 3D printer. Which one should be saved between sessions, and why is the other one not saved?"
+    }
+  ]
+}

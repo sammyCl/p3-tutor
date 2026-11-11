@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows, agents and who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "In an agent, which part of the system decides what the next step will be?",
+      "options": [
+        {"id": "a", "text": "The programmer, who wrote the order of every step in code beforehand"},
+        {"id": "b", "text": "The model, which picks its next action from the results seen so far"},
+        {"id": "c", "text": "The user, who has to approve each action before the assistant acts"},
+        {"id": "d", "text": "The tool, which tells the model which tool to run after it finishes"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "In your makerspace assistant, the code always calls check_calendar first. If the slot is free, the code then always calls book_slot. Last, the model is asked to write a confirmation message. The model never chooses a tool or the order of steps. What is this design?",
+      "options": [
+        {"id": "a", "text": "An agent, because a model is called at least once for each request"},
+        {"id": "b", "text": "An agent, because the system uses tools to take real-world actions"},
+        {"id": "c", "text": "A workflow, because the code fixes the steps and the order they run"},
+        {"id": "d", "text": "A workflow, because the model is not allowed to call any tools at all"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "A fixed workflow for booking requests always makes exactly 2 model calls per request. An agent doing the same job averages 5 model calls per request, since each loop step is one model call. Over 100 requests, how many more model calls does the agent make than the workflow?",
+      "unit": "model calls"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which of these makerspace tasks is the best candidate for a fixed workflow rather than an agent?",
+      "options": [
+        {"id": "a", "text": "Helping a student find why their 3D print keeps failing, when the checks needed differ each time"},
+        {"id": "b", "text": "Answering open-ended questions that might need several manuals and the calendar in any order"},
+        {"id": "c", "text": "Planning a project across several machines for a team whose constraints keep on changing"},
+        {"id": "d", "text": "Sending a confirmation email for each approved booking: look it up, fill a template, send it"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O4",
+      "stem": "A teammate says, \"Agents are more powerful, so let's make every part of the assistant an agent.\" In one sentence, give a reason to use a fixed workflow for a step whose actions are known in advance."
+    },
+    {
+      "id": "q6",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A model reads each request and labels it \"booking\" or \"manual question\". Your code then sends it down one of two pipelines whose steps are fixed in advance. Who owns the control flow of this system?",
+      "options": [
+        {"id": "a", "text": "The code, because the possible paths and their steps are all set in advance"},
+        {"id": "b", "text": "The model, because its label decides which of the two paths gets run"},
+        {"id": "c", "text": "Both equally, because the model and the code each make a decision here"},
+        {"id": "d", "text": "The user, because the request they type is what starts the whole process"}
+      ]
+    }
+  ]
+}

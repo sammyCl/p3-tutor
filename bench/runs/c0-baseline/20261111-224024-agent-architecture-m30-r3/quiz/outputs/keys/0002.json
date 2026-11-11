@@ -1,0 +1,45 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The difference is who owns the control flow: in a workflow, predefined code paths decide the steps; in an agent, the model decides its own steps and tool use as it goes. Tool count (a) and number of model calls (d) do not define the difference, since a workflow can use several tools and several calls, and a workflow does use a model (c).",
+      "distractors": {"a": "M7", "c": "M8", "d": "M7"}
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "The program fixes the sequence and the model only fills in or writes text inside each step, so this is a workflow. Several model calls (a) and tool use (b) do not make an agent; the model would have to choose the steps. A model does take part (d), in two steps.",
+      "distractors": {"a": "M7", "b": "M7", "d": "M8"}
+    },
+    {
+      "id": "q3",
+      "answer": "d",
+      "rationale": "When the steps are known and always the same, a fixed workflow is the better choice: it is cheaper (no extra model calls to decide what to do), more predictable and easier to test, which matters for bookings and a small budget. An agent's flexibility (a, b) buys nothing when the path never varies, and tools do not by themselves call for an agent (c).",
+      "distractors": {"a": "M9", "b": "M9", "c": "M7"}
+    },
+    {
+      "id": "q4",
+      "answer": 400,
+      "tolerance": 0,
+      "rationale": "The agent makes 5 - 3 = 2 more calls per request, and 2 x 200 = 400. An answer of 1000 or 600 reports total calls for one design rather than the difference."
+    },
+    {
+      "id": "q5",
+      "answer": "The steps needed cannot be known in advance, because they depend on what each lookup or test turns up, so the model must choose them as it goes.",
+      "accepted": [
+        "The path is open-ended and unpredictable, so the model has to decide the next step from what it finds.",
+        "Because there is no fixed sequence of steps; what to do next depends on earlier results.",
+        "The steps can't be predicted ahead of time, so the model needs to decide them."
+      ],
+      "rationale": "An agent pays off when the number and order of steps cannot be fixed in advance and depend on intermediate results. Answers that only say the agent is smarter or more powerful, or that the question is hard, do not state the control-flow reason and are wrong or at most partial."
+    },
+    {
+      "id": "q6",
+      "answer": "a",
+      "rationale": "This is a routing workflow: the model's label is only an input, and the code defines every possible path and sends the request along one. The model chooses among options, but it does not choose its own steps, so the code owns the control flow. Picking a path (b) or going first (c) is not owning the flow, and the student (d) only supplies the input.",
+      "distractors": {"b": "M10", "c": "M10", "d": "M10"}
+    }
+  ]
+}

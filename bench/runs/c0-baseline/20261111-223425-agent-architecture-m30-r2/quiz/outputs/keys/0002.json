@@ -1,0 +1,46 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "In an agent the model directs its own process: it chooses the next action and tool from what it has seen. Choice (a) describes a workflow, where code fixes the order of steps. The user (c) and the tool (d) do not own the control flow.",
+      "distractors": {"a": "M7"}
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "The code fixes which tools run and in what order, and the model only writes text inside one step, so this is a workflow. Using a model (a) or using tools (b) does not make a system an agent; what matters is who decides the next step. A workflow may call tools (d), as this one does.",
+      "distractors": {"a": "M7", "b": "M7"}
+    },
+    {
+      "id": "q3",
+      "answer": 300,
+      "tolerance": 0,
+      "rationale": "The agent makes 5 x 100 = 500 calls and the workflow 2 x 100 = 200, so the difference is 300. This is why a fixed workflow is cheaper when the steps are known: it makes no extra calls to decide what to do next."
+    },
+    {
+      "id": "q4",
+      "answer": "d",
+      "rationale": "The confirmation email has the same steps every time, so a fixed workflow is predictable, cheaper and faster. The other tasks need steps that vary or cannot be known in advance, which is where an agent's flexibility pays off. Picking one of them shows the belief that agents are always the better choice (M8).",
+      "distractors": {"a": "M8", "b": "M8", "c": "M8"}
+    },
+    {
+      "id": "q5",
+      "answer": "When the steps are known in advance, a fixed workflow is more predictable, cheaper and faster, because the model does not spend calls deciding what to do next.",
+      "accepted": [
+        "A fixed workflow is cheaper and more predictable when the steps are known.",
+        "It is more predictable and uses fewer model calls, so it costs less.",
+        "It is cheaper, faster and more reliable because the code fixes the steps.",
+        "An agent adds cost, delay and the chance of wrong choices that a fixed workflow avoids."
+      ],
+      "rationale": "Any one clear benefit of a fixed workflow for known steps is enough: lower cost, lower latency, predictability or reliability. Saying agents are more powerful, or that workflows never use a model, does not answer the question and shows M8."
+    },
+    {
+      "id": "q6",
+      "answer": "a",
+      "rationale": "The model's label only chooses between branches the code defines, and each branch has fixed steps, so the code owns the control flow. This is a workflow pattern called routing. An agent would decide its own steps and tools, not just pick a branch. Answering (b) shows the belief that any model decision makes a system an agent (M7).",
+      "distractors": {"b": "M7"}
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 17182,
+  "stop_reason": "end_turn",
+  "session_id": "31495f81-32b2-406a-8f38-ba69a92c7112",
+  "total_cost_usd": 0.1171355,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 22667,
+    "cache_read_input_tokens": 64255,
+    "output_tokens": 2003,
+    "output_tokens_details": {
+      "thinking_tokens": 431
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 22667,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 662,
+        "cache_read_input_tokens": 32459,
+        "cache_creation_input_tokens": 782,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 782
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 2003,
+      "cacheReadInputTokens": 64255,
+      "cacheCreationInputTokens": 22667,
+      "webSearchRequests": 0,
+      "costUSD": 0.1171355,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 431,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22667,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 8,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Short answer: the premise is partly true, but training your own model probably isn't the right move for your assistant.\n\n**What's true.** Labs do use reinforcement learning (RL) to make models better at calling tools. The model attempts a task, a reward says how well it went (for example, \"the booking was made correctly\"), and training nudges the model toward the attempts that scored well.\n\n**PPO in brief.** Say the model tries 8 booking requests and a few succeed. You want to make the successful tool calls more likely, but not by so much that one lucky batch wrecks the model. PPO (Schulman et al., 2017, arXiv 1707.06347) does this with:\n\nL = E[ min( r·A, clip(r, 1−ε, 1+ε)·A ) ]\n\n- r = new model's probability of an action ÷ old model's probability of it.\n- A = \"advantage\", meaning how much better this attempt was than average.\n- The clip stops r from moving far beyond about 1±0.2 in one update, so training stays stable.\n\nA full derivation needs probability and calculus: the policy gradient theorem, then the trust-region idea behind the clip. You haven't met those yet, and you've said ML math is outside your mission. I don't want to hand you a derivation you couldn't use.\n\n**Why it's the wrong lever for you.** RL training needs a model whose weights you can change, a reward function, thousands of graded attempts and GPUs. Your sponsor's budget is small and your design review is in five weeks. The cheaper levers usually fix tool-calling problems first:\n\n- Clear tool descriptions, which is already one of your success goals.\n- A test set of real student requests that you replay and score.\n- Making fixed steps, like the calendar check, a plain workflow.\n\nQuick check: if the assistant books the wrong machine, which would you try first, retraining or rewriting the booking tool's description? Why?\n\nI can teach tool descriptions next, which fits your mission. If you're curious about RL itself, I can also do a short optional lesson on it. Tell me which you'd like.",
+  "ttft_ms": 1445,
+  "type": "result",
+  "duration_ms": 17315,
+  "uuid": "af9f2301-8d45-45de-92f4-a04547601ce6",
+  "ttft_stream_ms": 951,
+  "time_to_request_ms": 75,
+  "first_content_frame_ms": 955,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 2003,
+      "cacheReadInputTokens": 64255,
+      "cacheCreationInputTokens": 22667,
+      "webSearchRequests": 0,
+      "costUSD": 0.1171355,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 431,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22667,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-20T02:41:39.267Z"
+}

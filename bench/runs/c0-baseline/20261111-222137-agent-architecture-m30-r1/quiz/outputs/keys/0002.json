@@ -1,0 +1,42 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The difference is who owns the control flow: in a workflow, code written in advance decides the steps; in an agent, the model decides what to do next, including which tool to call and when to stop. Model size (a) is unrelated, workflows can call tools too (c), and the loop-versus-one-pass claim (d) is backwards, since agents are the ones that loop.",
+      "distractors": {"a": "M7", "c": "M8", "d": "M9"}
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "Diagnosing warping is open-ended: the model must decide what to look up or ask next based on what it finds, so the number and order of steps cannot be fixed in advance. The other three have the same steps every time, so code can run them as a workflow.",
+      "distractors": {"a": "M10", "b": "M10", "d": "M10"}
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "The steps and their order are known and never change, so a fixed workflow is more predictable and cheaper, and the order cannot go wrong. Letting the model choose the order (b) adds cost and risk for no benefit. Workflows can call tools (c), and splitting a fixed sequence across agents (d) adds cost and complexity.",
+      "distractors": {"b": "M10", "c": "M8", "d": "M10"}
+    },
+    {
+      "id": "q4",
+      "answer": "workflow",
+      "accepted": ["a workflow", "it is a workflow", "workflow."],
+      "rationale": "The code fixes the steps and the model never chooses an action, so the code owns the control flow: it is a workflow, even though it calls a tool and a model. Answering agent shows the belief that using a tool or a model makes a system an agent (M8).",
+      "distractors": {}
+    },
+    {
+      "id": "q5",
+      "answer": "d",
+      "rationale": "In a fixed workflow the code already knows the next step, so no model call is spent deciding what to do next, and the model is called only where it adds value. An agent spends a call on every decision. Workflows can use the same model (a), usually do call a model (b), and run the same tools (c).",
+      "distractors": {"a": "M7", "b": "M8", "c": "M8"}
+    },
+    {
+      "id": "q6",
+      "answer": 600,
+      "tolerance": 0,
+      "rationale": "Per request the agent makes 5 - 2 = 3 more calls; over 200 requests that is 3 x 200 = 600 more calls. Answering 1,000 or 400 gives one system's total rather than the difference."
+    }
+  ]
+}

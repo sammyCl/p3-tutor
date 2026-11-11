@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    body { max-width: 42rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: Charter, Georgia, serif; line-height: 1.5; background: #fffdf8; color: #1f1d1a; }
+    h1 { font-size: 1.6rem; } h2 { font-size: 1.1rem; margin-top: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { text-align: left; padding: 0.35rem 0.5rem; border-bottom: 1px solid #e4dfd4; vertical-align: top; }
+    code { background: #f3efe6; padding: 0.1em 0.3em; border-radius: 4px; }
+    @media (prefers-color-scheme: dark) { body { background: #171614; color: #e9e5dc; } th, td { border-color: #36332e; } code { background: #23211e; } }
+  </style>
+</head>
+<body>
+  <h1>Context and memory in an agent</h1>
+  <p>From <a href="../lessons/0001-context-and-memory-in-an-agent.html">lesson 1</a>.</p>
+  <h2>Rules</h2>
+  <ul>
+    <li>The model sees only its context: system prompt, tool definitions, messages, tool results.</li>
+    <li>Every call resends the whole history, so total input = sum of each call's input; a result is paid for again on every later call.</li>
+    <li>Nothing survives a session unless the program stores it and reads it back.</li>
+    <li>The model sees only the passages a search returns.</li>
+  </ul>
+  <h2>Where does a fact go?</h2>
+  <table>
+    <tr><th>Fact</th><th>Home</th><th>Reaches the model by</th></tr>
+    <tr><td>Rules, role, tone</td><td>System prompt</td><td>Sent every call</td></tr>
+    <tr><td>This conversation</td><td>Context</td><td>Resent every call</td></tr>
+    <tr><td>One student's training status</td><td>Notes or database</td><td>Read at start or by a tool</td></tr>
+    <tr><td>Machine manuals</td><td>Searchable index</td><td>Search tool, few passages</td></tr>
+  </table>
+  <h2>Token arithmetic</h2>
+  <p>Input of call n = input of call n-1 + the model's request + the tool result. Total = add all calls.</p>
+  <h2>Long runs</h2>
+  <p>Clear old tool results, then compact (summarise), then sub-agents. Keep tool results small first.</p>
+</body>
+</html>

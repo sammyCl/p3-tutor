@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    body { max-width: 42rem; margin: 0 auto; padding: 2rem 1rem; font-family: Charter, Georgia, serif; line-height: 1.5; background: #fffdf8; color: #1f1d1a; }
+    h1 { font-size: 1.6rem; } h2 { font-size: 1.1rem; margin-top: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid #e4dfd4; }
+    @media (prefers-color-scheme: dark) { body { background: #171614; color: #e9e5dc; } th, td { border-color: #36332e; } a { color: #eaa77a; } }
+  </style>
+</head>
+<body>
+  <h1>Context and memory in an agent</h1>
+  <p>From <a href="../lessons/0001-context-and-memory-in-an-agent.html">lesson 1</a>.</p>
+  <h2>Terms</h2>
+  <ul>
+    <li><strong>Token:</strong> a chunk of text; limits and prices are counted in tokens.</li>
+    <li><strong>Context window:</strong> all the text the model can use for one call, including its reply.</li>
+    <li><strong>Context rot:</strong> recall and accuracy degrade as the context grows.</li>
+    <li><strong>Session:</strong> one conversation or task; its context is gone when it ends.</li>
+    <li><strong>Retrieval:</strong> fetching outside information into the context.</li>
+    <li><strong>Notes (memory):</strong> facts the agent writes outside the context to read later.</li>
+    <li><strong>Compaction:</strong> summarize a nearly full conversation and continue from the summary.</li>
+  </ul>
+  <h2>Cost rule</h2>
+  <p>Each call re-reads the whole context. Input at call n = base + everything added so far. Total input is the sum over all calls, so it grows faster than the window.</p>
+  <h2>Where does it go?</h2>
+  <table>
+    <tr><th>Information</th><th>Place</th></tr>
+    <tr><td>Rules, tool descriptions (short, always needed)</td><td>Context</td></tr>
+    <tr><td>Fast-changing facts (calendar)</td><td>Tool result, this session only</td></tr>
+    <tr><td>Large existing documents (manuals)</td><td>Retrieval via a search tool</td></tr>
+    <tr><td>Small lasting facts about a user</td><td>Notes between sessions</td></tr>
+  </table>
+  <h2>When the context fills</h2>
+  <p>Compaction; clearing old tool results; sub-agents with clean windows. Pair compaction with notes so key facts survive.</p>
+</body>
+</html>

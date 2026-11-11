@@ -1,0 +1,38 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The model keeps nothing between calls or sessions; it sees only the text the program puts in the context. With nothing stored and nothing sent, Monday's chat does not exist for it. Options a, b and d all assume the model remembers automatically (M3).",
+      "distractors": {"a": "M3", "b": "M3", "d": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": "a",
+      "rationale": "Retrieval keeps the manuals outside the context and returns only the relevant passages, so every call stays small and cheap and the model finds the facts more reliably. Pasting everything in the system prompt (b) or the first message (c) fits but is billed on every call, since the whole history is resent each call, and invites context rot (M7). A summary in per-student notes (d) loses the details and mixes shared reference material with per-person notes.",
+      "distractors": {"b": "M7", "c": "M7"}
+    },
+    {
+      "id": "q3",
+      "answer": 8800,
+      "tolerance": 0,
+      "rationale": "Call 1 input: 2,000. Call 2 input: 2,000 + 100 + 500 = 2,600. Call 3 input: 2,600 + 100 + 1,500 = 4,200. Total 2,000 + 2,600 + 4,200 = 8,800. An answer of 4,200 counts only the last call; 4,100 counts the unique text, forgetting that earlier text is resent each call."
+    },
+    {
+      "id": "q4",
+      "answer": "Each model call is sent the whole conversation so far, so every earlier message and tool result is resent and the input grows with each step.",
+      "accepted": [
+        "The whole history is sent again on every call, so the context keeps growing.",
+        "Because earlier steps and tool results stay in the context and are resent each time, the input gets larger."
+      ],
+      "rationale": "The model keeps nothing between calls, so the program resends the full history each time; the input is the old context plus the new request and result. Saying that the model gets slower or 'tired', or that the student's question is re-read for fun, misses the resending."
+    },
+    {
+      "id": "q5",
+      "answer": "The system prompt",
+      "accepted": ["system prompt", "tool definitions", "tool descriptions", "tool results", "the tool definitions", "the tool results", "instructions", "the system prompt and tool definitions"],
+      "rationale": "Anything the program sends counts: the system prompt, the tool definitions and earlier tool results all take up tokens on every call. Any one of these is a full answer."
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right: what makes it an agent is the loop of choose an action, run it, and feed the result back. A longer prompt or a bigger model only changes what one call can do; the loop changes the structure of the system."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right: the model outputs a request that names check_calendar and gives the arguments. The program around it does the actual calling. This was wrong on your first attempt, so it has stuck since then."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "An agent that repeats the same edit and gets the same failing test gets nothing from more time: the feedback never changes, so it will not 'eventually' get there. It is tempting because people usually do get there with persistence, but the agent has no new information. The safeguard is a stopping condition, such as a step limit that ends the loop and reports back to a person (option b, which you chose on your first attempt)."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "Your count of 4 is right: three tool requests plus one final answer. But your reason says the model 'runs' the tools itself. It does not: each call ends with a request, the program runs the tool, and the result goes back in for the next call. So the model is called once for the question and once for each of the three results, which is 4 calls. Describe it that way and your reasoning will match your answer."
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right, and you gave both parts: the result goes back in as the next input, and the model uses it to decide its next step. The group-chat comparison works: the tool's result is a new message the model must read before it replies."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "The name is part of it, but the model reads the whole description the program gives it: the name, what the tool does, and the parameters it takes. A name alone can mislead (what would a tool called 'lookup' do?). In your first attempt you mentioned the descriptions, so you knew this. Next time, say that the model picks the tool whose description fits the request."
+    }
+  ],
+  "summary": "You have the loop down: you got q1, q2 and q5 right, and your answers improved a lot since the first attempt (the model outputs a request, and the result goes back in as the next input). Two things to fix. First, the model never runs a tool: the program does, and your q4 reasoning still says otherwise. Second, an agent needs a stopping condition because repeating the same step does not produce a new result (q3). Before you move on, trace the laser-cutter question again and mark each step as 'model call' or 'program runs tool'. Then add a stop rule to your trace."
+}

@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "On Monday your assistant helped a student plan a project. On Wednesday the same student opens a new chat and the assistant knows nothing about Monday. Your team built no storage for past chats. What explains this?",
+      "options": [
+        {"id": "a", "text": "The context window was too small to hold two whole days of chat"},
+        {"id": "b", "text": "The model keeps memories automatically but this one was switched off"},
+        {"id": "c", "text": "Monday's context was never saved, so the new session starts empty"},
+        {"id": "d", "text": "The model forgot Monday because it is trained only once a week"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "In one run the model is called 3 times. The instructions plus tool list are 3,000 tokens and the question is 100 tokens. After call 1 the program adds 500 tokens (the tool request plus its result) to the context, and after call 2 it adds another 500. Each call is sent the whole context so far. Counting only input tokens, how many input tokens are read across all 3 calls?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your manuals total about 300,000 tokens, which fits in the model's context window. Why would you still give the assistant a search tool that returns a few passages, rather than loading every manual into each request?",
+      "options": [
+        {"id": "a", "text": "Because the API refuses any request that holds over 100,000 tokens"},
+        {"id": "b", "text": "Because a model cannot read text that was not in its training data"},
+        {"id": "c", "text": "Because search results are always more accurate than the full manual"},
+        {"id": "d", "text": "Because every call would re-send and pay for it, and recall weakens"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In one or two words: what is the name for summarizing a conversation that is nearing the context limit and continuing in a fresh window that starts with that summary?"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student tells the assistant, \"Always send my booking confirmations by email, never by text.\" Where should the assistant keep this so that it still applies on the student's next visit?",
+      "options": [
+        {"id": "a", "text": "In a notes file for that student, which the next session reads"},
+        {"id": "b", "text": "In the model itself, which learns it from the chat overnight"},
+        {"id": "c", "text": "In the search index of manuals, beside the machine pages"},
+        {"id": "d", "text": "In the context window, which stays open between the visits"}
+      ]
+    }
+  ]
+}

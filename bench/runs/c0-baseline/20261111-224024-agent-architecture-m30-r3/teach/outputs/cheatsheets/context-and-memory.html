@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory</title>
+  <style>
+    body { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: Charter, Georgia, serif; line-height: 1.5; color: #1f1d1a; background: #fffdf8; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid #e4dfd4; }
+    @media (prefers-color-scheme: dark) { body { color: #e9e5dc; background: #171614; } th, td { border-color: #36332e; } }
+  </style>
+</head>
+<body>
+<h1>Context and memory: one-page reference</h1>
+<p>From <a href="../lessons/0001-context-and-memory.html">Lesson 1</a>.</p>
+<table>
+  <thead><tr><th>Where a fact lives</th><th>Lasts</th><th>Cost</th><th>Use for</th></tr></thead>
+  <tbody>
+    <tr><td>Context (system prompt, messages, tool results)</td><td>One session</td><td>Paid on every call</td><td>Rules, tool list, current chat</td></tr>
+    <tr><td>Saved notes (file or database)</td><td>Between sessions</td><td>Only when loaded into context</td><td>Durable facts: training status, preferred name</td></tr>
+    <tr><td>Retrieval from a store (manuals)</td><td>Permanent, outside context</td><td>Only the returned passages</td><td>Knowledge too big to fit</td></tr>
+    <tr><td>A tool call (calendar)</td><td>Fresh each time</td><td>Result enters context</td><td>Facts that change</td></tr>
+  </tbody>
+</table>
+<h2>Rules of thumb</h2>
+<ul>
+  <li>The model keeps nothing between calls; the program resends the history.</li>
+  <li>Input tokens over a run = sum of the whole context at each call.</li>
+  <li>Bigger window is not a reason to put everything in: cost and recall both suffer (context rot).</li>
+  <li>Trim: clear used tool results, then compact if the history is still long.</li>
+  <li>Save facts, not transcripts.</li>
+</ul>
+</body>
+</html>

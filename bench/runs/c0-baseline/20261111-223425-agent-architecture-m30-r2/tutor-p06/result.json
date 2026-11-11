@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 17266,
+  "stop_reason": "end_turn",
+  "session_id": "4dd9af62-de7b-4267-837e-ecb4c3c827cc",
+  "total_cost_usd": 0.1155199,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 22523,
+    "cache_read_input_tokens": 64059,
+    "output_tokens": 1901,
+    "output_tokens_details": {
+      "thinking_tokens": 440
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 22523,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 644,
+        "cache_read_input_tokens": 32323,
+        "cache_creation_input_tokens": 774,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 774
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1901,
+      "cacheReadInputTokens": 64059,
+      "cacheCreationInputTokens": 22523,
+      "webSearchRequests": 0,
+      "costUSD": 0.1155199,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 440,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22523,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 8,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Think of ordering at a restaurant.\n\nYou sit at a table. You can't walk into the kitchen, and you have no idea how the stove works. You have a **menu** and an **order slip**. You read the menu, decide what you want, and write on the slip: \"one pad thai, no peanuts.\" A waiter takes the slip to the kitchen. The kitchen does the real work and sends back a plate. You look at the plate and decide what to do next. You might eat, order a drink, or ask for the check.\n\nTool calling works the same way:\n\n- **The model is you at the table.** It only produces text, and it can't touch anything in the world.\n- **The menu is the tool descriptions.** The model knows what it can ask for only because the menu says so. A vague menu item like \"Special\" gets you something random. A clear one, like \"Pad thai: noodles, shrimp, contains peanuts,\" gets you what you meant. This is why writing good tool descriptions matters.\n- **The order slip is the tool call.** The model doesn't do the action. It writes a request in a set shape: which item, and which choices.\n- **The kitchen and waiter are your program.** It reads the slip, does the work (checks the booking calendar), and brings the result back.\n- **The plate is the tool result.** The model reads it and decides whether to order more or answer you.\n\nFor the makerspace assistant, a student asks, \"Is the laser cutter free Thursday at 3?\" The model writes a slip: \"check calendar, laser cutter, Thursday 3pm.\" Your program looks it up and returns \"booked until 4.\" The model reads that and replies, \"It's taken until 4. Want 4:00?\"\n\nThe analogy breaks in one place. A diner can walk to the kitchen if they want. The model can't. It never runs anything itself, and your program decides whether a slip is actually carried out.\n\nNow you try. In your own words, who actually checks the calendar, and what does the model contribute? Tell me if any step still feels fuzzy. I can also write a short lesson on it.",
+  "ttft_ms": 1994,
+  "type": "result",
+  "duration_ms": 17665,
+  "uuid": "75f475f3-fdba-43f0-8210-78f71fd2d9f3",
+  "ttft_stream_ms": 1326,
+  "time_to_request_ms": 358,
+  "first_content_frame_ms": 1326,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1901,
+      "cacheReadInputTokens": 64059,
+      "cacheCreationInputTokens": 22523,
+      "webSearchRequests": 0,
+      "costUSD": 0.1155199,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 440,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22523,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-20T02:41:39.267Z"
+}
