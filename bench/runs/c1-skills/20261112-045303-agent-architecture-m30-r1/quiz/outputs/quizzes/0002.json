@@ -1,0 +1,71 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows and agents: who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A system uses a language model to help with a task. Which question best tells you whether it is a workflow or an agent?",
+      "options": [
+        {"id": "a", "text": "Whether the system has any tools it can use to take actions"},
+        {"id": "b", "text": "Whether the model has a large enough context window for the task"},
+        {"id": "c", "text": "Whether the program's code or the model decides what happens next"},
+        {"id": "d", "text": "Whether the system calls the model more than once per request"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A program always calls the model exactly three times, in the same order: first to pull the machine and date out of a booking request, then to draft a reply, then to polish the reply. The model never chooses which step comes next. True or false: this system is an agent.",
+      "options": [
+        {"id": "a", "text": "True"},
+        {"id": "b", "text": "False"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O4",
+      "stem": "When the steps of a task are known in advance, a fixed workflow is often a better choice than an agent. Name two reasons, in one or two sentences."
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which of these tasks most needs an agent rather than a fixed workflow?",
+      "options": [
+        {"id": "a", "text": "Booking a machine slot by always checking the calendar, then the training record, then booking"},
+        {"id": "b", "text": "Sending every student the same confirmation message once a booking is made"},
+        {"id": "c", "text": "Pulling the machine name and date out of each incoming booking request"},
+        {"id": "d", "text": "Finding why a student's 3D prints keep failing, where each next check depends on the last result"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "For your makerspace assistant, a booking request always needs the same three checks in the same order: calendar free, student trained, then book. Your sponsor's model budget is small. Which design is best for this part, judged by cost and predictability?",
+      "options": [
+        {"id": "a", "text": "Code that runs the three steps in that order, using the model only to read the request and write the reply"},
+        {"id": "b", "text": "An agent with three tools, so the model can handle unusual requests in whatever order they need"},
+        {"id": "c", "text": "An agent with three tools and a high step limit, so it is allowed to finish every booking"},
+        {"id": "d", "text": "An agent with three tools, because any system that takes real actions has to run as a loop"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A teammate proposes this fixed design for answering manual questions: the code runs search_manuals once with the student's words, then the model writes an answer from the results. Student questions vary: some need one page, some need two manuals compared, and some need a second search with different words. What is the main weakness of the design?",
+      "options": [
+        {"id": "a", "text": "Every request pays for a search, so it costs more than an agent would"},
+        {"id": "b", "text": "It is not really a workflow, because the model writes the final answer"},
+        {"id": "c", "text": "The code cannot adapt: if the first search misses, nothing decides to search again"},
+        {"id": "d", "text": "It will keep repeating the search forever unless a step limit is added"}
+      ]
+    }
+  ]
+}

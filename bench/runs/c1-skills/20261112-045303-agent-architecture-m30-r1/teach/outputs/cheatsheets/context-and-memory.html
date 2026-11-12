@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    :root { --bg: #fffdf8; --text: #1f1d1a; --muted: #6b665e; --rule: #e4dfd4; --accent: #9a4517; }
+    @media (prefers-color-scheme: dark) { :root { --bg: #171614; --text: #e9e5dc; --muted: #a49e93; --rule: #36332e; --accent: #eaa77a; } }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: Charter, Georgia, serif; line-height: 1.5; }
+    main { max-width: 42rem; margin: 0 auto; padding: 2rem 1.25rem; }
+    h1 { font-size: 1.6rem; } h2 { font-size: 1.1rem; margin-top: 1.5rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; font-family: system-ui, sans-serif; }
+    th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid var(--rule); }
+    th { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; }
+    a { color: var(--accent); }
+    @media print { :root { --bg: #fff; --text: #000; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Context and memory in an agent</h1>
+  <p>From <a href="../lessons/0001-context-and-memory-in-an-agent.html">Lesson 1</a>.</p>
+
+  <h2>Terms</h2>
+  <table>
+    <tr><th>Term</th><th>Meaning</th></tr>
+    <tr><td>Context window</td><td>All the text the model can read in one call, including its own reply.</td></tr>
+    <tr><td>Token</td><td>A small chunk of text; windows, cost and limits are counted in tokens.</td></tr>
+    <tr><td>Context rot</td><td>Accuracy and recall fall as the window fills.</td></tr>
+    <tr><td>Context engineering</td><td>Choosing what goes into the window at each step.</td></tr>
+    <tr><td>Compaction</td><td>Summarize the conversation and continue in a fresh window.</td></tr>
+    <tr><td>Memory</td><td>Information stored outside the window and read back in through a tool.</td></tr>
+    <tr><td>Just-in-time retrieval</td><td>Keep identifiers; load content only when a step needs it.</td></tr>
+  </table>
+
+  <h2>Where information lives</h2>
+  <table>
+    <tr><th>Information</th><th>Lives in</th><th>Reaches the window by</th></tr>
+    <tr><td>Rules, tool descriptions</td><td>Context</td><td>Sent every call</td></tr>
+    <tr><td>This request's steps and results</td><td>Message list (your program)</td><td>Resent every step</td></tr>
+    <tr><td>Facts about a student</td><td>Saved notes</td><td>Read at session start</td></tr>
+    <tr><td>Manuals</td><td>Searchable storage</td><td>Search, then read one section</td></tr>
+  </table>
+
+  <h2>Checks before adding to context</h2>
+  <ul>
+    <li>Will this be re-read on every later step? Is it worth that cost?</li>
+    <li>Is only the relevant part included?</li>
+    <li>Must it survive the session? Then save it as a note.</li>
+  </ul>
+</main>
+</body>
+</html>

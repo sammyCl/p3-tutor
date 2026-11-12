@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You picked out the loop of choosing an action, running it and returning the result as the defining structure, not a longer prompt or a bigger model. Next, the question becomes what goes into the context on each pass of that loop."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You saw that the model's output is only a structured request naming the tool and its arguments. The program around it does the actual work of calling check_calendar."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "Your pick assumes that with more time the agent will eventually fix the bug. It is tempting, but after 40 identical failures more steps add nothing, because the same feedback leads to the same edit. A step limit ends the loop and hands the problem back to a person."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "Four calls is right: three tool requests plus one final answer. Your reason is off, though: the model does not run the tools. It only requests each one, and the program runs it and sends the result back, which is what triggers the next model call."
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You gave both halves: the result goes back in as the next input, and the model then uses it to decide its next step. Your group-chat comparison fits, since each reply sits in front of the model on its next turn."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "The name is part of what the model sees, and your check_calendar example shows why a clear name helps. The model reads the whole description the program supplies, though: the name, what the tool does and its parameters. A name alone can mislead, for example a tool called check that does several things."
+    }
+  ],
+  "summary": "You have the agent loop down: its structure, that the model only requests a tool and doesn't run it, and that results return as the next input. Two things to work on. First, a loop needs a stopping condition such as a step limit. Second, the model chooses tools from their full descriptions, not only their names, which matters when you write descriptions for the makerspace tools. Next step: write a description for check_calendar with its purpose and parameters, then tell me what the model would do with it."
+}

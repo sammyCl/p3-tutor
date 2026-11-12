@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 13049,
+  "stop_reason": "end_turn",
+  "session_id": "9064fd59-2c3d-431a-b633-956c260853cb",
+  "total_cost_usd": 0.0985168,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 19540,
+    "cache_read_input_tokens": 60048,
+    "output_tokens": 1434,
+    "output_tokens_details": {
+      "thinking_tokens": 175
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 19540,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 547,
+        "cache_read_input_tokens": 29597,
+        "cache_creation_input_tokens": 517,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 517
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1434,
+      "cacheReadInputTokens": 60048,
+      "cacheCreationInputTokens": 19540,
+      "webSearchRequests": 0,
+      "costUSD": 0.0985168,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 175,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 19540,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Reinforcement learning (RL) is real, and labs do use it to make models better at tool use. But it's probably the wrong tool for your assistant, and the full PPO derivation is outside your mission, which puts training and the math inside models out of scope. Here is the big picture.\n\n**What RL is.** The model tries something, gets a score (a reward), and its weights are nudged toward behavior that scored well. For tool calling, a reward could be \"the right tool was called with valid arguments and the booking succeeded.\"\n\n**What PPO adds.** PPO stands for Proximal Policy Optimization. Its one idea is to update the model in small, safe steps. A big update can wreck behavior that already works. So PPO caps how far the new model's probability for an action can move from the old model's. It's like a diff-size limit on a code review: no giant rewrites.\n\n**Why I'd skip it for you:**\n- It needs access to the model's weights. Hosted model APIs generally don't give you that.\n- It needs thousands of scored attempts plus GPUs, and your sponsor gave you a small budget.\n- Most tool-calling failures in a project like yours come from fixable causes, not from a weak model.\n\n**What to do instead, in order:**\n- Rewrite your tool descriptions so they say what each tool does, when to use it, and what arguments it takes.\n- Write about 20 real student questions with the expected tool call for each, like unit tests.\n- Run them after every change and count the passes.\n\nThat test set is a small version of RL's reward signal, and you'll want it for your design review anyway.\n\nQuick check: if the assistant keeps booking the wrong machine, which would you try first, retraining the model or changing a tool description? Why?",
+  "ttft_ms": 1829,
+  "type": "result",
+  "duration_ms": 13265,
+  "uuid": "c385813b-4b9f-4da8-8bbc-7ec736d98b9c",
+  "ttft_stream_ms": 1119,
+  "time_to_request_ms": 145,
+  "first_content_frame_ms": 1119,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1434,
+      "cacheReadInputTokens": 60048,
+      "cacheCreationInputTokens": 19540,
+      "webSearchRequests": 0,
+      "costUSD": 0.0985168,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 175,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 19540,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-20T02:41:39.267Z"
+}

@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 55078,
+  "stop_reason": "end_turn",
+  "session_id": "37e50ae3-37a0-4329-991b-b8f4b1411311",
+  "total_cost_usd": 0.1895717,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 28370,
+    "cache_read_input_tokens": 93357,
+    "output_tokens": 6674,
+    "output_tokens_details": {
+      "thinking_tokens": 3051
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 28370,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 313,
+        "cache_read_input_tokens": 33172,
+        "cache_creation_input_tokens": 5772,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5772
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 6674,
+      "cacheReadInputTokens": 93357,
+      "cacheCreationInputTokens": 28370,
+      "webSearchRequests": 0,
+      "costUSD": 0.1895717,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 3051,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 28370,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 11,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I wrote the quiz to `quizzes/0002.json` and its key to `keys/0002.json`. It's a six-question quiz on O4, \"Workflows and agents: who owns the control flow.\"\n\nThere is no lesson on O4 yet, so the quiz is ahead of the lessons. I didn't write a lesson.\n\n**What it covers:**\n- **Knowing (4 items):**\n  - q1 asks what separates a workflow from an agent.\n  - q2 is a true/false on a fixed three-call pipeline that uses the model but isn't an agent.\n  - q3 asks for two reasons a fixed workflow can be the better choice.\n  - q4 asks which kind of task needs an agent.\n- **Applying (2 items), both from the makerspace assistant:**\n  - q5 is about how to build the booking flow, judged on cost and predictability.\n  - q6 is about a \"search once, then answer\" design for manual questions.\n\nYou can take it when you're ready.",
+  "ttft_ms": 2213,
+  "type": "result",
+  "duration_ms": 55333,
+  "uuid": "20af08e6-9617-4e21-9ddd-93f23eaa63d7",
+  "ttft_stream_ms": 1492,
+  "time_to_request_ms": 118,
+  "first_content_frame_ms": 1493,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 6674,
+      "cacheReadInputTokens": 93357,
+      "cacheCreationInputTokens": 28370,
+      "webSearchRequests": 0,
+      "costUSD": 0.1895717,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 3051,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 28370,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-20T02:41:39.267Z"
+}

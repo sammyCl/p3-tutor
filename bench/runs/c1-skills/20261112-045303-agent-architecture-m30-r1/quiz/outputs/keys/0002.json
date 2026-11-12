@@ -1,0 +1,47 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The difference is who owns the control flow: in a workflow, the program's code fixes the steps; in an agent, the model chooses the next step. Having tools (a) or calling the model several times (d) can be true of both, and context size (b) is unrelated.",
+      "distractors": {"a": "M7", "d": "M8"}
+    },
+    {
+      "id": "q2",
+      "answer": "b",
+      "rationale": "The code fixes the order of the steps and the model chooses nothing, so this is a workflow, even though it calls the model three times. Answering True shows the belief that using a model, or using it several times, makes a system an agent.",
+      "distractors": {"a": "M8"}
+    },
+    {
+      "id": "q3",
+      "answer": "It is cheaper, because there are fewer model calls and no model deciding steps; and it is more predictable and easier to test, because the steps are the same every time.",
+      "accepted": [
+        "Cheaper and more reliable",
+        "Lower cost and more predictable",
+        "Fewer model calls, and the same steps every time so it is easier to test",
+        "Cheaper and easier to test and debug",
+        "It costs less and behaves consistently"
+      ],
+      "rationale": "Any two of: lower cost (fewer model calls, no tokens spent deciding what to do), predictability or reliability (same steps every time), and easier testing and debugging. Giving only one is partial; saying a workflow is smarter or more flexible shows M9 in reverse."
+    },
+    {
+      "id": "q4",
+      "answer": "d",
+      "rationale": "An agent is worth its cost when the path cannot be known ahead, because each next step depends on what the last one showed. The other three have steps that are the same every time, so fixed code does them cheaper and more reliably. Choosing a shows the belief that anything with tools needs an agent.",
+      "distractors": {"a": "M9"}
+    },
+    {
+      "id": "q5",
+      "answer": "a",
+      "rationale": "The steps and their order are known, so code can own the control flow and call the model only where language is needed; this is the cheapest and most predictable design. The agent options pay for extra model calls to decide a path that never varies (b, c), and acting on the world does not require a model-driven loop (d).",
+      "distractors": {"b": "M9", "c": "M9", "d": "M7"}
+    },
+    {
+      "id": "q6",
+      "answer": "c",
+      "rationale": "In a fixed workflow the code owns the control flow, so it cannot decide to search again or look elsewhere; when the needed number of lookups varies, that is the case for an agent. A fixed single search is cheaper, not dearer (a), a workflow may include model calls (b), and it has no loop to run forever (d).",
+      "distractors": {"a": "M10", "b": "M8", "d": "M11"}
+    }
+  ]
+}

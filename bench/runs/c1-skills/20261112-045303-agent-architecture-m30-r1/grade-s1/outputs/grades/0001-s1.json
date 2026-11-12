@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You picked out the loop of choosing actions, running them and feeding results back as the thing that defines an agent, not a longer prompt or a bigger model. Next, look at what stops that loop."
+    },
+    {
+      "id": "q2",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "You picked the option where the model opens the booking system itself, which suggests you see the model as doing the work. It only writes a request naming check_calendar and its arguments; the program around it runs the tool and returns the result."
+    },
+    {
+      "id": "q3",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You saw that repeating the same failing step needs a stopping condition, and that a bigger window or a stronger prompt would not end the loop. A step limit also caps cost, which matters for your budget."
+    },
+    {
+      "id": "q4",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Your answer has the model running the three tools inside one call. The program runs the tools, and each model call ends with one tool request or the final answer. That makes three requests plus the final answer: four calls."
+    },
+    {
+      "id": "q5",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "Sending the result back to the model is the right first half. What's missing is why: the model needs the result in its next input so it can decide its next step or write the final answer. Add the reason to each loop description."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": "M3",
+      "feedback": "You have the main idea: the model gets tool names and descriptions and picks the one that fits. The added claim is off. The model doesn't remember choices from earlier sessions on its own; it only knows what is in its current input."
+    }
+  ],
+  "summary": "You have the shape of the agent loop and why it needs a stopping condition, and you know the model picks tools from their descriptions. The idea to fix is who does what: the model only requests a tool, and the program runs it and calls the model again, so each step is a separate model call. Redraw your laser-cutter trace, labelling each step 'model' or 'program'."
+}

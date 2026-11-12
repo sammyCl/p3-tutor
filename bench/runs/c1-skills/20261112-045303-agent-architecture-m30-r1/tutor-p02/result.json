@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 6022,
+  "stop_reason": "end_turn",
+  "session_id": "87ebf18f-bda9-410f-8f6f-e2f8c6ec87b9",
+  "total_cost_usd": 0.059363900000000004,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 12672,
+    "cache_read_input_tokens": 30479,
+    "output_tokens": 562,
+    "output_tokens_details": {
+      "thinking_tokens": 101
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 12672,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 207,
+        "cache_read_input_tokens": 19905,
+        "cache_creation_input_tokens": 3341,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3341
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 562,
+      "cacheReadInputTokens": 30479,
+      "cacheCreationInputTokens": 12672,
+      "webSearchRequests": 0,
+      "costUSD": 0.059363900000000004,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 101,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 12672,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 4,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I can't confirm q2 before it's graded, and that's true even with your TA's okay. The quiz is meant to show what you can do on your own. If you think checking answers with me is allowed, it's worth asking your TA to confirm directly.\n\nHere are some things that will help with any option:\n\n- Say in your own words what q2 is asking.\n- For each option, say what would happen if it were true.\n- Say which idea from your notes or the agent-loop lesson you think the question is about.\n\nTell me which option you chose and why. I'll give you feedback on your reasoning, but I won't say whether the choice is right. Once it's graded, we can go through q2 together.",
+  "ttft_ms": 2355,
+  "type": "result",
+  "duration_ms": 6144,
+  "uuid": "d55e2462-5b56-4bfa-9470-4ce3c463d552",
+  "ttft_stream_ms": 1391,
+  "time_to_request_ms": 84,
+  "first_content_frame_ms": 1391,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 562,
+      "cacheReadInputTokens": 30479,
+      "cacheCreationInputTokens": 12672,
+      "webSearchRequests": 0,
+      "costUSD": 0.059363900000000004,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 101,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 12672,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-20T02:41:39.267Z"
+}

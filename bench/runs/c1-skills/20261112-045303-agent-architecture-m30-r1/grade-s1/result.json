@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 21299,
+  "stop_reason": "end_turn",
+  "session_id": "a03649da-ebfc-4934-8970-7e0656f9a567",
+  "total_cost_usd": 0.14462379999999997,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 25921,
+    "cache_read_input_tokens": 94938,
+    "output_tokens": 3143,
+    "output_tokens_details": {
+      "thinking_tokens": 149
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 25921,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 233,
+        "cache_read_input_tokens": 34260,
+        "cache_creation_input_tokens": 2235,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2235
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 3143,
+      "cacheReadInputTokens": 94938,
+      "cacheCreationInputTokens": 25921,
+      "webSearchRequests": 0,
+      "costUSD": 0.14462379999999997,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 149,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 25921,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 14,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I graded submission s1 for quiz 0001 and wrote the grades to `grades/0001-s1.json`. I also added a learning record, `learning-records/0003-model-requests-program-runs-tools.md`, and updated `NOTES.md`.\n\n**Summary:** You have the shape of the agent loop and why it needs a stopping condition, and you know the model picks tools from their descriptions. The idea to fix is who does what. The model only requests a tool, and the program runs it and calls the model again, so each step is a separate model call.\n\n**Next step:** Redraw your laser-cutter trace and label each step \"model\" or \"program\".\n\nCheck your understanding: in that trace, which steps would be model calls, and which would be the program?",
+  "ttft_ms": 1882,
+  "type": "result",
+  "duration_ms": 21513,
+  "uuid": "df33db02-5bb1-4153-9d62-20f71250fc44",
+  "ttft_stream_ms": 1204,
+  "time_to_request_ms": 129,
+  "first_content_frame_ms": 1205,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 3143,
+      "cacheReadInputTokens": 94938,
+      "cacheCreationInputTokens": 25921,
+      "webSearchRequests": 0,
+      "costUSD": 0.14462379999999997,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 149,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 25921,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-20T02:41:39.267Z"
+}
