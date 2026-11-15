@@ -328,7 +328,7 @@ Tutor Conversation:
 
 In terms of the numbers, we saw improvements to:
 - tutor behavior met : 0.5 -> 0.83
-- lesson length ratio : 0.69 -> 0.73
+- lesson length ratio : 0.69 -> 0.73 (comparing average of 3 c0 runs against one c1 run)
 - token usage: 
     - teach : 556.7k -> 511.6k
     - quiz : 146.5k -> 128.4k

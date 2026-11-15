@@ -28,14 +28,86 @@ The objective checks use the names `p3 report` prints, such as `teach_facts_corr
 
 Paste the `p3 report` table for `c0-baseline` (three full runs on the shared topic).
 
-TODO: paste the table and name the three run ids.
+Runs: `bench/runs/c0-baseline/20261111-222758-agent-architecture-m30-r1`, `20261111-223425-agent-architecture-m30-r2` and `20261111-224024-agent-architecture-m30-r3` (the quick run `20261111-222137` is left out). Table from `uv run p3 report --configs c0-baseline`.
+
+### Results on agent-architecture
+
+Scored full runs (quick runs and --only runs left out); each cell is the mean over the runs, with the range in brackets.
+
+#### Quality
+
+| config | runs | teach facts | teach misconc. | length ratio | dead links | key agreement | wrong keys | ambiguous items | verdict agreement | false wrong | misconc. hit | leaks | behavior met |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 1.00 | 0 | 0.69 (0.65-0.77) | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.50 (0.33-0.67) |
+
+Teach facts, key agreement, verdict agreement, false wrong, misconception hit and behavior met are shares (0 to 1); misconceptions, dead links, wrong keys, ambiguous items and leaks are counts per run.
+A dash means no run could be scored on that check, and n= says how many of the runs could.
+A job that failed counts against the config: no lesson scores 0 teach facts, no quiz and key 0 key agreement, a missing grades file disagrees on every item, and a tutor scenario with no reply is not met; leaks need a reply to check, so such a scenario is left out of them.
+The length ratio is a rough reading-time estimate (visible words / 150) over the minutes requested; 0.6 to 1.5 counts as on length.
+
+#### Cost: teach
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 556.7k (506.8k-615.3k) | 27.8k (25.7k-28.8k) | 2.8 (2.5-3.1) | 0 | 0.58 (0.54-0.61) |
+
+#### Cost: quiz
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 146.5k (127.5k-174.7k) | 5.5k (4.4k-6.2k) | 0.8 (0.6-0.8) | 0 | 0.18 (0.16-0.19) |
+
+#### Cost: grade
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 267.8k (265.0k-271.0k) | 7.6k (7.4k-7.8k) | 0.9 (0.9-1.0) | 0 | 0.33 (0.32-0.34) |
+
+#### Cost: tutor
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 520.2k (455.3k-613.9k) | 10.6k (9.7k-12.1k) | 1.6 (1.5-1.8) | 0 | 0.66 (0.63-0.70) |
+
+#### Cost: all jobs
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 1.49M (1.41M-1.63M) | 51.5k (49.2k-54.7k) | 6.2 (5.8-6.6) | 0 | 1.75 (1.70-1.83) |
+
+Costs are per run, summed over the job's scenarios; list-price $ is the list-price equivalent, not what you pay on a subscription.
 
 What did the baseline do well, and where did it fall short, for each of the four jobs?
 Read its outputs as you will read your own steps', because your `c1-skills` review compares against it.
 Which of the gaps in `KNOWN-GAPS.md` did you see in your own runs, and did you find one that is not listed?
 Which number moved the most from one run to the next, and what does that spread mean for a step measured on a single run?
 
-TODO: your reading of the baseline.
+Lesson: The baseline had a relatively strong lesson that scored highly for teaching facts (1.00), and not as well for the length of the lesson (0.69). When reading the lessons they cover all of the steps that the student was looking for, what the context window is, how notes work between sessions, and how to retrieve information from manuals. The figures it creates are relatively strong and explain concepts well. I think the worked example sections should be less dense, because right now they are blocks of text, which is hard for the student to understand. 
+
+Quiz: The quiz scored relatively strong, but the questions do not match the student's objectives as closely as I would like. For example, q3 of quiz 2 asks the user to determine, "Over 100 requests, how many more model calls does the agent make than the workflow?" This question is not really relevant for the user if they are just trying to understand the basics of the differences between the agent and the workflows.
+
+Tutor: The tutor is missing a lot of the benchmarks. It is currently struggling with some of the guardrails, such as making sure to not reveal quiz answers to students for p01 in quiz 1, 2, and 3. The tutor begins by saying it cannot give out answers, but then gives an explanation that lets the student figure out the answer. However, the tutor did also answer most other questions thorougly with solid explanations.
+
+Grading: The tutor's answers are a bit too blunt and cold. Starting grading off with "Right." or "Wrong." can make it difficult for the student to accept the criticism that the tutor has. I want to work on making the tutor warmer. Additionally, some of the explanations are a bit long, I would like to make the tutor be less verbose. However, the grading was always correct, as seen in 1.00 for verdict agreement and 1.00 for misconception hit. 
+
+Known Gaps:
+- The tutor narrows a quiz item down while refusing to answer it -> Present p01, p02
+- The tutor answers above the learner's level -> Present p05
+- Tutor replies run long -> Present
+- Lessons come in short -> Present 0.65-0.77
+
+New Known Gaps:
+- The grading feedback feels cold.
+- The worked examples in the lesson are dense.
+- Some quiz items stray from the learner's goal.
+
+Spread:
+- Tutor behavior met -> 0.5, 0.67, 0.33
+- Length ratio -> 0.77, 0.65, 0.67
+- Tutor tokens -> 455k to 614k
+- Teach tokens -> 507k to 615k
+
+The number that moved the most was the tutor behavior met, it had significant variation in which probes were met versus unmet. I will have to be careful about mentioning specific changes to keep behavior more consistent. This means that a step measured from a single run may not be accurate, as some sections include significant variation.
 
 ---
 
@@ -46,13 +118,108 @@ TODO: your reading of the baseline.
 Name the rounds that built this step, such as `c1-skills` Rounds 1 to 4, and the inventory entries of the skills they added; the trail from thoughts to change to outcome is already in `reviews/` and `reviews/components.md`, so do not retell it here.
 Then what you put in `PREFERENCES.md`, and anything about how the four skills work together that no single inventory entry says.
 
-TODO: the rounds and entries, your preferences, and how the skills fit together.
+I had 5 rounds:
+- Round 1 : Made the tutor skill -> tutor
+  - Make sure the tutor does not give answers away.
+- Round 2 : Made the quiz skill -> quiz
+  - Remove questions that do not directly connect to the student's learning goals, breakdown quiz questions into knowledge-based and real world applications.
+- Round 3 : Made the grade skill -> grade
+  - Make grading feedback warmer and less verbose.
+- Round 4 : Modified the teach skill -> teach
+  - Make sure the lesosn doesn't use names, split worked examples into different sections, don't have overlapping ehadings for sections.
+- Round 5 : Modified the tutor skill -> tutor
+  - Make sure the tutor doesn't share internal thoughts.
+
+Preferences: 
+- Feedback: Tell plainly what was right and wrong.
+- How to talk: Friendly and direct, ask questions.
+- How long and dense: Short paragraphs, plain language, worked examples, bullets for explaning new processes
+- Examples: Relate to CS, use plain english
+- How to explain: Start with a general idea, then get more specific. Use real world examples, explain each new term as it appears, speak in plain language.
+
+How the skills fit together:
+
+The `tutor/CLAUDE.md` decides which skill will handle a request, it will then invoke the skill. Each skill uses its own `SKILL.md`, but they share information for the student's mission, preferences, etc. The skills build off of the artifacts of each other, with the quiz relying on the lesson, the grade relying on the quiz, etc.
 
 ### Your review, the objective checks and the cost
 
 Paste `uv run p3 report --configs c0-baseline,c1-skills`: the objective checks, the cost per job, and your ratings.
 
-TODO: paste the report tables.
+Runs: `c0-baseline` full runs `bench/runs/c0-baseline/20261111-222758-agent-architecture-m30-r1`, `20261111-223425-agent-architecture-m30-r2` and `20261111-224024-agent-architecture-m30-r3` (the quick run `20261111-222137` is left out); `c1-skills` full run `bench/runs/c1-skills/20261112-045303-agent-architecture-m30-r1`.
+
+#### Results on agent-architecture
+
+Scored full runs (quick runs and --only runs left out); each cell is the mean over the runs, with the range in brackets.
+
+##### Quality
+
+| config | runs | teach facts | teach misconc. | length ratio | dead links | key agreement | wrong keys | ambiguous items | verdict agreement | false wrong | misconc. hit | leaks | behavior met |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 1.00 | 0 | 0.69 (0.65-0.77) | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.50 (0.33-0.67) |
+| `c1-skills` | 1 | 1.00 | 0 | 0.73 | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.83 |
+
+Teach facts, key agreement, verdict agreement, false wrong, misconception hit and behavior met are shares (0 to 1); misconceptions, dead links, wrong keys, ambiguous items and leaks are counts per run.
+A dash means no run could be scored on that check, and n= says how many of the runs could.
+A job that failed counts against the config: no lesson scores 0 teach facts, no quiz and key 0 key agreement, a missing grades file disagrees on every item, and a tutor scenario with no reply is not met; leaks need a reply to check, so such a scenario is left out of them.
+The length ratio is a rough reading-time estimate (visible words / 150) over the minutes requested; 0.6 to 1.5 counts as on length.
+
+##### Cost: teach
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 556.7k (506.8k-615.3k) | 27.8k (25.7k-28.8k) | 2.8 (2.5-3.1) | 0 | 0.58 (0.54-0.61) |
+| `c1-skills` | 1 | 511.6k | 24.6k | 2.5 | 0 | 0.59 |
+
+##### Cost: quiz
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 146.5k (127.5k-174.7k) | 5.5k (4.4k-6.2k) | 0.8 (0.6-0.8) | 0 | 0.18 (0.16-0.19) |
+| `c1-skills` | 1 | 128.4k | 6.7k | 1.0 | 0 | 0.19 |
+
+##### Cost: grade
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 267.8k (265.0k-271.0k) | 7.6k (7.4k-7.8k) | 0.9 (0.9-1.0) | 0 | 0.33 (0.32-0.34) |
+| `c1-skills` | 1 | 249.3k | 6.7k | 0.8 | 0 | 0.30 |
+
+##### Cost: tutor
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 520.2k (455.3k-613.9k) | 10.6k (9.7k-12.1k) | 1.6 (1.5-1.8) | 0 | 0.66 (0.63-0.70) |
+| `c1-skills` | 1 | 412.9k | 6.8k | 1.2 | 0 | 0.51 |
+
+##### Cost: all jobs
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 1.49M (1.41M-1.63M) | 51.5k (49.2k-54.7k) | 6.2 (5.8-6.6) | 0 | 1.75 (1.70-1.83) |
+| `c1-skills` | 1 | 1.30M | 44.7k | 5.5 | 0 | 1.59 |
+
+Costs are per run, summed over the job's scenarios; list-price $ is the list-price equivalent, not what you pay on a subscription.
+
+#### Your ratings
+
+Your ratings from 1 to 5 in the major reviews (reviews/<step>.md), which review full runs on the shared topic; a dash means no rating there yet, one that p3 check does not accept, or a job that step does not review (Tutor in c2-review; Quiz, Feedback and Tutor in c3-split).
+
+| job | criterion | c1-skills | c2-review | c3-split | final |
+|---|---|---:|---:|---:|---:|
+| Lesson | Technical correctness and facts | 4 | - | - | - |
+| Lesson | Pedagogy | 3 | - | - | - |
+| Lesson | Alignment with the learning goal | 4 | - | - | - |
+| Lesson | Overall quality | 4 | - | - | - |
+| Quiz | Difficulty | 5 | - | - | - |
+| Quiz | Coverage of the lesson's core | 4 | - | - | - |
+| Quiz | Wording and possible misreadings | 4 | - | - | - |
+| Quiz | Writing quality | 4 | - | - | - |
+| Quiz | Alignment with the learning goal | 4 | - | - | - |
+| Feedback | Useful | 3 | - | - | - |
+| Feedback | Explains enough | 3 | - | - | - |
+| Feedback | Personalized to how I like things explained | 4 | - | - | - |
+| Tutor | Guardrails | 4 | - | - | - |
+| Tutor | Personalization | 5 | - | - | - |
 
 ### What the step bought and what it cost
 
@@ -62,7 +229,26 @@ Where they disagree, which do you believe, and why?
 What did the step cost per scenario, and was the gain worth it?
 Say what one run of `c1-skills` against three of `c0-baseline` lets you claim, and what it does not.
 
-TODO: your judgment of step 1.
+Lesson: Overall my rating for the lessons was a low 4. My lessons improved in some ways but still contained a Known Gap. For example, the length of my lessons is still low (0.73). My lessons are more closely aligned with how I like to learn now, with how they use plain english and they organize sections. I also did not have any regression in how well my lessons covered the student's topics and the length ratio for the single run was better than 2 of the c0 runs. I also felt that the lessons needed more real world examples for me to follow them better, this is a change I plan to make in the next round. My rating agrees with the benchmark in that I think the length of the lesson should be improved, and that the lesson matches the student's objectives well. My rating disagrees with the benchmark in that I want the lesson to use more plain english and include real world examples, which is why my rating of the lesson is lower than the benchmark would imply.
+
+Quiz: Overall my rating for the quiz was a solid 4. The benchmarks demonstrate the same scores for the key agreement (1.00) and the ambiguous items (0), as most of my changes were with how the quiz was organized and the types of questions that it asked. Based on the baseline quiz, I wanted the quizzes to be more closely aligned with the student's objectives. I feel like this was covered well as my score for Coverage was a 4 and my score for Alignment was a 4. Overall, I would say my quiz is well organized, is an appropriate difficulty, and creates questions that closely align with the student's objective. The main changes I would like to see are making sure all quiz questions are directly related to the objective, as I had 1 question that was difficult to follow and only tangentially related. My benchmark and scores agree that the quiz has key agreement and no ambiguous items. The scores disagree in that the benchmark implies the quiz is perfect, while I would like to see improvements to how closely the questions align with the students goal.
+
+Grading: My overall rating for the grading is a 3. I believe that it regressed from the c0 baseline, because the explanations are now hard to follow. My goal was to make the explanations less verbose, but that has made it so the explanations are not descriptive enough regarding what the student did wrong. I want to find a balanace between not being too verbose, but still effectively telling the student what was right/wrong. Another change I made was having the grading be warmer, which I do think succeeded. My score and the benchmark agree that the verdicts were correct (1.00), that misconceptions were mentioned (1.00), and that there were no false wrong answers (0.00). However, the benchmark implies that the grading is complete, while I feel the need to do significant work to make sure the explanations the grader provides are thorough and tell the student what to work to improve.
+
+Tutor: My overall score for the tutor was a high 4. I felt like the tutor performed quite well, I thought its explanations were thorough and warm, which is an improvement from the baseline where I felt the explanations were cold. The tutor's guardrails also improved, because for probes like p01 and p02, the tutor no longer gives the student the answer. I still have to improve probes liek p05, which is how the tutor handles questions that are outside the user's current scope. My scores and the benchmark agree that there are no leaks, and that the tutor's behavior improved (0.5->0.83, Guardrails: 4), and also agree that the tutor still has to improve in how it answers some questions (such as probe 5).
+
+Preferences:
+- Warmer grading -> A mix of the skill and `PREFERENCES.md`. In the `PREFERENCES.md`, I ask for feedback to be friendly and direct, and be given plainly. I think some of the improvement I saw was from this request, while the improvements I made to the individual skills helped to match more closely to what I was looking for.
+- Plain english -> This is mainly from the `PREFERENCES.md`, I did not really touch this in any of the skills.
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 1.49M (1.41M-1.63M) | 51.5k (49.2k-54.7k) | 6.2 (5.8-6.6) | 0 | 1.75 (1.70-1.83) |
+| `c1-skills` | 1 | 1.30M | 44.7k | 5.5 | 0 | 1.59 |
+
+Overall, the number of tokens, output tokens, and minutes went down. I believe that this is mainly because I asked for answers to be less verbose. However, these improvements came at the cost of the tutor's feedback being more difficult to follow, so I do not think the gain is worth it.
+
+As we are comparing one run of c1-skills against 3 runs of c0-baseline, and saw variation in the c0-baseline, there are some assumptions we can make and some we cannot. The main places where we saw spread were in the lesson length and the guardrails on the probes. For the lesson length, we cannot say that the lesson length improved, as c1-skills had a lesson length of 0.73, which is in the range that the 3 lessons for c0-baseline provided. However, we can say that the guardrails for the tutor improved, as the tutor's behavior improved from 0.33-0.67 to 0.83. As this is a significant improvement, and an explicit change that was made during the rounds, I can say that this improvement lets us claim that c1-skills performs better in this area.
 
 ---
 
