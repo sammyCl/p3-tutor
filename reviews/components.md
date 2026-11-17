@@ -53,3 +53,62 @@ An example of a finished entry:
 - With and without: reviews/c1-skills.md, Round 4 (without) and Round 5 (with)
 - Review: Lessons are easy to follow and cover all main talking points. They are also written in plain english so it is easier for the student to understand. The lessons also contain real world examples so the student can connect the information to applications.
 - Kept in final: TODO
+
+### quiz-reviewer
+
+- Kind: subagent
+- Step added: c2-review
+- Purpose: A subagent that reviews the created quiz and the key, acting as the student. It will check that the quiz answers are correct, making sure that each question only has 1 correct answer for MCQ, or correct answers for FRQ. It also checks that quiz answers are formatted well (answers don't start/end the same way, are about the same length, etc), explains what the misconceptions are instead of leaving a misconception id, makes sure quiz questions directly relate to the objective, and that there is no overlap with the lesson's practice. This is a subagent as it is an iterative process where the subagent will check the quiz multiple times to verify no changes have to be made, it will have a new context window that is more likely to identify issues that are present.
+- With and without: reviews/c2-review.md, Round 1 (without) and Round 2 (with)
+- Review: Adding a subagent to review the quiz has resulted in quizzes that are formatted much better. The quizzes now say what misconceptions students fell into if they get a question wrong, which helps the student to better understand what went wrong. The quiz answers also are checked to make sure their beginnings and ends are formatted differently, this helps to make sure a student can't use the formatting as a way to find the correct answer, ex q2. The quiz questions are also now broken up into smaller parts if they are too long fo easily follow, which will help students to avoid misreading problems.
+- Kept in final: TODO
+
+### lesson-fact-checker
+
+- Kind: subagent
+- Step added: c2-review
+- Purpose: A subagent that verifies all information in the lesson is factual and can be backed by evidence. It performs web searches that verify claims, checks for incorrect absolutes, areas where the lesson contradicts itself, sentences made ambiguous/wrong because of missing words, etc. This is a subagent as it is an iterative process where the subagent will check the lesson multiple times to verify no changes have to be made, it will have a new context window that is more likely to identify issues that are present.
+- With and without: reviews/c2-review.md, Round 3 (without) and Round 4 (with); Round 3's run has no lesson, so the lesson without it is bench/runs/c1-skills/20261112-045303-agent-architecture-m30-r1 (teach was unchanged from the c1-skills snapshot until Round 3), and the lesson with it is bench/runs/_live/20261115-234947-agent-architecture-m30-r1
+- Review: This subagent helps to improve the lesson by identifying false or misleading information, and correcting wording to make sure statements are factual. Previously there were many instances where statements would be included that were missing words that made statements ambiguous or false. Ex. changed "replies" to "+ model request / + model request / + model request", a more thorough and complete answer.
+- Kept in final: TODO
+
+### lesson-pedagogy-reviewer
+
+- Kind: subagent
+- Step added: c2-review
+- Purpose: A subagent that verifies the lesson is clear and easy to follow. It reads through the lesson and verifies that concepts explain "what" and "why", real-world examples, explains the big picture before details, and simplifies dense paragraphs. It also makes changes to the lesson to better match the requests in the `PREFERENCES.md`, such as including real world examples, explaining using computer science terms, etc. This is a subagent as it is an iterative process where the subagent will check the lesson multiple times to verify no changes have to be made, it will have a new context window that is more likely to identify issues that are present.
+- With and without: reviews/c2-review.md, Round 4 (without) and Round 5 (with)
+- Review: Makes sure the lesson matches the way the `PREFERENCES.md` is setup. This includes real world examples, "The tool descriptions, short texts that tell the model what it can ask for, such as "get_training_status takes a student name and returns their training status"". This pass makes it much easier for the student to follow the lesson.
+- Kept in final: TODO
+
+### lesson-alignment-reviewer
+
+- Kind: subagent
+- Step added: c2-review
+- Purpose: A subagent that verifies all information in the lesson aligns with the student's learning objective. It verifies that all of the concepts the students want explained are explained, it verifies that there are sections covering each topic. This is a subagent as it is an iterative process where the subagent will check the lesson multiple times to verify no changes have to be made, it will have a new context window that is more likely to identify issues that are present.
+- With and without: reviews/c2-review.md, Round 5 (without) and Round 6 (with)
+- Review: Makes sure to cover all of the topics that a student wants covered. This makes the most significant difference when a student wants to learn about a topic for a specific task, as previously the lesson would emphasize the topic instead of how to use the topic for the task. This pass makes changes like:
+    - "Which to choose? Clear old tool results when the bulky part is raw output you already used. Summarize when the conversation itself has grown long."
+    - "Which to choose? Clear old tool results when the bulky part is raw output you already used. Summarize when the conversation itself has grown long. For your assistant, a one-off booking rarely needs summarizing, but a long troubleshooting chat about a machine might, so default to filtering at the tool and clearing old results."
+- Kept in final: TODO
+
+### lesson-quality-reviewer
+
+- Kind: subagent
+- Step added: c2-review
+- Purpose: A subagent that reviews the entire lesson to verify that it is appropriate for the student. It verifies that the lesson is the correct length, that figures are useful, and that the lesson still reads well after all of the edits. This is a subagent as it is an iterative process where the subagent will check the lesson multiple times to verify no changes have to be made, it will have a new context window that is more likely to identify issues that are present.
+- With and without: reviews/c2-review.md, Round 6 (without) and Round 7 (with)
+- Review: Performs an overall review to make sure the lesson is still correct given all of the edits. It also makes sure that the lesson still reads well. This ensures that the final product that the student receives is ready to be read and is easy to follow. Ex:
+    - "Finding the right page in a long manual 5 min" to "Finding the right page in a long manual 6 min"
+- Kept in final: TODO
+
+### grade-reviewer
+
+- Kind: subagent
+- Step added: c2-review
+- Purpose: A subagent that reviews the feedback that is given after a quiz is graded. It makes sure that the feedback thoroughly explains why an answer is correct or incorrect, and where to look next without being too verbose. It also verifies that the tone of the feedback is warm, but does not contain filler or flattery. This is a subagent as it is an iterative process where the subagent will check the feedback multiple times to verify no changes have to be made, it will have a new context window that is more likely to identify issues that are present.
+- With and without: reviews/c2-review.md, Round 7 (without) and Round 8 (with); Round 7's run has no grading, so the grades without it are grade-s1 in bench/runs/_live/20261115-231614-agent-architecture-m30-r1 (Round 2's run; grade was unchanged from the c1-skills snapshot until Round 7), and the grades with it are grade-s1 in bench/runs/_live/20261116-033625-agent-architecture-m30-r1
+- Review: Adding the subagent has really improved the feedback that is given. The feedback is now thorough enough for a student to follow, understand where they went wrong, and what to do next. The subagent also makes sure that its feedback is warm. Ex:
+    - "You have the what: the result goes back to the model. Missing is the why: the model has not seen the result yet, so the program adds it to the next input and calls the model again, letting it choose its next step or write the answer."
+    - "You have what happens: the result goes back to the model. The why is missing: the model has not seen the result yet, so the program adds it to the model's next input, the text it receives on its next call, and calls it again. That lets the model choose its next step or write the final answer. Write out the next input the model gets after the calendar result."
+- Kept in final: TODO

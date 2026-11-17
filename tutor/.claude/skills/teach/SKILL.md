@@ -66,9 +66,12 @@ Never trust your parametric knowledge for what you teach as fact: find a high-tr
    Add the sources to `RESOURCES.md` in the format in `references/RESOURCES-FORMAT.md`.
 3. **Plan to the minutes:** split the lesson into sections with a word budget for each, as `references/LESSONS.md` explains, so the whole lesson fits the requested length.
    Write the plan's section headings now, and check them against "Section headings" below before you write any section.
-4. **Write the lesson** to `lessons/NNNN-<slug>.html`, following `FORMATS.md`, the template and `references/LESSONS.md`, with the four rules below.
-5. **Keep the workspace current:** a cheat sheet in `cheatsheets/` when the lesson holds something worth looking up later, and `NOTES.md` for anything you learned about the learner.
-6. **Finish** with a short message: the lesson's path and what it covers, that they can ask for a quiz on it (`/quiz`) when they are ready, and that they can ask you anything about it.
+4. **Write the lesson as a draft** to `drafts/lesson-NNNN-<slug>.html`, never straight into `lessons/`, following `FORMATS.md`, the template and `references/LESSONS.md`, with the four rules below; NNNN is the number the final lesson will take in `lessons/`.
+5. **Check the draft** against "Before you finish", then run "The review loop" below on it.
+6. **Write the final lesson** once, from the last draft, to `lessons/NNNN-<slug>.html` with the Write tool, and leave the drafts in `drafts/`.
+   `lessons/` must end up with exactly one new file.
+7. **Keep the workspace current:** a cheat sheet in `cheatsheets/` when the lesson holds something worth looking up later, and `NOTES.md` for anything you learned about the learner.
+8. **Finish** with a short message: the lesson's path and what it covers, that they can ask for a quiz on it (`/quiz`) when they are ready, and that they can ask you anything about it.
 
 `references/LESSONS.md` ends its lesson shape with a closing that says a quiz is ready; in this skill there is no quiz yet, so the closing says the learner can ask for one.
 
@@ -110,6 +113,52 @@ Reread the lesson once against this list, and fix what fails:
 - Every named person is introduced and needed; otherwise the example uses "you" or a role.
 - The worked example is in small steps, each a question and an answer.
 - The lesson fits its word budget, and its facts are cited.
+
+## The review loop
+
+Reviewers with a fresh context read the draft the way the learner will, without your reasoning in view.
+Each reviewer covers one review and only that one:
+
+| Reviewer | Its review |
+|---|---|
+| `lesson-fact-checker` | technical correctness and facts |
+| `lesson-pedagogy-reviewer` | pedagogy: how well it teaches this learner |
+| `lesson-alignment-reviewer` | alignment with the learning goal: the request, the objective and the mission |
+| `lesson-quality-reviewer` | overall quality: length against the minutes asked for, figures, references, reading as one piece |
+
+Start the reviewers of a pass together, then wait for all of them.
+When two reviewers' findings touch the same sentence, fix both in one edit.
+
+Run at most two passes of review and revision. For each pass:
+
+1. Start each reviewer in the table with the Agent tool.
+   Its task message names the draft's path and nothing else: not your plan, not your sources' notes, and not why you wrote anything the way you did.
+   Two exceptions: `lesson-alignment-reviewer` also gets the learner's request word for word, as it appears under "The request" above, and the objective's id and text, because it judges the lesson against them; `lesson-quality-reviewer` also gets the requested minutes.
+2. Wait for every reviewer's report before you do anything else. Do not revise, write the final lesson or finish while one is still running.
+3. If every report ends `Findings: 0`, the loop is over.
+4. Otherwise fix every finding in a new draft, `drafts/lesson-NNNN-<slug>-pass2.html`, or decide not to and note why.
+   Keep each fix inside the rules of this skill and the lesson's word budget: replace a wrong sentence rather than add a paragraph.
+   The exception is length: when `lesson-quality-reviewer` reports the lesson short of the requested minutes, add teaching where it says, up to the budget, and never by padding, repeating or lengthening the summary.
+   If this was the second pass, the loop is over; otherwise start the next pass on the new draft.
+
+Then write `review-records/NNNN-lesson.md`, with the lesson's number, before the final lesson:
+
+```md
+# Review of lesson NNNN
+
+Passes: N (stopped because: no findings / the cap of two passes)
+
+## Pass 1
+### lesson-fact-checker
+- Findings: N
+- F2 "<quoted words>" (section "<heading>"): qualified to "<new words>"
+- F1 "<quoted words>": not changed, because ...
+
+## Pass 2
+...
+```
+
+List every finding of every pass by its reviewer, its check number and its section, what you changed for it, or why you did not.
 
 ## Records
 

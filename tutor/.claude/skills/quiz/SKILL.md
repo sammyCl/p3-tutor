@@ -90,16 +90,55 @@ For every item, in the same order and with the same ids:
 - `rationale`: why the answer is right, in one or two sentences, and what a typical wrong answer shows.
 - `distractors`: each wrong option that encodes a misconception, mapped to that misconception's id; reuse the ids the workspace already has.
 
-## 6. Check before you finish
+Also, in every `rationale`, wherever you map a wrong option to a misconception id, say in plain words what that misconception is: an id such as `M3` on its own means nothing to the learner.
 
-- Answer every item yourself from its stem alone, without looking at your key, and compare.
-  Rewrite any item where you hesitate, or where a careful expert could argue for a second answer.
+## 6. Check your draft
+
+Write the quiz and key as drafts first, never straight into `quizzes/` or `keys/`: `drafts/quiz-NNNN.json` and `drafts/key-NNNN.json`, with NNNN the number the final files will take.
+Then check them yourself:
+
 - Check the split: count the knowing and applying items against your plan, and check that each applying item is a real situation from the mission and not a calculation.
-- Check that every item carries the objective's id, that the quiz file holds no answers, and that no item repeats a practice question from a lesson.
+- Check that every item carries the objective's id, that the quiz draft holds no answers, and that no item repeats a practice question from a lesson.
 
-## 7. Finish
+## 7. The review loop
 
-Write `quizzes/NNNN.json` and `keys/NNNN.json` before your message.
+A reviewer with a fresh context reads the drafts the way the learner will, without your reasoning in view.
+Run at most two passes of review and revision.
+
+For each pass:
+
+1. Start the `quiz-reviewer` subagent with the Agent tool.
+   Its task message names the two draft paths, the objective's id and its text, and the path of the lesson on this objective in `lessons/` if there is one (or says there is none).
+   Hand it nothing else: not your plan, not your reasoning, and not why you wrote an item the way you did.
+2. Wait for its report before you do anything else. Do not revise, write the final files or finish while it is still running.
+3. If the report ends `Findings: 0`, the loop is over.
+4. Otherwise fix every finding in the drafts, or decide not to and note why.
+   Keep the fixes inside the rules of sections 2 to 5, and keep the item ids stable.
+   If this was the second pass, the loop is over; otherwise start the next pass.
+
+## 8. Record the loop
+
+Write `review-records/NNNN-quiz.md`, with the quiz's number, before you finish:
+
+```md
+# Review of quiz NNNN
+
+Passes: N (stopped because: no findings / the cap of two passes)
+
+## Pass 1
+- Findings: N
+- 3b q5: the options shared an opening -> rewrote b, c and d to start differently
+- 2c q3: none fixed -> kept, because ...
+
+## Pass 2
+...
+```
+
+List every finding of every pass by its check number and item id, what you changed for it, or why you did not.
+
+## 9. Finish
+
+Write the final `quizzes/NNNN.json` and `keys/NNNN.json` once, from the last drafts, with the Write tool; leave the drafts in `drafts/`.
 Then finish with a short message: the quiz's path, what it covers, and that the learner can take it when they are ready.
 Never put an answer, or anything from the key, in the message.
 

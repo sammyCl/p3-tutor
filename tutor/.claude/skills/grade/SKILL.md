@@ -77,18 +77,51 @@ No verdict words, no list of scores, and no more than about 80 words.
 For every item, reread the feedback and check that it:
 
 - has no verdict word as its first word or as a sentence of its own, and no "the answer is";
-- is three sentences or fewer, and about 50 words or fewer;
+- is three sentences or fewer, and about 50 words or fewer, or within the longer limit in "The review loop" for an item the reviewer found too short;
 - says what was right or what the learner was thinking, and what to keep or fix;
 - matches its verdict and misconception fields.
 
 Rewrite any item that fails.
 
-## 6. Write the files
+## 6. The review loop
 
-1. Write `grades/NNNN-sN.json`, named after the quiz and the submission, exactly as `FORMATS.md` shows, with one entry per quiz item in order, including unanswered ones.
+Write the grades as a draft first, never straight into `grades/`: `drafts/grades-NNNN-sN.json`, in the exact shape `FORMATS.md` gives for the grades file.
+A reviewer with a fresh context then reads the feedback the way the learner will, without your reasoning in view.
+Run at most two passes of review and revision. For each pass:
+
+1. Start the `grade-reviewer` subagent with the Agent tool.
+   Its task message names the draft's path, the quiz, its key, the submission, and the lesson on the quiz's objective in `lessons/` if there is one (or says there is none).
+   Hand it nothing else: not your reasoning, and not why you wrote any feedback the way you did.
+2. Wait for its report before you do anything else. Do not revise, write the final grades or finish while it is still running.
+3. If the report ends `Findings: 0`, the loop is over.
+4. Otherwise fix every finding in the draft, or decide not to and note why.
+   When the reviewer finds a `partial` or `wrong` item too short to explain why or to give a next step, that item may run to about 90 words and four sentences; every other rule in sections 3 to 5 still holds.
+   If this was the second pass, the loop is over; otherwise start the next pass.
+
+Then write `review-records/NNNN-sN-grade.md`, with the quiz's number and the submission's id:
+
+```md
+# Review of grades NNNN-sN
+
+Passes: N (stopped because: no findings / the cap of two passes)
+
+## Pass 1
+- Findings: N
+- G1 q2: added why the learner's picture fails -> "<new words>"
+- G5 q4: not changed, because ...
+
+## Pass 2
+...
+```
+
+List every finding of every pass by its check number and item id, what you changed for it, or why you did not.
+
+## 7. Write the files
+
+1. Write `grades/NNNN-sN.json` once, from the last draft, named after the quiz and the submission, exactly as `FORMATS.md` shows, with one entry per quiz item in order, including unanswered ones; leave the draft in `drafts/`.
 2. Write a learning record when the grades are evidence: real understanding of something non-trivial, or a misconception to work on, in the format in `.claude/skills/teach/references/LEARNING-RECORD-FORMAT.md`.
 3. Update `NOTES.md` with what the learner knows and does not know yet.
 
-## 7. Finish
+## 8. Finish
 
 Finish in the chat with the summary and the one next step, after the files are written.
