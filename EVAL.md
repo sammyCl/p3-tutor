@@ -260,20 +260,287 @@ Name the rounds that built this step and the inventory entries of the reviewers 
 Then the loops' design, for each of teach, quiz and grade: who reviews, what is on each reviewer's checklist and which items came from your `c1-skills` major review, how each reviewer gets a fresh context, how many passes a loop may run and what ends it early, and what each loop records.
 Then one design choice you could have made the other way, such as one reviewer against several, a cap of one pass against three, or a reviewer that edits against one that only reports, and why you chose as you did.
 
-TODO: the rounds and entries, and the design of your review loops.
+I had 8 quick rounds:
+- Round 1: Created the quiz reviewer
+  - Quiz questions use shorter sentences, possible answers should not share the same start and end, misconceptions in the answer key should be explained instead of just being "M8", questions must directly tie to the lesson objectives and not overlap with the lesson's practice. The reviewer performs 2 passes.
+- Round 2: Edited the tutor skill
+  - Directed the tutor on how to handle out of scope questions, give a brief explanation of the topic at the user's level, what options the user has at their current level, and makes sure that the user is not instructed to redo their entire plan.
+- Round 3: Created the lesson fact reviewer
+  - Reviews the facts within the lesson to make sure that absolutes are correct for every scenerio, that there are no self-contradictions within the lesson, and that there are no missing words that leave ambiguous or different meanings to sentences. The reviewer performs 2 passes.
+- Round 4: Created the lesson pedagogy reviewer
+  - Reviews the lesson to make sure there are real-world examples in each section, especially sections that are in terminology-heavy sections. Also makes sure that the `PREFERENCES.md` is followed by using plain language and short stepwise paragraphs. The reviewer performs 2 passes.
+- Round 5: Created the lesson alignment reviewer
+  - Makes sure that all parts of the lesson's objectives are addressed, if the user requests a specific scenerio to apply the conceptual knowledge to, makes sure that that scenerio is found throughout the lesson so the user knows how the knowledge can be applied to it. Also verifies that the lesson is at the user's level. The reviewer performs 2 passes.
+- Round 6: Created the lesson quality reviewer
+  - Verifies that the length of the lesson is close to what is requested, flags areas where further explanation is required, reviews figures to check their accuracy, makes sure references are logical, and makes sure the lesson reads as one piece. The reviewer performs 2 passes.
+- Round 7: Created the feedback reviewer
+  - Makes sure that explanations match the `PREFERENCES.md`, being warm without filler or flattery, and direct. Also verifies that explanations contain descriptions of why an answer is incorrect and where to look to better understand the correct answer. The reviwer performs 2 passes.
+- Round 8: Edits to the tutor skill
+  - Makes sure that for questions outside of the user's scope, complicated math is not used. 
+
+Design of Each Reviwer:
+- lesson reviewers:
+  - lesson-fact-reviewer: Checks a lesson draft for technical correctness and facts.
+    - Checklist:
+      - Checks that every factual claim is correct, as stated, verified by a high-trust source.
+      - Makes sure every absolute is true as stated.
+        - Taken from `c1-skills`
+      - Does the lesson agree with itself?
+      - Are all statements worded precisely enough to be correct?
+        - Taken from `c1-skills`
+      - Is anything out of date?
+      - Does each citation exist and say what the lesson attributes to it?
+      - Does the lesson state or imply a common misconception as if it were true?
+  - lesson-alignment-reviewer: Checks that the lesson covers the user's description of what they want to learn and why they want to learn it.
+    - Checklist:
+      - Is every part of the request met?
+        - Taken from `c1-skills`
+      - Does every main section tie its idea to the learner's own situation from the `MISSION.md`?
+        - Taken from `c1-skills`
+      - Does the lesson teach every part of the objective's text?
+        - Taken from `c1-skills`
+      - Is the lesson pitches at this learner's level?
+      - Is the win the opening promises delivered?
+      - Do the practice tasks and the worked example ask about the objective set in the learner's own situation?
+        - Taken from `c1-skills`
+  - lesson-pedagogy-reviewer: Reviews how the lesson is teaching, makes sure that it matches the `PREFERENCES.md`, such as making sure that real-world examples are provided throughout the lesson.
+    - Checklist:
+      - Why, not only what: does every tool, technique, etc, that the lesson discusses say when and why would use it?
+        - Taken from `c1-skills`
+      - A real example in every section
+        - Taken from `c1-skills`
+      - Big picture, then specifics 
+        - Taken from `c1-skills`
+      - Terms in plain language
+        - Taken from `c1-skills`
+      - Order and pacing
+      - Short and stepwise
+        - Taken from `c1-skills`
+      - Recall and practice the learner can really do
+  - lesson-quality-reviewer: An overall review of, does the lesson match what the learner wants? Is the lesson easy to follow, is it the length they ask for?
+    - Checklist:
+      - Does the lesson fill the time asked for?
+        - Taken from `c1-skills`
+      - Does any section claim minutes for practice that its words do not fill?
+        - Taken from `c1-skills`
+      - Where should the missing minutes go?
+      - Does each figure earn its place?
+      - Are the references worth following?
+      - Does the lesson read as one piece?
+      - Taken as a whole, would a user want to learn from the lesson?
+  - How the Reviewers Run:
+    - There are at most 2 passes of each reviwer, and the reviewers may stop early if no Findings are registered in the first pass.
+    - On each pass the skill will:
+      - Launch the 4 reviewers using the Agent tool.
+      - Collect the reviewer's reports.
+      - Make changes to the lesson based on the reports.
+      - Repeat the loop as needed
+      - Each loop will record every finding in a new draft, and record what changes were made to the lesson.
+        - `review-records/NNNN-lesson.md`
+    - Each pass will launch 4 new subagents, which is how each reviewer will have a fresh context.
+
+- quiz-reviewer: Reviews the draft for a quiz, and suggests changes to make sure the quiz covers all requested topics, 
+  - Checklist:
+    - Is every item answerable by this learner after the lesson?
+    - Do one or two items stretch the learner?
+    - Does each wrong option tempt someone who holds a real misconception?
+    - Do the items together cover the core ideas of the objective?
+    - Does any item test a side detail instead of the core?
+      - Taken from `c1-skills`
+    - When a lesson exists, does any item repeat or closely copy one of the lesson's practice questions?
+      - Taken from `c1-skills`
+    - Is every stem short enough to take in at one reading?
+      - Taken from `c1-skills`
+    - Within each mcq item, do the options start and end in varied ways?
+      - Taken from `c1-skills`
+    - Does every item that asks for "best", "better" or "most" choice say best for what?
+    - Does each item have exactly one defensible answer?
+    - Does any item give away the answer to another item?
+    - Are stems and options clear, concise and correct, in plain language with no double negatives?
+      - Taken from `c1-skills`
+    - Does rationale say why the answer is right and why the typical wrong answers are wrong, in a way a learner can learn from?
+      - Taken from `c1-skills`
+    - Whenever the key maps a wrong option to a misconception id, does the rationale also say in words what that misconception is?
+      - Taken from `c1-skills`
+    - Do the quiz and keys follow `FORMATS.md`?
+    - Does every item test the objective it is tagged with directly, not through a loose or tangential link?
+      - Taken from `c1-skills`
+    - Does each applying item put the learner in a situation for thier mission?
+      - Taken from `c1-skills`
+  - How the Reviewer Runs:
+    - There are at most 2 passes of each reviewer, and the reviewers may stop early if no Findings are registered in the first pass.
+    - On each pass the skill will:
+      - Launch the reviewer using the Agent tool.
+      - Collect the reviewer's report.
+      - Make changes to the quiz based on the report.
+      - Repeat the loop as needed
+      - Each loop will record every finding in a new draft, and record what changes were made to the quiz.
+        - `review-records/NNNN-quiz.md`
+    - Each pass will launch a new subagent, which is how each reviewer will have a fresh context.
+
+- grade-reviewer: Reviews the draft of the feedback given to the user, makes sure the explanations and summary meet expectations and the `PREFERENCES.md`.
+  - Checklist:
+    - Explains why, not only what for every partial and wrong item.
+      - Taken from `c1-skills`
+    - A next step on every item that needs one.
+      - Taken from `c1-skills`
+    - Right answers are explained
+      - Taken from `c1-skills`
+    - Explanations are long enough, but not verbose
+      - Taken from `c1-skills`
+    - Explanations are warm without filler or flattery
+      - Taken from `c1-skills`
+    - Explanations fit `PREFERENCES.md`
+    - Explanations are consistend and correct
+    - The summary names what the user has correct, what to work on and why it matters, and gives a concrete next step.
+- How the Reviewer Runs:
+  - There are at most 2 passes of each reviewer, and the reviewers may stop early if no Findings are registered in the first pass.
+  - On each pass the skill will:
+    - Launch the reviewer using the Agent tool.
+    - Collect the reviewer's report.
+    - Make changes to the feedback based on the report.
+    - Repeat the loop as needed
+    - Each loop will record every finding in a new draft, and record what changes were made to the feedback.
+      - `review-records/NNNN-sN-grade.md`
+  - Each pass will launch a new subagent, which is how each reviewer will have a fresh context.
+
+One decision that was made:
+
+I chose to split the lesson-reviewer into 4 different reviewers. This is because the lesson is the longest output generated by the tutor. I was worried that if I gave all of the review jobs to one reviewer, the reviewer would not be as effective at identifying all of the issues. Additionally, it allows for each reviewer to specialize in one area, making its feedback more effective. 
+
+This decision does come at a cost, because each subagent requires tokens to launch. As a result, I am using more tokens with 4 subagents than I would be by only implementing 1 reviewer.
 
 ### The loops as they ran
 
 For teach, quiz and grade: how many review passes ran in your bench run, what the reviewers flagged, and whether the revisions moved anything you can point at, a fact corrected, an ambiguous item rewritten, feedback that changed.
 The loop records in the run's outputs are the evidence; name the files.
 
-TODO: what the review loops did in the run.
+For the bench run, `bench/runs/c2-review/20261116-191049-agent-architecture-m30-r1.`, each loop ran 2 passes and stopped at the cap.
+
+The reviewers flagged the following:
+- lesson reviewer
+  - Records stored in: `teach/outputs/review-records/0001-lesson.md`
+  - lesson-fact-checker : 7 findings in pass 1, 7 findings in pass 2, 
+    - Examples of findings:
+      - "F1 retrieval failure rate unit: qualified to "top-20 retrieval failure"."
+      - "F2 stateless absolute and "your program runs the tool": qualified to "by default" and "a tool you define yourself"."
+    - Examples of changes: Added, "When a student asks about acrylic settings, the assistant should pull up the one relevant manual page, not paste all 60 pages. "
+  - lesson-pedagogy-reviewer : 18 findings in pass 1, 11 findings in pass 2
+    - Example of findings: "P1: section "What the model sees on every call": "The context window is the most text the model can look at in one call" is explained, but the section never says what to do when the window is too small or too large for a given job. Fix: add one sentence, such as "Pick what goes in, because the window is a limit and you pay for every token in it.""
+    - Example of changes: Added, "Recall, then check Why is the manual chunked before it is searched, instead of searching whole manuals? Check your answer The point is to bring only a few hundred tokens of the right passage into the context. A whole manual would be too big, would cost on every call, and could bury the answer."
+  - lesson-alignment-reviewer : 9 findings in pass 1, 4 findings in pass 2
+    - Example of findings: 
+    "A1: The topic and the learner-fit are met. I found two gaps.
+      Length: the section times are 2, 5, 5, 5, 6, 5, 6, 4 and 2 minutes, which adds up to 40 minutes before the checks and reading. This is more than the requested 30. Fix: cut the trim section and the "When you can skip it" subsection down, or drop the stated section times.
+      Fit to the learner: the lesson is anchored in the makerspace assistant almost throughout, so I count this as met. The one exception is the sub-agent point, covered under A3."
+    - Example of changes: Changed, "One short note, such as "booked laser Friday 2 pm". The retrieved chunks and the calendar listing are dropped, since they can be fetched again." to "A short note, "prefers afternoon slots". The calendar already holds the booking itself, so copying it into notes adds nothing. The preference is a durable fact that no other store holds. Keep it minimal."
+  - lesson-quality-reviewer : 11 findings in pass 1, 7 findings in pass 2
+    - Example of findings:
+      "Q3: The lesson is slightly short (about 420 words). Put the words where the practice is thinnest, and add no padding.
+      Worked example: add a sixth decision. For instance, the student's manual is about 24,000 tokens, so should it be pasted or retrieved? Work through the cost arithmetic from the cost section. This ties the cost section to the example, and the example currently never uses it.
+      Your turn: it gives only one line of "Given" and four prompts. Add a worked partial answer, or a second contrast, such as a request where the notes are missing or wrong. About 150 words would do.
+      "Three ways to keep a long run": the section has no example of what summarizing or a sub-agent returns. Add a short before-and-after of one clearing or compaction on the booking request, about 100 words."
+    - Example of changes: Adding "(how reliably the model finds a fact you put in)" to "As the token count grows, accuracy and recall (how reliably the model finds a fact you put in) degrade, an effect called context rot (Claude docs)."
+
+- quiz-reviewer
+  - Records stored in: `quiz/outputs/review-records/0002-quiz.md`
+  - 11 findings in pass 1 and 11 findings in pass 2
+  - Examples of findings:
+    - "1b, 2a q1-q6: all recognition items, ideas overlapped -> replaced the cost-pair q3 with "what an agent buys in return"; q6 kept as the open-case stretch"
+    - "1c q1-q3: weak distractors -> rewrote q1 and q3 options as named misconceptions"
+  - Example of changes: Rewrote q2 to have numberes steps.
+
+- grade-reviewer
+  - Records stored in: `grade-s1/outputs/review-records/0001-s1-grade.md` and `grade-s2/outputs/review-records/0001-s2-grade.md`
+  - 15 findings in pass 1 and 11 findings in pass 2 for s1
+  - 8 findings in pass 1 and 7 findings in pass 2 for s2
+  - Examples of findings:
+    - "G2 q2, q4, q6: added next steps -> a question for q2, "label each step", "sketch in Python""
+    - "G7 q6: said the first half matches the key"
+    - "G4 q1, q2, q5: cut cross-references and extra clauses to fit the limit for correct items."
+    - "G8: softened the first sentence to "the loop's shape" and added that the program runs every tool and that descriptions guide the model."
+  - Example of changes: "Why" steps were added to wrong items.
+
 
 ### Your review, the objective checks and the cost
 
 Paste `uv run p3 report --configs c1-skills,c2-review`.
 
-TODO: paste the report tables.
+Runs: `c1-skills` full run `bench/runs/c1-skills/20261112-045303-agent-architecture-m30-r1`; `c2-review` full run `bench/runs/c2-review/20261116-191049-agent-architecture-m30-r1`. Table from `uv run p3 report --configs c1-skills,c2-review`.
+
+#### Results on agent-architecture
+
+Scored full runs (quick runs and --only runs left out); each cell is the mean over the runs, with the range in brackets.
+
+##### Quality
+
+| config | runs | teach facts | teach misconc. | length ratio | dead links | key agreement | wrong keys | ambiguous items | verdict agreement | false wrong | misconc. hit | leaks | behavior met |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `c1-skills` | 1 | 1.00 | 0 | 0.73 | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.83 |
+| `c2-review` | 1 | 1.00 | 0 | 0.84 | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.83 |
+
+Teach facts, key agreement, verdict agreement, false wrong, misconception hit and behavior met are shares (0 to 1); misconceptions, dead links, wrong keys, ambiguous items and leaks are counts per run.
+A dash means no run could be scored on that check, and n= says how many of the runs could.
+A job that failed counts against the config: no lesson scores 0 teach facts, no quiz and key 0 key agreement, a missing grades file disagrees on every item, and a tutor scenario with no reply is not met; leaks need a reply to check, so such a scenario is left out of them.
+The length ratio is a rough reading-time estimate (visible words / 150) over the minutes requested; 0.6 to 1.5 counts as on length.
+
+##### Cost: teach
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c1-skills` | 1 | 511.6k | 24.6k | 2.5 | 0 | 0.59 |
+| `c2-review` | 1 | 3.01M | 113.0k | 8.1 | 8 | 2.59 |
+
+##### Cost: quiz
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c1-skills` | 1 | 128.4k | 6.7k | 1.0 | 0 | 0.19 |
+| `c2-review` | 1 | 764.6k | 28.8k | 3.8 | 2 | 0.63 |
+
+##### Cost: grade
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c1-skills` | 1 | 249.3k | 6.7k | 0.8 | 0 | 0.30 |
+| `c2-review` | 1 | 810.7k | 30.3k | 3.9 | 4 | 0.75 |
+
+##### Cost: tutor
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c1-skills` | 1 | 412.9k | 6.8k | 1.2 | 0 | 0.51 |
+| `c2-review` | 1 | 490.8k | 7.3k | 1.6 | 0 | 0.57 |
+
+##### Cost: all jobs
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c1-skills` | 1 | 1.30M | 44.7k | 5.5 | 0 | 1.59 |
+| `c2-review` | 1 | 5.08M | 179.3k | 17.3 | 14 | 4.53 |
+
+Costs are per run, summed over the job's scenarios; list-price $ is the list-price equivalent, not what you pay on a subscription.
+
+#### Your ratings
+
+Your ratings from 1 to 5 in the major reviews (reviews/<step>.md), which review full runs on the shared topic; a dash means no rating there yet, one that p3 check does not accept, or a job that step does not review (Tutor in c2-review; Quiz, Feedback and Tutor in c3-split).
+
+| job | criterion | c1-skills | c2-review | c3-split | final |
+|---|---|---:|---:|---:|---:|
+| Lesson | Technical correctness and facts | 4 | 5 | - | - |
+| Lesson | Pedagogy | 3 | 4 | - | - |
+| Lesson | Alignment with the learning goal | 4 | 5 | - | - |
+| Lesson | Overall quality | 4 | 4 | - | - |
+| Quiz | Difficulty | 5 | 5 | - | - |
+| Quiz | Coverage of the lesson's core | 4 | 5 | - | - |
+| Quiz | Wording and possible misreadings | 4 | 4 | - | - |
+| Quiz | Writing quality | 4 | 4 | - | - |
+| Quiz | Alignment with the learning goal | 4 | 5 | - | - |
+| Feedback | Useful | 3 | 4 | - | - |
+| Feedback | Explains enough | 3 | 3 | - | - |
+| Feedback | Personalized to how I like things explained | 4 | 4 | - | - |
+| Tutor | Guardrails | 4 | - | - | - |
+| Tutor | Personalization | 5 | - | - | - |
 
 ### What the step bought and what it cost
 
@@ -281,7 +548,45 @@ Did the problems your `c1-skills` review found go away, and which ratings moved?
 Which loop earned its cost and which did not?
 If a loop ran several passes and the final output was no better than the first draft, say so, because that is the finding.
 
-TODO: your judgment of step 2.
+There were problems from `c1-skills` that went away:
+
+Quiz:
+- Quiz keys now say what the misconceptions are.
+- Answers beginnings and ends are now formatted differently.
+- Questions are shorter or broken up into multiple bullet points so they are easier to follow.
+- Quiz questions are more tighlty tied to the objective.
+
+Tutor:
+- If the student asks a question that is out of scope for what they are looking for, the topic is explained briefly but suggests other ways to approach the problem that are more at their level.
+- Does not suggest that the student approaches a problem in a completely different way, try to come up with a solution that matches their current setup.
+
+Lesson:
+- Double checks wording, there are times where some words were missed that led to ambiguity about what was being said.
+- Does not use abolutes without checking that they are still accurate statements.
+- Explains why different functions would be used, not just what they do.
+- Utilizes more plain english, easier to follow.
+- All of the expectations that a student has for a lesson are met. If they only want to understand the technical side that's fine, but if they specifically ask for how the technical side relates to a real world example, it connects to that real world example.
+
+Feedback:
+- The feedback is a more appropriate length, the explanations for incorrect answers are long enough for the student to understand what is wrong without being too verbose.
+- The feedback is warmer, and does not include filler or flattery.
+
+The following scores improved:
+- Technical correctness: 4 -> 5
+- Pedagogy: 3 -> 4
+- Quiz alignment: 4 -> 5
+- Quiz coverage: 4 -> 5
+- Useful: 3 -> 4
+
+However, the token counts and amount of time to complete each task increased significantly. The number of tokens increased from 1.30M to 5.08M, and the minutes increased from 5.5 to 17.3. The only benchmark score that increased was the length ratio of the lesson, 0.73 to 0.84. This is because most of my benchmark scores were already at the maximum, with the lesson ratio and tutor behavior being the exceptions. These questions bring into question whether the changes from the reviewer were worth it. I would argue that despite the benchmark not increasing significantly, the changes that were experienced in my scoring of the different attributes demonstrates that the addition of the reviewers made a significant difference in the final products of the different skills. The lesson, quiz, and feedback all experienced massive improvements as a result of their reviewers. As a result, despite the significant increase in time and tokens, I would argue that it makes sense to keep the reviewers in the process.  
+
+The teach loop went from 0.51M to 3.01M tokens, with Technical 4->5, Pedagogy 3->4, and Alignment 4->5 improving. 
+
+The quiz loop went from 0.13M to 0.76M tokens, with Coverage 4→5 and Alignment 4→5 improving.
+
+The grade loop went from 0.25M to 0.81M tokens, with Useful 3→4 improving. 
+
+I believe that all of the loops have proven their worth. The teach loop is made of 4 reviewers, one for technical facts, which showed improvment, pedagogy, which showed improvement, alignment, which showed improvement, and quality, which remained the same. With each reviewer resulting in improvements, it is clear that the teach loop is worth the cost, even though the cost is significantly larger then for the other loops. It makes sense that quality remained the same, as it already had a score of 4, and it was a case of more small issues showing up. The quiz reviewer resulted improvement in coverage and alignment. The grade reviewer only showed improvement in one score, however, it was also a massive improvement compared to the previous score. A 3->4 jump is much more significant than a 4->5 jump, as it demonstrates that the category is now only experiencing minor issues instead of containing significant issues. As a result, I consider it to be appropariate to keep the grade reviewer.
 
 ---
 
