@@ -1,0 +1,110 @@
+{
+  "duration_api_ms": 132513,
+  "stop_reason": "end_turn",
+  "session_id": "0c098d1d-cdd5-4697-9a1e-9c6c34ef9910",
+  "total_cost_usd": 0.3878745,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 6353,
+    "cache_read_input_tokens": 87125,
+    "output_tokens": 4165,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 6353,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 401,
+        "cache_read_input_tokens": 44573,
+        "cache_creation_input_tokens": 4332,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4332
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 32,
+      "outputTokens": 15812,
+      "cacheReadInputTokens": 365315,
+      "cacheCreationInputTokens": 54259,
+      "webSearchRequests": 0,
+      "costUSD": 0.3878745,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 3729,
+      "cacheCreationEphemeral5mInputTokens": 15918,
+      "cacheCreationEphemeral1hInputTokens": 38341,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwjnizuw-fc82bd08"
+  },
+  "subagent_stats": {
+    "spawned": 2,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 2
+    },
+    "started_in_background": 2,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 2,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "grade-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I graded submission s1 for quiz 0001. The grades are in `grades/0001-s1.json`.\n\nRiley, you have the outline of the loop, why it needs a stopping condition, and that the model chooses tools from their descriptions. The idea to fix is who does what. The program runs the tools and calls the model again after each result. The model only writes text and remembers nothing between calls. This matters because your assistant's program has to fetch each student's calendar and training status and feed them to the model.\n\n**Next step:** retrace the laser cutter question and label each step \"model\" or \"program\".\n\nHere is how each item went:\n- **q1 and q3:** correct.\n- **q5:** partial. You said the result goes back to the model but not why.\n- **q6:** partial. Tool choice from descriptions was right, but you added that the model remembers past sessions on its own.\n- **q2 and q4:** wrong. Both come from the belief that the model runs the tools itself.\n\nI also added learning record `0003` and updated `NOTES.md`. The review record is in `review-records/0001-s1-grade.md`. The second reviewer pass still had 11 findings when the two-pass cap ended the loop, and I applied them in the final grades. Submission s2 is still ungraded.",
+  "ttft_ms": 1317,
+  "type": "result",
+  "duration_ms": 25658,
+  "uuid": "b5a964e8-75c1-481c-bfec-7233a267830c",
+  "ttft_stream_ms": 1050,
+  "time_to_request_ms": 74,
+  "first_content_frame_ms": 1050,
+  "queued_turn_count": 0,
+  "result_index": 2,
+  "model_usage_since_last_result": {},
+  "credential_expires_at": "2026-11-20T02:41:39.246Z"
+}

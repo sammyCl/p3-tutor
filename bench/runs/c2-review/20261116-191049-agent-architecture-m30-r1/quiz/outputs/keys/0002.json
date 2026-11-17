@@ -1,0 +1,51 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The difference is who owns the control flow, the choice of what happens next: in a workflow the code fixes the path, and in an agent the model chooses each step. Option a is the misconception that a workflow cannot contain a model call (it can, at fixed steps). Option c is the misconception that a workflow cannot repeat a step (code can loop). Option d is the misconception that only agents can call tools (workflows can call tools too).",
+      "distractors": {"a": "M7", "c": "M13", "d": "M8"}
+    },
+    {
+      "id": "q2",
+      "answer": "d",
+      "rationale": "The code fixes the order of the steps and the model only does the work inside two of them, so this is a workflow. Calling the model more than once (a) or having it read a result (b) does not make something an agent; the test is who decides the next step. Option c is the same error as a: judging by where the model appears instead of who decides the next step (M10).",
+      "distractors": {"a": "M10", "b": "M10", "c": "M10"}
+    },
+    {
+      "id": "q3",
+      "answer": "c",
+      "rationale": "What an agent buys is flexibility: it can handle tasks whose steps cannot be listed in advance, because the model chooses them as it goes. Option a is the misconception that more autonomy always gives better answers (M12); on routine tasks it adds nothing. Option b is the misconception that an agent's cost is as low or lower than a workflow's (M11); the model's choices add calls. Option d is the misconception that an agent builds its own tools (M15); the team still writes the tools and the model only chooses among them.",
+      "distractors": {"a": "M12", "b": "M11", "d": "M15"}
+    },
+    {
+      "id": "q4",
+      "answer": "It is cheaper and more predictable: a known number of model calls, and no chance of the model skipping or reordering a step.",
+      "accepted": [
+        "Cheaper, because the number of model calls is known and does not grow",
+        "More predictable and easier to test, since the path never changes",
+        "More reliable, because the code guarantees every step happens in order",
+        "Fewer model calls so it costs less",
+        "The model cannot skip or reorder a required step"
+      ],
+      "rationale": "When the steps are known, letting the model choose them buys nothing and costs extra calls, variable behavior and a chance of skipping a step. Any one of cost, predictability, reliability or testability is full credit. Saying an agent is better because it is more flexible misses that this task needs no flexibility (the misconception that more autonomy is always better, M12)."
+    },
+    {
+      "id": "q5",
+      "answer": "a",
+      "rationale": "The steps and their order are known, so a fixed workflow is the better choice: the code, not a model, owns the order, which keeps cost down and guarantees the training check happens. Option b is the misconception that only agents can call tools (M8). Option c is the misconception that a model choosing the order is safer than code that cannot skip a step (M12). Option d is the misconception that workflows never call tools (M8): the choice is right but the reason is false.",
+      "distractors": {"b": "M8", "c": "M12", "d": "M8"}
+    },
+    {
+      "id": "q6",
+      "answer": "An agent, because the number of searches and the next search depend on earlier results, so the model must choose the steps.",
+      "accepted": [
+        "Agent: the steps depend on what the manuals say, so the model has to decide whether and what to search next",
+        "Agent, because the path is open-ended and cannot be fixed ahead of time",
+        "An agent, since how many lookups are needed varies per question and can't be hard-coded"
+      ],
+      "rationale": "Full credit needs the choice (agent) and the reason that the path cannot be fixed ahead, so the model must own the control flow. An answer of workflow, such as a fixed search-then-answer pipeline, ignores that the stem says the number and order of searches vary. An answer of agent with no reason is partial."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: where information lives in an agent</title>
+  <style>
+    body { max-width: 40rem; margin: 0 auto; padding: 2rem 1rem; font-family: Georgia, serif; line-height: 1.5; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Where information lives in an agent</h1>
+  <p>From <a href="../lessons/0001-context-and-memory-in-an-agent.html">lesson 1</a>.</p>
+  <table>
+    <thead><tr><th>Place</th><th>Holds</th><th>Lasts</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Context (the list sent each call)</td><td>System prompt, tool definitions, history, tool results</td><td>One session</td><td>Today's calendar listing</td></tr>
+      <tr><td>Notes</td><td>Small durable facts about one student</td><td>Between visits</td><td>Laser training passed</td></tr>
+      <tr><td>Retrieval store</td><td>Large fixed text, searched in chunks</td><td>Until the manual changes</td><td>Acrylic settings</td></tr>
+    </tbody>
+  </table>
+  <h2>Rules</h2>
+  <ul>
+    <li>The API is stateless by default: your program re-sends the whole history on every call.</li>
+    <li>Long context costs on every call and can cause context rot.</li>
+    <li>Trim: clear old tool results; summarize a long session; hand a side task to a sub-agent.</li>
+    <li>Notes: durable, about one student, held nowhere else.</li>
+    <li>Retrieval: meaning search for everyday words, exact-word search (BM25) for codes and part numbers.</li>
+  </ul>
+</main>
+</body>
+</html>

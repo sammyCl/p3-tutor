@@ -1,0 +1,67 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows and agents: who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which statement correctly separates an agent from a workflow?",
+      "options": [
+        {"id": "a", "text": "Only an agent can use a language model; a workflow is made of plain code"},
+        {"id": "b", "text": "The model picks each next step in an agent, while code fixes the path in a workflow"},
+        {"id": "c", "text": "Agents may repeat a step, but a workflow can never run a step twice"},
+        {"id": "d", "text": "Tool calls belong to agents, and a workflow can only return text"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A program runs these steps for every request, in this order:\n1. A model call pulls the machine name and date out of the student's message.\n2. Code looks up the calendar.\n3. A model call writes a reply from the result.\nIs this a workflow or an agent?",
+      "options": [
+        {"id": "a", "text": "An agent, because the model is called more than once per request"},
+        {"id": "b", "text": "An agent, because the model reads the calendar result and writes the reply"},
+        {"id": "c", "text": "An agent, because the model is involved in the first and last steps"},
+        {"id": "d", "text": "A workflow, because the code settles the sequence and the model only fills in parts"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Letting the model decide what happens next has a price. What does it buy in return that a fixed workflow cannot give?",
+      "options": [
+        {"id": "a", "text": "More accurate answers, even on routine tasks whose path is already known"},
+        {"id": "b", "text": "A lower cost per request, because the model plans the cheapest route"},
+        {"id": "c", "text": "The ability to handle tasks whose path cannot be laid out ahead of time"},
+        {"id": "d", "text": "Less work for the team, since the model also writes the tools it needs"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O4",
+      "stem": "A task needs the same steps in the same order every time. In one sentence, give one reason a fixed workflow is the better choice than an agent for it."
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "In your makerspace assistant, a booking request such as \"Book the laser cutter tomorrow at 3 pm\" must go through four steps in one set order: check the student's training record, check the calendar, write the booking, send a confirmation. The sponsor's budget is small, and a booking must never skip the training check. Which design is best for keeping cost low and never skipping that check?",
+      "options": [
+        {"id": "a", "text": "A fixed workflow, because the steps and their order are already known"},
+        {"id": "b", "text": "An agent, because booking uses tools and only an agent can call tools"},
+        {"id": "c", "text": "An agent, because a model choosing the order catches mistakes code would miss"},
+        {"id": "d", "text": "A fixed workflow, because a workflow never needs to call any tools"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O4",
+      "stem": "Students also ask open questions such as \"My 3D print keeps warping, what should I change?\" Depending on what the manuals say, the assistant may need zero, one or several searches, and which search comes next depends on the last result, so you cannot list or cap the steps ahead of time. Would you build this part as a workflow or an agent? Give your reason in one sentence."
+    }
+  ]
+}

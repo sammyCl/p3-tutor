@@ -1,0 +1,129 @@
+{
+  "duration_api_ms": 726235,
+  "stop_reason": "end_turn",
+  "session_id": "9ad1e245-c367-4b8a-a110-72d3be83147e",
+  "total_cost_usd": 2.5855480000000006,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 24125,
+    "cache_read_input_tokens": 476432,
+    "output_tokens": 21870,
+    "output_tokens_details": {
+      "thinking_tokens": 809
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 24125,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 692,
+        "cache_read_input_tokens": 173170,
+        "cache_creation_input_tokens": 1398,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 1398
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 96,
+      "outputTokens": 98704,
+      "cacheReadInputTokens": 2296966,
+      "cacheCreationInputTokens": 422940,
+      "webSearchRequests": 0,
+      "costUSD": 2.5202846000000005,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 19796,
+      "cacheCreationEphemeral5mInputTokens": 258936,
+      "cacheCreationEphemeral1hInputTokens": 164004,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 181054,
+      "outputTokens": 14316,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 4,
+      "costUSD": 0.0652634,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 7233,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwjn9b1b-e0c944ea"
+  },
+  "subagent_stats": {
+    "spawned": 8,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 8
+    },
+    "started_in_background": 8,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 8,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "lesson-fact-checker": 2,
+      "lesson-pedagogy-reviewer": 2,
+      "lesson-alignment-reviewer": 2,
+      "lesson-quality-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 6,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I wrote the O3 lesson: `lessons/0001-context-and-memory-in-an-agent.html`, set up as 30 minutes. I couldn't run a word count, because the shell needed approval. The reviewers estimated about 4,800 words for the second draft, and my final edits were small. That is at the top of the range that fits 30 minutes.\n\n**What it covers**\n- **The context window and what is kept between steps:** your program re-sends the whole history on every call, shown with a short Python list.\n- **Cost and accuracy:** a long context is billed again on every call and can hurt answers (context rot).\n- **Trimming a long session:** clear old tool results, summarize, or hand a side task to a sub-agent.\n- **Notes between sessions:** the memory tool and storing training status in your own database.\n- **Retrieval:** chunks, meaning search, exact-word search, and when you could skip retrieval.\n- **Practice:** a six-step worked example on a laser-cutter booking, then a faded 3D-printer task with the answers hidden.\n\n**Other files**\n- `cheatsheets/context-and-memory.html` is a one-page reference.\n- `RESOURCES.md` lists the sources.\n- `review-records/0001-lesson.md` records both review passes.\n- `NOTES.md` has a short note that the lesson exists and nothing has been checked yet.\n\n**Gaps**\n- Almost every source is Anthropic's own pages. I found no independent source on context rot or a vendor-neutral retrieval guide, so `RESOURCES.md` lists that as a gap.\n- The one community link is a LangChain forum thread, which is a weak source.\n- I did not write a learning record, because a lesson alone isn't evidence of learning.\n\nYou can ask for a quiz on this lesson with `/quiz` when you're ready. You can also ask me anything about it, or ask for a shorter or longer version.\n\nOne question for you: should the makerspace assistant keep student preferences, such as \"prefers afternoons\", in saved notes at all, or only training status? The lesson treats it as your design decision, and your answer would shape the next lessons.",
+  "ttft_ms": 7193,
+  "type": "result",
+  "duration_ms": 113652,
+  "uuid": "fda8b826-009e-4d3d-ae8d-eef3cf00fde0",
+  "ttft_stream_ms": 752,
+  "time_to_request_ms": 21,
+  "first_content_frame_ms": 752,
+  "queued_turn_count": 0,
+  "result_index": 8,
+  "model_usage_since_last_result": {},
+  "credential_expires_at": "2026-11-20T02:41:39.246Z"
+}

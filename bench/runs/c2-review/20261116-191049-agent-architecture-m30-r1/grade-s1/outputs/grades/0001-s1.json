@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You picked out the loop where the model chooses actions, they are run, and results come back. A longer prompt or bigger model only changes a single call, not that structure."
+    },
+    {
+      "id": "q2",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "You pictured the model reading the calendar itself, a reasonable guess. But the model only takes in text and writes out text, with no link to your booking system. It writes something like check_calendar(\"laser cutter\", \"tomorrow\") as a request, and the program, as in your Python classes, does the actual call. Who runs check_calendar after that, the model or the program?"
+    },
+    {
+      "id": "q3",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You saw that repeating the same failing edit needs a stopping condition, and a step limit that reports back provides one. More context or a firmer prompt would not end the loop."
+    },
+    {
+      "id": "q4",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "You pictured one call where the model runs all three tools, but the program runs them. A model call ends after one request, so the model is called again to see each result:\n- Call 1: question in, asks for check_calendar\n- Call 2: calendar result in, asks for search_manuals\n- Call 3: manual result in, asks for check_training_record\n- Call 4: training result in, writes the answer\nNext time, label each step 'model call' or 'program runs tool' and count only the first kind."
+    },
+    {
+      "id": "q5",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "Sending the result back to the model is the right first half. What is missing is why: the model has not seen the result yet, so it needs it in its next input to choose its next step or write the final answer. Can you add that reason in one more clause?"
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": "M3",
+      "feedback": "Your first half matches the idea: the model is sent each tool's name and description and picks the one that fits. The second claim fails because each model call starts fresh and knows only the text it is sent. Memory of earlier sessions would have to be put into that text by the program. Try sketching in Python how a program could paste a student's past choices into the text it sends."
+    }
+  ],
+  "summary": "You have the outline of the loop, why it needs a stopping condition, and that the model chooses tools from their descriptions. The idea to fix is who does what: the program runs the tools and calls the model again after each result, while the model only writes text and remembers nothing between calls. This matters because your assistant's program must fetch each student's calendar and training status and feed them to the model. Next, retrace the laser cutter question, labelling each step 'model' or 'program'."
+}

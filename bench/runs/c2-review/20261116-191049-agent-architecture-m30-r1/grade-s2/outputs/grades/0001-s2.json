@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You picked the loop as the defining feature: the model chooses an action, the program runs it, the result comes back. A longer prompt or bigger model changes one call, not the structure."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You saw that the model's output is only a request: a tool name plus arguments. Like a function call written out as text, the program has to run it."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "You chose to leave it running, which assumes an agent needs no stopping condition because more tries will eventually work. But the model sees only its own repeated edit and the same failing test, so nothing new enters the loop to change what it does. Only the program around the model can end it, with a step limit, a cap on how many rounds the loop may run, that reports back. Try it: sketch your assistant's loop and mark where it stops."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "You counted four calls correctly: three tool requests plus the final answer. Your note that the model runs each tool itself is where it slips, and it contradicts your q2 answer. The model only writes text, such as a request naming a tool, so the program has to run the tool. Each round goes:\n- model call: writes a request\n- program: runs the tool\n- result goes back in for the next call\nWho runs check_calendar, and how do you know?"
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You said the result goes back in as the next input, so the model can decide its next step. You covered both what happens and why."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "You said the model uses the name, and that is part of it. The model reads the whole description the program gives it: the name, what the tool does and its parameters, the inputs it needs, like machine and date. A name alone can mislead, since a tool called check could do many things. Try writing a description for check_calendar with those three parts. Which part would help the model most when two tools sound alike?"
+    }
+  ],
+  "summary": "You have the loop's shape down: the model asks, and the program acts and sends the result back. Keep in mind that the program, not the model, runs every tool, and that tool descriptions, not just names, guide the model. The one thing to work on is the stopping condition, because a loop with no limit can burn your small model budget. Next, add a step limit to your assistant's loop sketch and note what it reports."
+}
