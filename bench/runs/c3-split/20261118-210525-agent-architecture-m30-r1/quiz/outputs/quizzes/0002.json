@@ -1,0 +1,67 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows and agents: who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "People distinguish a workflow from an agent. What is the deciding difference between the two?",
+      "options": [
+        {"id": "a", "text": "How many tools the system can call while it handles one request"},
+        {"id": "b", "text": "Whether the system calls a language model anywhere in its steps"},
+        {"id": "c", "text": "Whether the program's code or the model chooses each next step"},
+        {"id": "d", "text": "How large a context window the model it calls has"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "short",
+      "objective": "O4",
+      "stem": "A program asks a model to label each student message as \"booking\", \"manual question\" or \"other\". Then the code runs the matching procedure from a list. In one sentence: is this an agent or a workflow, and why?"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "The same task is built twice: once as a fixed workflow and once as an agent. Per request, the agent usually costs more. What is the main reason?",
+      "options": [
+        {"id": "a", "text": "It usually makes more model calls, since the model is called again for each step it chooses"},
+        {"id": "b", "text": "It usually needs tools that cost more per use than the tools a workflow uses"},
+        {"id": "c", "text": "It usually needs a larger, pricier model than a workflow could ever use"},
+        {"id": "d", "text": "It usually has to send every tool's full code to the model on each call"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which of these can an agent do that a fixed workflow cannot do unless someone changes its code?",
+      "options": [
+        {"id": "a", "text": "Call a language model inside one of its steps"},
+        {"id": "b", "text": "Use tools such as the booking calendar"},
+        {"id": "c", "text": "Let the team test and log each step on its own"},
+        {"id": "d", "text": "Take steps that nobody coded ahead of time for a new kind of request"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "The makerspace assistant gets four kinds of request. The model budget is small, so judge by cost per request and by how predictable the result is. Which kind is the best candidate for a fixed workflow?",
+      "options": [
+        {"id": "a", "text": "A student describes an odd noise from the laser cutter and asks what is wrong"},
+        {"id": "b", "text": "A student sends a booking number and asks to cancel that booking"},
+        {"id": "c", "text": "A student describes a project in loose terms and asks which machine suits it"},
+        {"id": "d", "text": "A student asks a vague question that could be about safety, scheduling or a manual"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O4",
+      "stem": "A teammate proposes making the whole assistant one agent, because that is simpler to build. You have two features. Feature A answers a manual question by always searching the manual, reading the best page and writing the reply. Feature B helps a student find out why a machine is misbehaving. Which feature would you build as an agent, and what is your reason? Answer in one or two sentences."
+    }
+  ]
+}

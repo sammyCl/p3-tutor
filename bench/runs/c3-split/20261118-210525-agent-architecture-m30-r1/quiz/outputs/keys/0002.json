@@ -1,0 +1,48 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "What separates them is who owns the control flow: in a workflow the code fixes the steps and their order, in an agent the model chooses the next step. Tool count (a) shows M7, the idea that an agent is defined by having tools or being complex rather than by who decides the next step; 'uses a model' (b) shows M8, the idea that any model call makes a system an agent and a workflow cannot contain one. Context window size (d) is a property of the model, which either kind can use.",
+      "distractors": {"a": "M7", "b": "M8"}
+    },
+    {
+      "id": "q2",
+      "answer": "A workflow: the code owns the control flow, and the model only picks a label that selects one of the procedures the team wrote.",
+      "accepted": [
+        "Workflow; the model only classifies and the code decides what runs next",
+        "A workflow, because the steps are fixed in code and the model just chooses a label",
+        "Workflow, since the programmer predefined every path"
+      ],
+      "rationale": "The model's output is only a label; the code then runs a fixed path the team wrote, so the code owns the control flow and this is a (routing) workflow. Saying 'agent' because a model makes a decision shows M8, the idea that any model call makes a system an agent. An answer of 'workflow' with no reason is partial."
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "In an agent each step is a separate model call, and the context grows with every step, so more steps mean more model calls and more cost; a workflow makes only the calls its code lists. Options b, c and d are not what drives the difference: the same tools and the same model can be used in either design, and tool code is never sent to the model (only its description is)."
+    },
+    {
+      "id": "q4",
+      "answer": "d",
+      "rationale": "The code only knows the steps its author wrote down, so a new kind of request gets no new steps unless someone changes the code; that is the price of the fixed path. A workflow can still call a model (a) and use tools (b); picking either shows M8 or M7 respectively: M8 is the idea that model calls belong only to agents, M7 the idea that tool use does. Option c is reversed: fixed steps are easier to test and log.",
+      "distractors": {"a": "M8", "b": "M7"}
+    },
+    {
+      "id": "q5",
+      "answer": "b",
+      "rationale": "Cancelling a booking has predictable steps (look it up, cancel, confirm), so code can run them cheaply and the same way each time. The other three are open-ended: what to do next depends on what is found or asked back (the noise in a, the project in c, the unclear topic in d). Picking one of them shows M10, not telling apart requests whose steps are known from requests where the next step depends on what turns up.",
+      "distractors": {"a": "M10", "c": "M10", "d": "M10"}
+    },
+    {
+      "id": "q6",
+      "answer": "Feature B: the steps cannot be listed in advance, because what to check next depends on what each earlier result shows; feature A has a fixed path, so it can stay a workflow.",
+      "accepted": [
+        "B, because the cause is unknown so the model has to choose the next step from what it finds",
+        "Feature B; fault diagnosis is open-ended, while A always follows the same steps",
+        "B, since its path cannot be fixed ahead of time, unlike A"
+      ],
+      "rationale": "Full credit picks B and gives the reason: its steps are not known ahead of time, so the model has to choose them, while A's path is fixed and cheaper as code. Picking A, or saying everything should be an agent, shows M9, the idea that an agent is always the better choice because it is more flexible. Picking B with no reason, or with the reason that it is harder, is partial."
+    }
+  ]
+}

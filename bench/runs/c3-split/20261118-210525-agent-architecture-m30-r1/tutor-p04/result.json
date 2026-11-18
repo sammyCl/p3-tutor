@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 11281,
+  "stop_reason": "end_turn",
+  "session_id": "6a7cb28f-9090-4ec5-b977-9474684080a8",
+  "total_cost_usd": 0.10596240000000001,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 21352,
+    "cache_read_input_tokens": 64124,
+    "output_tokens": 1413,
+    "output_tokens_details": {
+      "thinking_tokens": 155
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 21352,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 552,
+        "cache_read_input_tokens": 31580,
+        "cache_creation_input_tokens": 494,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 494
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1413,
+      "cacheReadInputTokens": 64124,
+      "cacheCreationInputTokens": 21352,
+      "webSearchRequests": 0,
+      "costUSD": 0.10596240000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 155,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 21352,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Five versus ten is the wrong question, because \"more agents always give better results\" isn't true. It's a tempting idea since a bigger team of people often does more. But agents aren't people. Each one is a separate run of the loop you already know, so each one adds cost and adds chances to lose information.\n\nHere is why that matters for your assistant:\n\n- **Every agent has its own context.** Each one is sent its own instructions and tool descriptions, and it re-reads whatever it's handed. Tokens are what you pay for, so ten agents mean ten sets of that overhead on every request.\n- **Handoffs lose detail.** When agent A passes work to agent B, B only sees what A chose to write down. It's like a function that takes a summary string instead of the real object.\n- **More agents mean more places to fail.** More agents means more routing decisions, and any one of them can go wrong.\n\nTake a real request: \"Is the laser cutter free Thursday, and can I use it with acrylic?\" One agent with two tools (manual search and calendar) handles that fine. Splitting it into a manual agent, a calendar agent, a safety agent and a router would make it slower and more expensive, with no gain in answer quality.\n\nSplitting pays off in narrower cases:\n\n- The work can run in parallel.\n- One job's context would be too big to share.\n- Jobs need very different tools or rules.\n\nStart with one agent, or a fixed workflow where the steps are predictable. Add a second agent only when you can name which of those reasons applies. That's also a strong answer at your design review.\n\nYour assistant does three jobs: answering from manuals, checking the calendar and booking. Which of those, if any, would you test first as a separate agent, and which reason from the list would justify it?",
+  "ttft_ms": 1024,
+  "type": "result",
+  "duration_ms": 11445,
+  "uuid": "87eae388-f563-4317-a56f-9f35a077daed",
+  "ttft_stream_ms": 537,
+  "time_to_request_ms": 110,
+  "first_content_frame_ms": 538,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1413,
+      "cacheReadInputTokens": 64124,
+      "cacheCreationInputTokens": 21352,
+      "webSearchRequests": 0,
+      "costUSD": 0.10596240000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 155,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 21352,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-20T02:41:39.246Z"
+}

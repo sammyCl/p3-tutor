@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You saw that the loop of choosing an action, running it and feeding the result back is what makes an agent. What does the model see on the second pass?"
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You saw that the model's output is only a request naming the tool and its arguments (the values it passes in), and the program does the running. What does the program send back next?"
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "You expected the agent to get there if left running, which is tempting because each step feels like progress. But the same edit meets the same failure 40 times, so more steps add nothing; a step limit ends the loop and reports back. Sketch the loop as a while with a max_steps counter: what should happen at step 41?"
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "You counted 4 calls, which fits three tool requests plus the final answer. But \"the model can only run one tool itself\" is the same belief behind the wrong options in q2, which you avoided there. The model only writes text, so it can only ask; the program runs each tool. Write out who does what, model or program, in each of the 4 calls."
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You gave both halves: the result goes back in as the model's next input, and the model uses it to decide its next step. Your group-chat picture fits. If the model then asks for another tool, what happens next?"
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "Using the name is a sensible start: check_calendar does say its purpose. But the model only sees text, and the description (what the tool does and the parameters it takes) is its only way to tell similar tools apart, such as check_calendar and check_booking. Write a one-line description for check_calendar that would separate it from a booking tool."
+    }
+  ],
+  "summary": "You have the shape of the loop, and what happens to a tool result: it goes back in as the next input. The one thing to work on is stopping: an agent that repeats a failing step never ends unless your program stops it, and that also protects your small budget. Next, sketch the loop from q3 as a while with a max_steps counter, and say what it returns at step 41."
+}

@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 11755,
+  "stop_reason": "end_turn",
+  "session_id": "5df6a5e9-2c34-43dd-9aa5-1c807bbb3337",
+  "total_cost_usd": 0.106564,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 21419,
+    "cache_read_input_tokens": 64260,
+    "output_tokens": 1445,
+    "output_tokens_details": {
+      "thinking_tokens": 164
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 21419,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 584,
+        "cache_read_input_tokens": 31650,
+        "cache_creation_input_tokens": 491,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 491
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1445,
+      "cacheReadInputTokens": 64260,
+      "cacheCreationInputTokens": 21419,
+      "webSearchRequests": 0,
+      "costUSD": 0.106564,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 164,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 21419,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "You're right that reinforcement learning (RL) is used to train strong agents. But I'm going to skip the derivation, and for your assistant you don't need to train a model.\n\n**What PPO does, in words.** RL means a model tries things, gets a score (a reward), and shifts toward what scored well. For tool calling, the reward might be \"the right tool was called with valid arguments and the booking succeeded.\" PPO is one popular way to do that safely. It caps how far each update can move the model, so one lucky or unlucky batch can't wreck what it already does well. Think of it as a guardrail on each update.\n\n**Why I'm not deriving it.** It rests on probability, gradients and optimization, and you've noted only one statistics course and no machine-learning background. Your mission also lists training and the math inside models as out of scope. Training your own model would also need GPUs, thousands of scored examples, and far more money than your sponsor's small budget. A hosted model that has already been trained this way will likely call tools well if you give it good inputs.\n\n**What improves tool calling for you, in order:**\n- Write clear tool descriptions: what each tool does, when to use it, and what each argument means.\n- Put one or two example calls in the description for tricky tools, like booking.\n- Build a small test set of 20–30 real student requests, each with the expected tool call, and run it after every change.\n- Keep a log of the failures you see, and fix those first.\n\nThat test set is also what a reward would be built from if you ever did train, so the work carries over.\n\nIf you want to go deeper later, you'd need to learn how models are trained at all, then basic probability. I can write a lesson on tool descriptions and a test set, which fits your design review.\n\nQuick check: if your assistant booked the wrong machine slot in your test set, which would you change first: the model or the booking tool's description? Why?",
+  "ttft_ms": 1099,
+  "type": "result",
+  "duration_ms": 11895,
+  "uuid": "446d209f-216c-424f-a2b5-6eb3b8dfabcb",
+  "ttft_stream_ms": 578,
+  "time_to_request_ms": 77,
+  "first_content_frame_ms": 579,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1445,
+      "cacheReadInputTokens": 64260,
+      "cacheCreationInputTokens": 21419,
+      "webSearchRequests": 0,
+      "costUSD": 0.106564,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 164,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 21419,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-20T02:41:39.246Z"
+}

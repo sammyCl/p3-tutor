@@ -1,0 +1,132 @@
+{
+  "duration_api_ms": 662441,
+  "stop_reason": "end_turn",
+  "session_id": "045c38d2-bad8-403d-864d-cdd2b439470b",
+  "total_cost_usd": 2.1941295999999997,
+  "usage": {
+    "input_tokens": 18,
+    "cache_creation_input_tokens": 22382,
+    "cache_read_input_tokens": 948052,
+    "output_tokens": 16461,
+    "output_tokens_details": {
+      "thinking_tokens": 1429
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 22382,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 770,
+        "cache_read_input_tokens": 128923,
+        "cache_creation_input_tokens": 3413,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3413
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 124,
+      "outputTokens": 81599,
+      "cacheReadInputTokens": 2899669,
+      "cacheCreationInputTokens": 328300,
+      "webSearchRequests": 0,
+      "costUSD": 2.1093759,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 26284,
+      "cacheCreationEphemeral5mInputTokens": 206686,
+      "cacheCreationEphemeral1hInputTokens": 121614,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 169282,
+      "outputTokens": 15651,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 6,
+      "costUSD": 0.08475369999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 7713,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwmm8646-eff38be0"
+  },
+  "subagent_stats": {
+    "spawned": 7,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 7
+    },
+    "started_in_background": 7,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 7,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "lesson-sources-finder": 1,
+      "lesson-timer": 1,
+      "lesson-fact-checker": 1,
+      "lesson-pedagogy-reviewer": 1,
+      "lesson-alignment-reviewer": 1,
+      "lesson-quality-reviewer": 1,
+      "lesson-figure-reviewer": 1
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 39,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The lesson is written at `lessons/0001-context-and-memory.html`. It is a 30-minute lesson on O3, with the `p3-minutes` and `p3-objective` meta tags set. Its word count is about 4,500 (the quality reviewer's estimate for the earlier draft). I only re-read the last draft's edits myself. It had one review pass, not two, so the revised lesson was not re-reviewed.\n\nThe win: Riley can decide whether each fact in the makerspace assistant belongs in the context, in saved notes, in a searchable index of the manuals, or comes from a live tool, and give a reason.\n\n- **Content:**\n  - the context window, tokens and what counts toward it\n  - what the loop resends each call, with a worked token tally (15,680 tokens, or 9,680 if the manual page is cleared)\n  - context rot, clearing and compaction\n  - notes between sessions\n  - retrieval, with a worked query\n  - a placement exercise\n- **Sources:** Anthropic's Context windows and Memory tool docs, Pinecone, the Hugging Face cookbook, and the DeepLearning.AI memory course. All are listed in `RESOURCES.md`, and one gap is noted there: no independent source on context rot.\n- **Review:** the fact-checker, pedagogy, alignment, quality and figure reviewers raised 49 findings between them. I fixed or dismissed all of them, and `review-records/0001-lesson.md` lists each. The fact fixes included the \"ten tool steps send the material ten times\" error and a few over-absolute claims about what the model \"remembers\".\n- **Not done:** I did not add a figure of the context growing across calls, or a faded exercise after the token tally, to hold the length. I also did not write a cheat sheet.\n- **Where it is thin:** the claim that more context hurts accuracy rests on Anthropic's docs alone. The `DeepLearning.AI` course may stop being free after its beta.\n- **Drafts and notes:** the drafts are in `drafts/`, and `NOTES.md` records what the lesson covers and what is still unchecked.\n\nYou can ask for a quiz on it with `/quiz`, and ask me anything about the lesson in the chat.\n\nOne question for you: do you want a cheat sheet that sums up the context, notes, retrieval and live-tool placement rule?",
+  "ttft_ms": 9835,
+  "type": "result",
+  "duration_ms": 125726,
+  "uuid": "a0407382-c0f8-44f4-ab44-bf331a7ff467",
+  "ttft_stream_ms": 557,
+  "time_to_request_ms": 33,
+  "first_content_frame_ms": 558,
+  "queued_turn_count": 0,
+  "result_index": 7,
+  "model_usage_since_last_result": {},
+  "credential_expires_at": "2026-11-20T02:41:39.246Z"
+}

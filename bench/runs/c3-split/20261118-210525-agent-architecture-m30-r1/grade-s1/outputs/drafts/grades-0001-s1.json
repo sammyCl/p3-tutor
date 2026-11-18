@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You placed the defining feature in the loop of choosing an action, running it and feeding the result back, not in prompt length or model size. Who runs the action in that loop, the model or the program?"
+    },
+    {
+      "id": "q2",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "You pictured the model opening the booking system itself, an easy picture since the assistant seems to do everything. But a model only reads and writes text and has no connection to any system, so it writes a request naming check_calendar, the laser cutter and tomorrow's date, and the program runs it. Write out what the model outputs and what the program does."
+    },
+    {
+      "id": "q3",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You saw that all 40 steps were already in view and the agent was stuck anyway, so more room or more effort would not help. A step limit ends the loop and hands the problem to a person. What should the program report when it stops?"
+    },
+    {
+      "id": "q4",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "You counted one call because the model runs the three tools itself, but it only requests them; the program runs them. Each result is new text the model must be given in a new call:\n- Call 1: the question, then a request for check_calendar.\n- Calls 2 and 3: one result each, then the next request.\n- Call 4: the last result, then the answer.\nSo 3 requests plus the final answer make 4 calls. Between calls 1 and 2, who runs check_calendar?"
+    },
+    {
+      "id": "q5",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "You have what happens: the result goes back to the model. The why is missing: it is added to the model's context (everything it is shown in that call), so it can pick its next step or write the final answer. Rewrite your answer with one 'so that...' clause."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": "M3",
+      "feedback": "You have the core idea: the model is sent each tool's name and description and picks the one that fits. The claim that it remembers earlier choices is the slip: a model sees only the text in its current input, so the program would have to write any earlier choice into it. Write down what the input would need to contain for the model to 'remember' last week."
+    }
+  ],
+  "summary": "You have the shape of the agent loop, why it needs a stopping condition, and that the model picks tools from their descriptions. Work on who does what: the model only writes text, and the program runs tools and calls the model again. That matters because your assistant's calendar and training lookups are program work. Redraw the laser cutter request as two columns, model and program, and write why each result goes back."
+}
