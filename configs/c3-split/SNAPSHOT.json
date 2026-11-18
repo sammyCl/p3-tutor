@@ -1,0 +1,33 @@
+{
+  "name": "c3-split",
+  "hash": "sha256:bbf73cb25c08024ec695f20ac44607bcc4a2cdcbc786438b0e9686894be520f1",
+  "created_at": "2026-11-18T05:23:24Z",
+  "files": [
+    ".claude/agents/README.md",
+    ".claude/agents/grade-reviewer.md",
+    ".claude/agents/lesson-alignment-reviewer.md",
+    ".claude/agents/lesson-fact-checker.md",
+    ".claude/agents/lesson-figure-reviewer.md",
+    ".claude/agents/lesson-pedagogy-reviewer.md",
+    ".claude/agents/lesson-quality-reviewer.md",
+    ".claude/agents/lesson-sources-finder.md",
+    ".claude/agents/lesson-timer.md",
+    ".claude/agents/quiz-reviewer.md",
+    ".claude/settings.json",
+    ".claude/skills/grade/SKILL.md",
+    ".claude/skills/quiz/SKILL.md",
+    ".claude/skills/teach/SKILL.md",
+    ".claude/skills/teach/references/GLOSSARY-FORMAT.md",
+    ".claude/skills/teach/references/GRADING.md",
+    ".claude/skills/teach/references/LEARNING-RECORD-FORMAT.md",
+    ".claude/skills/teach/references/LESSONS.md",
+    ".claude/skills/teach/references/MISSION-FORMAT.md",
+    ".claude/skills/teach/references/QUIZZES.md",
+    ".claude/skills/teach/references/RESOURCES-FORMAT.md",
+    ".claude/skills/teach/references/TUTORING.md",
+    ".claude/skills/teach/references/lesson-template.html",
+    ".claude/skills/tutor/SKILL.md",
+    "CLAUDE.md",
+    "PREFERENCES.md"
+  ]
+}

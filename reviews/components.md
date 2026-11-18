@@ -112,3 +112,30 @@ An example of a finished entry:
     - "You have the what: the result goes back to the model. Missing is the why: the model has not seen the result yet, so the program adds it to the next input and calls the model again, letting it choose its next step or write the answer."
     - "You have what happens: the result goes back to the model. The why is missing: the model has not seen the result yet, so the program adds it to the model's next input, the text it receives on its next call, and calls it again. That lets the model choose its next step or write the final answer. Write out the next input the model gets after the calendar result."
 - Kept in final: TODO
+
+### lesson-timer
+
+- Kind: subagent
+- Step added: c3-split
+- Purpose: TODO
+- With and without: reviews/c3-split.md, Round 1 (without) and Round 2 (with)
+- Review: TODO
+- Kept in final: TODO
+
+### lesson-sources-finder
+
+- Kind: subagent
+- Step added: c3-split
+- Purpose: TODO
+- With and without: reviews/c3-split.md, Round 2 (without) and Round 3 (with)
+- Review: TODO
+- Kept in final: TODO
+
+### lesson-figure-reviewer
+
+- Kind: subagent
+- Step added: c3-split
+- Purpose: TODO
+- With and without: reviews/c3-split.md, Round 3 (without) and Round 4 (with)
+- Review: TODO
+- Kept in final: TODO
