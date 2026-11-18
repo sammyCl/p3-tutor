@@ -62,16 +62,22 @@ Never trust your parametric knowledge for what you teach as fact: find a high-tr
 
 1. **Pin down the lesson:** the objective and its id, the requested length in minutes, where the learner starts, and the one tangible win they will walk away with.
    When no length is asked for, use the one `PREFERENCES.md` implies, or 15 minutes, declare it in `p3-minutes`, and say in your message that the learner can ask for a shorter or longer lesson.
-2. **Find the knowledge:** search the web for high-trust sources on exactly this objective, read the best two or three, and choose the single best one as the lesson's primary source.
+2. **Find the knowledge:** start the `lesson-sources-finder` subagent with the Agent tool, with a task message that gives the objective's id and text, the requested minutes and the path `drafts/sources-NNNN.md`, and wait for its report before you go on.
+   Read the sources file it wrote, and open the sources you will lean on most.
+   Build the lesson from those sources rather than one: cite more than one source for the central idea, cite each source where it backs a claim, and in "Go further" list the primary source, three or more of the others in different formats, each with what the learner will get from it, and the community.
+   Link only the URLs in the sources file or ones you opened yourself.
    Add the sources to `RESOURCES.md` in the format in `references/RESOURCES-FORMAT.md`.
 3. **Plan to the minutes:** split the lesson into sections with a word budget for each, as `references/LESSONS.md` explains, so the whole lesson fits the requested length.
    Write the plan's section headings now, and check them against "Section headings" below before you write any section.
 4. **Write the lesson as a draft** to `drafts/lesson-NNNN-<slug>.html`, never straight into `lessons/`, following `FORMATS.md`, the template and `references/LESSONS.md`, with the four rules below; NNNN is the number the final lesson will take in `lessons/`.
-5. **Check the draft** against "Before you finish", then run "The review loop" below on it.
-6. **Write the final lesson** once, from the last draft, to `lessons/NNNN-<slug>.html` with the Write tool, and leave the drafts in `drafts/`.
+5. **Time the draft:** start the `lesson-timer` subagent with the Agent tool, with a task message that gives only the draft's path and the requested minutes, and wait for its report.
+   If it reports findings, write a new draft, `drafts/lesson-NNNN-<slug>-timed.html`, that adds or cuts teaching where it says, never by padding, repeating or lengthening the summary, and fixes any time label it says overclaims; that draft is the one the review loop reads.
+   Time the draft once only; the review loop's `lesson-quality-reviewer` checks the length again.
+6. **Check the draft** against "Before you finish", then run "The review loop" below on it.
+7. **Write the final lesson** once, from the last draft, to `lessons/NNNN-<slug>.html` with the Write tool, and leave the drafts in `drafts/`.
    `lessons/` must end up with exactly one new file.
-7. **Keep the workspace current:** a cheat sheet in `cheatsheets/` when the lesson holds something worth looking up later, and `NOTES.md` for anything you learned about the learner.
-8. **Finish** with a short message: the lesson's path and what it covers, that they can ask for a quiz on it (`/quiz`) when they are ready, and that they can ask you anything about it.
+8. **Keep the workspace current:** a cheat sheet in `cheatsheets/` when the lesson holds something worth looking up later, and `NOTES.md` for anything you learned about the learner.
+9. **Finish** with a short message: the lesson's path and what it covers, that they can ask for a quiz on it (`/quiz`) when they are ready, and that they can ask you anything about it.
 
 `references/LESSONS.md` ends its lesson shape with a closing that says a quiz is ready; in this skill there is no quiz yet, so the closing says the learner can ask for one.
 
@@ -125,6 +131,7 @@ Each reviewer covers one review and only that one:
 | `lesson-pedagogy-reviewer` | pedagogy: how well it teaches this learner |
 | `lesson-alignment-reviewer` | alignment with the learning goal: the request, the objective and the mission |
 | `lesson-quality-reviewer` | overall quality: length against the minutes asked for, figures, references, reading as one piece |
+| `lesson-figure-reviewer` | the figures: text that fits its boxes, clean layout, accuracy, design and readability |
 
 Start the reviewers of a pass together, then wait for all of them.
 When two reviewers' findings touch the same sentence, fix both in one edit.
@@ -133,7 +140,8 @@ Run at most two passes of review and revision. For each pass:
 
 1. Start each reviewer in the table with the Agent tool.
    Its task message names the draft's path and nothing else: not your plan, not your sources' notes, and not why you wrote anything the way you did.
-   Two exceptions: `lesson-alignment-reviewer` also gets the learner's request word for word, as it appears under "The request" above, and the objective's id and text, because it judges the lesson against them; `lesson-quality-reviewer` also gets the requested minutes.
+   Two exceptions: `lesson-alignment-reviewer` also gets the learner's request word for word, as it appears under "The request" above, and the objective's id and text, because it judges the lesson against them; `lesson-quality-reviewer` also gets the requested minutes; `lesson-figure-reviewer` also gets the path of the sources file, `drafts/sources-NNNN.md`.
+   When you fix a `lesson-figure-reviewer` finding on text that overruns its box, change the SVG's numbers or words as it says, and keep every label inside its box.
 2. Wait for every reviewer's report before you do anything else. Do not revise, write the final lesson or finish while one is still running.
 3. If every report ends `Findings: 0`, the loop is over.
 4. Otherwise fix every finding in a new draft, `drafts/lesson-NNNN-<slug>-pass2.html`, or decide not to and note why.
