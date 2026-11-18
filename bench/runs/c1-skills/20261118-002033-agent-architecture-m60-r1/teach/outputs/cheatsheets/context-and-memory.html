@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    :root { --bg:#fffdf8; --text:#1f1d1a; --muted:#6b665e; --rule:#e4dfd4; --accent:#9a4517; --code-bg:#f3efe6;
+            --serif: Charter, "Iowan Old Style", Cambria, Georgia, serif; --sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#171614; --text:#e9e5dc; --muted:#a49e93; --rule:#36332e; --accent:#eaa77a; --code-bg:#23211e; } }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:var(--serif); line-height:1.5; font-size:17px; }
+    main { max-width:44rem; margin:0 auto; padding:2rem 1.25rem 3rem; }
+    h1 { font-size:1.7rem; margin:0 0 .25rem; } h2 { font-size:1.1rem; margin:1.6rem 0 .4rem; font-family:var(--sans); }
+    p, li { margin:.3rem 0; } a { color:var(--accent); }
+    table { width:100%; border-collapse:collapse; font-size:.92rem; font-family:var(--sans); }
+    th, td { text-align:left; vertical-align:top; padding:.4rem .5rem; border-bottom:1px solid var(--rule); }
+    th { font-size:.75rem; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+    code { font-family:ui-monospace, Menlo, Consolas, monospace; font-size:.85em; background:var(--code-bg); padding:.1em .3em; border-radius:4px; }
+    .muted { color:var(--muted); font-size:.9rem; }
+    @media print { :root { --bg:#fff; --text:#000; --muted:#444; --accent:#000; } main { max-width:none; padding:0; } a[href^="http"]::after { content:" (" attr(href) ")"; font-size:.8em; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>Context and memory in an agent</h1>
+  <p class="muted">Objective O3. Companion to <a href="../lessons/0001-context-and-memory-in-an-agent.html">lesson 1</a>. Sources: Anthropic's posts on <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">context engineering</a>, <a href="https://claude.com/blog/context-management">context management</a> and <a href="https://www.anthropic.com/engineering/contextual-retrieval">contextual retrieval</a>.</p>
+
+  <h2>Terms</h2>
+  <table>
+    <tr><th>Term</th><th>Meaning</th></tr>
+    <tr><td>Token</td><td>A small chunk of text; the unit of window size and billing</td></tr>
+    <tr><td>Context window</td><td>The most text the model can read and write in one call</td></tr>
+    <tr><td>Context</td><td>The text actually sent on a call: system prompt, tool descriptions, transcript, loaded pages</td></tr>
+    <tr><td>Transcript</td><td>The list of messages and tool results your program resends on every step</td></tr>
+    <tr><td>Context rot</td><td>Recall gets worse as the window fills</td></tr>
+    <tr><td>Compaction</td><td>Summarize a long conversation and continue from the summary</td></tr>
+    <tr><td>Session</td><td>One conversation; its transcript is gone when it ends</td></tr>
+    <tr><td>Memory</td><td>Storage your code writes and reads outside the model and the window</td></tr>
+    <tr><td>Retrieval (RAG)</td><td>Find the best-matching pieces of a big store and copy only those into the context</td></tr>
+    <tr><td>Embedding</td><td>Numbers representing a chunk's meaning; used to search by meaning</td></tr>
+    <tr><td>BM25</td><td>Keyword scoring; good at exact codes and names</td></tr>
+  </table>
+
+  <h2>Where things live</h2>
+  <table>
+    <tr><th>Place</th><th>Lasts</th><th>Use it for</th></tr>
+    <tr><td>Context</td><td>This request (while resent)</td><td>The current question, live tool results</td></tr>
+    <tr><td>Saved notes or database</td><td>Between sessions</td><td>Short, structured facts, e.g. trained machines</td></tr>
+    <tr><td>Retrieval index</td><td>Until you rebuild it</td><td>Long manuals, searched per question</td></tr>
+    <tr><td>Model training</td><td>Fixed</td><td>General knowledge, possibly outdated</td></tr>
+  </table>
+
+  <h2>Procedure: decide what goes where</h2>
+  <ol>
+    <li>Needed on every call? Put it in the system prompt or tool descriptions, and keep it short.</li>
+    <li>Needed only for this question and large? Retrieve it, then clear it when used.</li>
+    <li>Needed next session? Save a short record, with a date if it can go stale.</li>
+    <li>Already in a source of truth (calendar)? Read it live; do not copy it.</li>
+    <li>Not needed again? Do not keep it.</li>
+  </ol>
+
+  <h2>Retrieval checklist</h2>
+  <ul>
+    <li>Under about 200,000 tokens (about 500 pages)? Pasting everything is possible; weigh the cost on every call.</li>
+    <li>Chunks of a few hundred tokens; start each with the machine name and section heading.</li>
+    <li>Hybrid search: meaning (embeddings) plus keywords (BM25).</li>
+    <li>Test with real questions: is the right chunk in the top few?</li>
+  </ul>
+</main>
+</body>
+</html>

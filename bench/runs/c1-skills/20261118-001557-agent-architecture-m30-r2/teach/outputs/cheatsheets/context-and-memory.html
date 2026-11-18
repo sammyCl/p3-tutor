@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Context and memory: cheat sheet</title>
+  <style>
+    body { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: Charter, Georgia, serif; line-height: 1.55; color: #1f1d1a; background: #fffdf8; }
+    @media (prefers-color-scheme: dark) { body { color: #e9e5dc; background: #171614; } a { color: #eaa77a; } }
+    h1 { font-size: 1.7rem; } h2 { font-size: 1.15rem; margin-top: 1.8rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+    th, td { text-align: left; padding: 0.4rem 0.5rem; border-bottom: 1px solid #8884; vertical-align: top; }
+  </style>
+</head>
+<body>
+<h1>Context and memory in an agent</h1>
+<p>From <a href="../lessons/0001-context-and-memory-in-an-agent.html">lesson 1</a>. Sources: <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Anthropic</a>, <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Claude docs</a>, <a href="https://www.anthropic.com/news/contextual-retrieval">Contextual Retrieval</a>.</p>
+<h2>Terms</h2>
+<ul>
+  <li><b>Context window</b>: all the text the model can use on one call, including its reply.</li>
+  <li><b>Token</b>: a word or part of a word; the unit of size and cost.</li>
+  <li><b>Context rot</b>: recall gets worse as the context grows.</li>
+  <li><b>Compaction</b>: summarize a long run and continue in a fresh window.</li>
+  <li><b>Memory</b>: information stored outside the window and loaded back on purpose.</li>
+  <li><b>Retrieval (RAG)</b>: fetch relevant chunks and put only those in context.</li>
+  <li><b>Chunk / embedding / BM25</b>: a small piece of a document / numbers capturing its meaning / exact-word search.</li>
+</ul>
+<h2>Where does a fact belong?</h2>
+<table>
+  <tr><th>Fact</th><th>Put it</th></tr>
+  <tr><td>Needed on every step (rules, tool list)</td><td>In context, always</td></tr>
+  <tr><td>Short and needed this visit (training status)</td><td>Saved record, loaded at the start</td></tr>
+  <tr><td>Large and fixed (manuals)</td><td>Retrieved on demand, cleared after use</td></tr>
+  <tr><td>Result of a tool, no longer needed</td><td>Cleared or summarized</td></tr>
+  <tr><td>Needed next visit and not rebuildable</td><td>Saved by your program at the end</td></tr>
+</table>
+<h2>Rules of thumb</h2>
+<ul>
+  <li>The model remembers nothing between calls; your program re-sends or reloads.</li>
+  <li>Anything left in history is paid for again on every later step.</li>
+  <li>Trim what can be fetched again before what cannot.</li>
+  <li>Keep tool results short.</li>
+  <li>Exact terms (error codes) need keyword matching, not only meaning-based search.</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,152 @@
+{
+  "duration_api_ms": 151399,
+  "stop_reason": "end_turn",
+  "session_id": "1153a5b3-ec96-47c1-9339-1762d7c63b4e",
+  "total_cost_usd": 0.5103863000000001,
+  "usage": {
+    "input_tokens": 18,
+    "cache_creation_input_tokens": 62371,
+    "cache_read_input_tokens": 338156,
+    "output_tokens": 18949,
+    "output_tokens_details": {
+      "thinking_tokens": 696
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 62371,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 624,
+        "cache_read_input_tokens": 70110,
+        "cache_creation_input_tokens": 2983,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2983
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 18,
+      "outputTokens": 18949,
+      "cacheReadInputTokens": 338156,
+      "cacheCreationInputTokens": 62371,
+      "webSearchRequests": 0,
+      "costUSD": 0.47282560000000007,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 696,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 62371,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 49987,
+      "outputTokens": 5124,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 3,
+      "costUSD": 0.037560699999999995,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 1483,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 23,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I wrote the 30-minute lesson on O3, with a cheat sheet and updated notes. Nothing has been opened in a browser or run, and I estimated the length rather than counted it, at roughly 3,500–4,000 words, inside the 2,700–6,750 range.\n\n**Lesson:** `lessons/0001-context-and-memory-in-an-agent.html`. After a warm-up recalling the agent loop, it has six short sections tied to the makerspace assistant:\n- **The window:** what counts toward the context window, and context rot.\n- **Re-sending:** why every step re-sends the whole conversation, and what that does to cost.\n- **Trimming:** clearing old tool results and summarizing mid-task.\n- **Notes between sessions:** a per-student JSON record loaded at the start of each visit.\n- **Retrieval:** finding one page in a long manual, including labelling each chunk with its machine and section.\n- **Practice:** a five-step worked example on a laser-cutter request, then a faded task on a CNC router request.\n\nIt also has two figures, four self-checking questions and a summary. All facts cite Anthropic's context-window docs, its context-engineering article and its contextual-retrieval article.\n\n**Also written:**\n- `cheatsheets/context-and-memory.html`: a one-page reference.\n- `RESOURCES.md`: the three sources. It lists no community yet, since your notes don't say whether you want one.\n- `NOTES.md`: a working note that the lesson exists but isn't quizzed. I added no learning record, because a lesson alone isn't evidence of learning.\n\nYou can ask me for a quiz on it with `/quiz` whenever you're ready, and ask me anything about the lesson in the chat. You can also ask for a shorter or longer version.\n\nOne question for you: do you want me to suggest a community, such as a university AI group or a makerspace forum, where you can test these design choices?",
+  "ttft_ms": 1198,
+  "type": "result",
+  "duration_ms": 140490,
+  "uuid": "1ed9cdda-5869-417b-9534-ccd029ecec69",
+  "ttft_stream_ms": 704,
+  "time_to_request_ms": 108,
+  "first_content_frame_ms": 705,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 18,
+      "outputTokens": 18949,
+      "cacheReadInputTokens": 338156,
+      "cacheCreationInputTokens": 62371,
+      "webSearchRequests": 0,
+      "costUSD": 0.47282560000000007,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 696,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 62371,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 49987,
+      "outputTokens": 5124,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 3,
+      "costUSD": 0.037560699999999995,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 1483,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-20T02:41:39.246Z"
+}

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    body { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: Charter, Georgia, serif; line-height: 1.55; background: #fffdf8; color: #1f1d1a; }
+    @media (prefers-color-scheme: dark) { body { background: #171614; color: #e9e5dc; } a { color: #eaa77a; } }
+    a { color: #9a4517; }
+    h1 { font-size: 1.6rem; } h2 { font-size: 1.15rem; margin-top: 1.5rem; }
+    td, th { text-align: left; vertical-align: top; padding: 0.35rem 0.5rem; border-bottom: 1px solid #8884; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <h1>Context and memory in an agent</h1>
+  <p>From <a href="../lessons/0001-context-and-memory-in-an-agent.html">lesson 1</a>. Sources: <a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Context windows</a>, <a href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents">Effective context engineering</a>, <a href="https://www.anthropic.com/engineering/contextual-retrieval">Contextual Retrieval</a>.</p>
+
+  <h2>Terms</h2>
+  <table>
+    <tr><th>Term</th><th>Meaning</th></tr>
+    <tr><td>Context window</td><td>All text the model reads in one call, plus its reply: system prompt, tool definitions, messages, tool results.</td></tr>
+    <tr><td>Token</td><td>A word or word piece; the window and the bill are counted in tokens.</td></tr>
+    <tr><td>Context rot</td><td>Recall and accuracy drop as the window fills.</td></tr>
+    <tr><td>Clearing / compaction</td><td>Drop old tool results, or summarize and restart the window.</td></tr>
+    <tr><td>Notes (memory)</td><td>Facts stored outside the model, loaded at the start of a session.</td></tr>
+    <tr><td>Retrieval (RAG)</td><td>Search stored documents; put only the matching chunks in the context.</td></tr>
+  </table>
+
+  <h2>Rules of thumb</h2>
+  <ul>
+    <li>The model keeps nothing between calls; your code re-sends the history every step.</li>
+    <li>Big tool results are re-read, and re-paid for, in every later call.</li>
+    <li>Caching lowers price; cached tokens still fill the window.</li>
+    <li>Between sessions only stored notes survive. Save facts, not transcripts.</li>
+    <li>Permissions (who is trained) come from stored records written by your code.</li>
+    <li>Label every chunk with its machine and section.</li>
+  </ul>
+
+  <h2>Session recipe</h2>
+  <ol>
+    <li>Load the student's record; put a short version in context.</li>
+    <li>Retrieve only the chunks the question needs.</li>
+    <li>Clear or summarize bulky results if the session runs long.</li>
+    <li>Update the record only when a fact changed.</li>
+  </ol>
+</body>
+</html>
