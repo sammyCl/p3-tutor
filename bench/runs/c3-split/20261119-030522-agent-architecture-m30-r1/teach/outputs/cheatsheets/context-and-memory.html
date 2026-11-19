@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cheat sheet: context and memory in an agent</title>
+  <style>
+    body { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem; font-family: Charter, Georgia, serif; line-height: 1.5; color: #1f1d1a; background: #fffdf8; }
+    @media (prefers-color-scheme: dark) { body { background: #171614; color: #e9e5dc; } a { color: #eaa77a; } }
+    h1 { font-size: 1.6rem; } h2 { font-size: 1.1rem; margin-top: 1.6rem; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid #bbb8; }
+    a { color: #9a4517; }
+  </style>
+</head>
+<body>
+<h1>Context and memory: one-page reference</h1>
+<p>From <a href="../lessons/0001-context-and-memory.html">Lesson 1</a>. Objective O3.</p>
+
+<h2>Where each kind of fact lives</h2>
+<table>
+  <thead><tr><th>Fact</th><th>Home</th><th>Makerspace example</th></tr></thead>
+  <tbody>
+    <tr><td>Needed only for this step</td><td>The context window</td><td>A calendar result</td></tr>
+    <tr><td>Personal and lasting</td><td>Notes outside the window, looked up by student ID</td><td>"bandsaw: trained 2026-10-03"</td></tr>
+    <tr><td>Shared and long</td><td>Retrieval: chunks in a searchable store</td><td>The laser cutter manual</td></tr>
+  </tbody>
+</table>
+
+<h2>Rules to remember</h2>
+<ul>
+  <li>The model keeps nothing between calls; the program re-sends the whole window each call.</li>
+  <li>Cost adds up: each call pays again for all earlier text, tool results included.</li>
+  <li>Aim for the smallest set of useful tokens; long windows may be used less well.</li>
+  <li>Between steps: clear old tool results (gentler) or compact into a summary. Both lose detail.</li>
+  <li>Between sessions: save only what a future visit needs, as short dated lines.</li>
+  <li>A fact copied into the window goes stale; for facts that gate an action, read the stored record at that moment.</li>
+  <li>Retrieval: split into chunks (about 1,000 characters, 200 overlap as a start), embed, store; at question time put only the best few chunks in the window.</li>
+</ul>
+
+<h2>Sources</h2>
+<p><a href="https://anthropic.com/research/effective-context-engineering-for-ai-agents">Anthropic, Effective context engineering</a> &middot;
+<a href="https://platform.claude.com/docs/en/build-with-claude/context-windows">Context windows</a> &middot;
+<a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool">Memory tool</a> &middot;
+<a href="https://docs.langchain.com/oss/python/langchain/rag">LangChain RAG tutorial</a></p>
+</body>
+</html>

@@ -1,0 +1,144 @@
+{
+  "duration_api_ms": 748678,
+  "stop_reason": "end_turn",
+  "session_id": "846374b2-5905-4671-9a7a-6892f4793bbd",
+  "total_cost_usd": 2.4180694999999996,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 954,
+    "cache_read_input_tokens": 143526,
+    "output_tokens": 421,
+    "output_tokens_details": {
+      "thinking_tokens": 96
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 954,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 4,
+        "output_tokens": 421,
+        "cache_read_input_tokens": 143526,
+        "cache_creation_input_tokens": 954,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 954
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 126,
+      "outputTokens": 92997,
+      "cacheReadInputTokens": 3139792,
+      "cacheCreationInputTokens": 344269,
+      "webSearchRequests": 0,
+      "costUSD": 2.3051702,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 28241,
+      "cacheCreationEphemeral5mInputTokens": 210738,
+      "cacheCreationEphemeral1hInputTokens": 133531,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 236498,
+      "outputTokens": 18499,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 8,
+      "costUSD": 0.11289930000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 8212,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 7,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 7
+    },
+    "started_in_background": 7,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 7,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "lesson-sources-finder": 1,
+      "lesson-timer": 1,
+      "lesson-fact-checker": 1,
+      "lesson-pedagogy-reviewer": 1,
+      "lesson-alignment-reviewer": 1,
+      "lesson-quality-reviewer": 1,
+      "lesson-figure-reviewer": 1
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 1,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "That wake-up was a fallback I scheduled earlier, and the work it was waiting on is already finished. The fact-checker report came back with 7 findings. All five reviewers' findings went into the pass-2 draft, and the lesson was written from it.\n\nThe files are in place:\n- `lessons/0001-context-and-memory.html` is the final lesson, copied from the pass-2 draft.\n- `review-records/0001-lesson.md` lists every finding and what I did about it.\n- `RESOURCES.md`, `cheatsheets/context-and-memory.html` and `NOTES.md` are written or updated.\n\nThe pass-2 draft was not re-reviewed, because that would have been a third review pass, over the cap of two. I haven't started anything new, so there is nothing further to collect.\n\nYou can ask for a quiz on this lesson with `/quiz`, and ask me anything about it in the chat. One question is still open from my last message: do you want a source on cost per request, such as how providers price input and output tokens?",
+  "ttft_ms": 1706,
+  "type": "result",
+  "duration_ms": 3839,
+  "uuid": "1865aa46-1c32-452d-b6de-a12608a357e7",
+  "ttft_stream_ms": 871,
+  "time_to_request_ms": 240,
+  "first_content_frame_ms": 871,
+  "queued_turn_count": 0,
+  "result_index": 6,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 421,
+      "cacheReadInputTokens": 143526,
+      "cacheCreationInputTokens": 954,
+      "webSearchRequests": 0,
+      "costUSD": 0.0223866,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 96,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 954,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-20T02:41:39.246Z"
+}

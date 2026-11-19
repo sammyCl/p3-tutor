@@ -598,13 +598,158 @@ Name the rounds that built this step and the inventory entries of the pipeline's
 Then the split: the roles you split the teach job into, what each one receives and returns, what runs in order and what in parallel, and who puts the lesson together at the end.
 Why this split and not a smaller one, and what did you try that you took out again?
 
-TODO: the rounds and entries, and the design of your teach split.
+I had already split the teach job into multiple subagents during `c2-review`, but I did so further here. In `c2-review` I created the following:
+
+- lesson-fact-checker: Reviewed the lesson for any technical inaccuracies, including if sentences were missing words or using absolutes, causing them to be untrue.
+- lesson-pedagogy-reviewer: Reviewed the lesson for areas where the lesson was difficult to follow. Focused on making sure both the "what" and "why" were defined, and including real-world examples. Also checked that the `PREFERENCES.md` was followed.
+- lesson-alignment-reviewer: Reviewed the lesson to make sure all information in the lesson aligns with the student's learning objective. This includes making sure a specific example was connected to the different sections if it was included in the request.
+- lesson-quality-reviewer: Reviewed the entire lesson to make sure it was the correct length, had useful figures, and overall that a student could learn from it. Makes sure the lesson still reads as one piece after all of the edits.
+
+I chose these splits so that each subagent was given a specific task that was reviewed. My hope was that splitting these tasks among individual subagents would help to improve the scores as each area had a subagent dedicated to maintaining it. Since each subagent would only focus in one area, I thought that may improve the lesson. Overall, I believe this idea was verified, as in `EVAL.md 3`, I was able to demonstrate that based on the increases in the scores for the Lesson, my additions of the subagents resulted in real, quantifiable changes.
+
+In `c3-split`, I added 3 more subagents. I chose these subagents based on areas from `c2-review` that I felt still needed improvements. I had noticed that the lesson:
+
+1. Was only using sources from Anthropic.
+2. Had figures that had messy layouts and slightly inaccurate information.
+3. The lesson ratios were low.
+
+As a result, I created the following subagents across 3 rounds:
+
+- Round 1: `lesson-timer`
+  - A subagent that reviews the lesson to make sure that it matches the length that the user requested. It goes through section by section and measures the number of words versus how long the section is claimed to take.
+- Round 2: `lesson-sources-finder`
+  - This subagent is given the user's prompt and will find sources relevant to what the user wants to learn about. What makes it stand out compared to previous versions is that it makes sure to pull from sources other than Anthropic by pulling from a larger variety of sources.
+- Round 3: `lesson-figure-reviewer`
+  - This subagent was meant to assess the technical correctness and design of the figures in the lesson. It would go through each figure and assess if the figure made visual sense, and that the information it described was completely accurate.
+
+The process for running the subagents is:
+1. Pins down the lesson
+2. `lesson-sources-finder` is called to find sources for the lesson. It only performs one pass.
+3. Plans the minutes for each section of the lesson.
+4. Write the lesson to a draft.
+5. `lesson-timer` is called to review each section to make sure the section timings are accurate.
+6. Perform the review loop:
+  - There will be a maximum of 2 passes, during these passes:
+    - All 5 reviewers, `lesson-fact-checker`, `lesson-pedagogy-reviewer`, `lesson-alignment-reviewer`, `lesson-quality-reviewer`, `lesson-figure-reviewer` are spawned using the agent tool and run in parallel. They are given the draft's path, with the alignment reviewer also getting the request and objectives, the quality reviewer getting the minutes, and the figure reviewer getting the sources file.
+  - Collects the reports from the review agents.
+  - End the loop if every report ends with `Findings: 0`.
+  - Fix the draft.
+7. Main session writes the final lesson.
+
+The only agent I plan to remove is the `lesson-figure-reviewer`, as the changes did not make as significant differences as the other sections. It only suggested 3 changes for each run of `c3-split` I did, and the changes seemed to be cosmetic enough that I think a targeted skill could perform the same job.
 
 ### Your review, the objective checks and the cost
 
 Paste `uv run p3 report --configs c2-review,c3-split`.
 
-TODO: paste the report tables.
+Runs: `c2-review` full run `bench/runs/c2-review/20261116-191049-agent-architecture-m30-r1`; `c3-split` full run `bench/runs/c3-split/20261118-210525-agent-architecture-m30-r1`. Table from `uv run p3 report --configs c2-review,c3-split`.
+
+#### Results on agent-architecture
+
+Scored full runs (quick runs and --only runs left out); each cell is the mean over the runs, with the range in brackets.
+
+##### Quality
+
+| config | runs | teach facts | teach misconc. | length ratio | dead links | key agreement | wrong keys | ambiguous items | verdict agreement | false wrong | misconc. hit | leaks | behavior met |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `c2-review` | 1 | 1.00 | 0 | 0.84 | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.83 |
+| `c3-split` | 1 | 1.00 | 0 | 0.86 | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 1.00 |
+
+Teach facts, key agreement, verdict agreement, false wrong, misconception hit and behavior met are shares (0 to 1); misconceptions, dead links, wrong keys, ambiguous items and leaks are counts per run.
+A dash means no run could be scored on that check, and n= says how many of the runs could.
+A job that failed counts against the config: no lesson scores 0 teach facts, no quiz and key 0 key agreement, a missing grades file disagrees on every item, and a tutor scenario with no reply is not met; leaks need a reply to check, so such a scenario is left out of them.
+The length ratio is a rough reading-time estimate (visible words / 150) over the minutes requested; 0.6 to 1.5 counts as on length.
+
+##### Cost: teach
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c2-review` | 1 | 3.01M | 113.0k | 8.1 | 8 | 2.59 |
+| `c3-split` | 1 | 3.49M | 97.2k | 8.0 | 7 | 2.19 |
+
+##### Cost: quiz
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c2-review` | 1 | 764.6k | 28.8k | 3.8 | 2 | 0.63 |
+| `c3-split` | 1 | 637.0k | 31.3k | 3.9 | 2 | 0.66 |
+
+##### Cost: grade
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c2-review` | 1 | 810.7k | 30.3k | 3.9 | 4 | 0.75 |
+| `c3-split` | 1 | 793.6k | 29.8k | 3.5 | 4 | 0.73 |
+
+##### Cost: tutor
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c2-review` | 1 | 490.8k | 7.3k | 1.6 | 0 | 0.57 |
+| `c3-split` | 1 | 456.5k | 7.0k | 1.0 | 0 | 0.61 |
+
+##### Cost: all jobs
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c2-review` | 1 | 5.08M | 179.3k | 17.3 | 14 | 4.53 |
+| `c3-split` | 1 | 5.38M | 165.4k | 16.5 | 13 | 4.20 |
+
+Costs are per run, summed over the job's scenarios; list-price $ is the list-price equivalent, not what you pay on a subscription.
+
+#### Your ratings
+
+Your ratings from 1 to 5 in the major reviews (reviews/<step>.md), which review full runs on the shared topic; a dash means no rating there yet, one that p3 check does not accept, or a job that step does not review (Tutor in c2-review; Quiz, Feedback and Tutor in c3-split).
+
+| job | criterion | c1-skills | c2-review | c3-split | final |
+|---|---|---:|---:|---:|---:|
+| Lesson | Technical correctness and facts | 4 | 5 | 5 | - |
+| Lesson | Pedagogy | 3 | 4 | 4 | - |
+| Lesson | Alignment with the learning goal | 4 | 5 | 5 | - |
+| Lesson | Overall quality | 4 | 4 | 5 | - |
+| Quiz | Difficulty | 5 | 5 | - | - |
+| Quiz | Coverage of the lesson's core | 4 | 5 | - | - |
+| Quiz | Wording and possible misreadings | 4 | 4 | - | - |
+| Quiz | Writing quality | 4 | 4 | - | - |
+| Quiz | Alignment with the learning goal | 4 | 5 | - | - |
+| Feedback | Useful | 3 | 4 | - | - |
+| Feedback | Explains enough | 3 | 3 | - | - |
+| Feedback | Personalized to how I like things explained | 4 | 4 | - | - |
+| Tutor | Guardrails | 4 | - | - | - |
+| Tutor | Personalization | 5 | - | - | - |
+
+Attempt 2 of running the full 2 passes.
+
+Runs: `c3-split` teach-only run `bench/runs/c3-split/20261119-030522-agent-architecture-m30-r1`. Table from `uv run p3 report --teach-only --configs c3-split`.
+
+#### Results on agent-architecture
+
+Scored teach-only runs; each cell is the mean over the runs, with the range in brackets.
+
+##### Quality
+
+| config | runs | teach facts | teach misconc. | length ratio | dead links |
+|---|---:|---:|---:|---:|---:|
+| `c3-split` | 1 | 1.00 | 0 | 1.00 | 0 |
+
+Teach facts, key agreement, verdict agreement, false wrong, misconception hit and behavior met are shares (0 to 1); misconceptions, dead links, wrong keys, ambiguous items and leaks are counts per run.
+A dash means no run could be scored on that check, and n= says how many of the runs could.
+A job that failed counts against the config: no lesson scores 0 teach facts, no quiz and key 0 key agreement, a missing grades file disagrees on every item, and a tutor scenario with no reply is not met; leaks need a reply to check, so such a scenario is left out of them.
+The length ratio is a rough reading-time estimate (visible words / 150) over the minutes requested; 0.6 to 1.5 counts as on length.
+
+##### Cost: teach
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c3-split` | 1 | 3.83M | 111.5k | 10.7 | 7 | 2.42 |
+
+##### Cost: all jobs
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c3-split` | 1 | 3.83M | 111.5k | 10.7 | 7 | 2.42 |
+
+Costs are per run, summed over the job's scenarios; list-price $ is the list-price equivalent, not what you pay on a subscription.
 
 ### What the step bought and what it cost
 
@@ -612,7 +757,32 @@ What did the split change in the lesson: its structure, its figures, its referen
 What did it cost in tokens, minutes and subagents against `c2-review`, and how much of that was overhead rather than writing?
 Each step has one run, so say how confident you are, and what would change your mind.
 
-TODO: your judgment of step 3.
+I did two runs of the teach job because my first run of the teach job for `c3-split` did not run the two passes properly, the second run did not run the passes properly either, so that is something I plan to fix in my final step.
+
+Changes:
+- Structure: There were not significant structure changes to the lessons. There were 10 sections for `c2-review` and 9 for both rounds of `c3-split`. There were 3 figures for `c2-review` and 2 for both rounds of `c3-split`. In terms of links, there were 8 for `c2-review`, with most coming from Anthropic sources, and 6/7 for `c3-split`, with a much larger distribution of publishers. The length ratio was slightly different, with `c2-review` being 0.84, the first run of `c3-split` being 0.86, and the second pass of `c3-split` being 1.00. 
+- Fit to Me: I felt that `c3-split` had a slightly better fit for me. The most significant change for me was that there was a wider variety of sources, which made me feel like I was getting multiple explanations and descriptions.
+- My Reviews: The only score I changed was Overall Quality. I made this choice because I felt that I had seen improvements in the lesson length ratio, the quality of the figures, and the variety of the sources. As a result, I chose to increase the score from a 4 to a 5.
+
+Cost:
+
+It is a bit difficult to say how much greater the cost was because we did not get two full passes of `c3-split`. However, since it failed to run two passes of `c3-split` two times, I will provide my judgement on the failed passes.
+
+- Tokens: `c2-review` had 3.01M tokens, `c3-split` run one had 3.49M, and `c3-split` run two had 3.83M tokens.
+- Output Tokens: `c2-review` had 113.0k tokens, `c3-split` run one had 97.2k, and `c3-split` run two had 111.5k tokens.
+- Minutes: `c2-review` took 8.1 minutes, `c3-split` run one took 8.0 minutes, and `c3-split` run two took 10.7 minutes.
+- Subagents: `c2-review` had 8 subagents, `c3-split` run one had 7 subagents, and `c3-split` run two had 7 subagents. 
+  - The subagents are basically all overhead, they do not write the lesson.
+
+Since the two runs of `c3-split` did not have the second passes run, its cost appears lower than it actually would be. However, I also learned that I do not feel the need to have `c3-split` do two passes. I felt that the product I received from `c3-split` was already an improvement from `c2-review` due to the increase I saw in Overall Quality, i.e. improvements in lesson length ratio, the number of varied sources, and the improvements in the figures. I do not feel like having two passes of `c3-split` would justify the extra cost of tokens and time, as we can see two passes of `c2-review` costs about as much as one pass of `c3-split`. I am only somewhat confident that this will hold, as it is difficult to be sure when I couldn't get the full run of `c3-split` to work.
+
+My views may change if I get a run of `c3-split` with two passes. It is possible that it will be impressive enough that I choose to move forward with two passes of `c3-split` per run. However, with the quality of the lesson already improved so significantly from `c0-baseline`, I am not sure how many more little changes are worth the cost of time and tokens.
+
+For example, I do not plan to keep the `lesson-figure-reviewer`. I do not feel that the changes that were made is justified in making it its own subagent. I think I will choose to create a skill that handles the same tasks. The `lesson-figure-reviewer` only found 3 problems in each run of `c3-split`, which does not seem worth the extra cost of spawning in a new subagent. The changes that were found were things like an arrow not extending all the way and text spilling out of a text box, both of which are things that could be effectively handled by skills.
+
+I plan to keep `lesson-timer` as it has resulted in significant improvements in the lesson length ratio. The range I have seen in my `c3-split` runs has been from 0.86-1.00, which is a significantly higher range than any of my other 30-minute runs.
+
+I plan to keep `lesson-sources-finder`, I think taking the source collection out of the main context session has helped to improve the quality of the lesson. I also like how the sources are more varied.
 
 ---
 
