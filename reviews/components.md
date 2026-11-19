@@ -117,25 +117,25 @@ An example of a finished entry:
 
 - Kind: subagent
 - Step added: c3-split
-- Purpose: TODO
+- Purpose: A subagent that reviews the lesson to make sure that it matches the length that the user requested. It goes through section by section and measures the number of words versus how long the section is claimed to take. It also makes suggestions on what to add to the section in order to meet the word count. Previous runs had inconsistent and low length ratios, which is why the subagent was created. This subagent acts as an adversarial checker to the lesson's original timings. As a result, it needs its own context window that is not polluted by the timing beliefs of the original window.
 - With and without: reviews/c3-split.md, Round 1 (without) and Round 2 (with)
-- Review: TODO
+- Review: This subagent still needs more testing. I have gotten 0.86, 0.93, 0.95, and 0.86 as the length ratios of subsequent runs. This range is much higher than what I was experiencing previously, baseline is 0.77, but I want to confirm that it is a significant enough improvement before deciding whether it should stay in the final round, as some rounds like the `c2-review` full run had a length ratio of 0.84.
 - Kept in final: TODO
 
 ### lesson-sources-finder
 
 - Kind: subagent
 - Step added: c3-split
-- Purpose: TODO
+- Purpose: This subagent is given the user's prompt and will find sources relevant to what the user wants to learn about. What makes it stand out compared to previous versions is that it makes sure to pull from sources other than Anthropic by pulling from a larger variety of sources. This is helpful for the student as it will provide explanations in a variety of ways. This process is a subagent to help preserve the main session's context window. Finding a large number of sources requires a lot of looking up that can fill up a context window quickly. By having a separate subagent to this process, it helped to keep the main session's context window open for more important things.
 - With and without: reviews/c3-split.md, Round 2 (without) and Round 3 (with)
-- Review: TODO
+- Review: I was happy with the results of this change. I saw an improvement of lessons only having 4 sources, all from Anthropic to having 8 links from 5 different publishers. By utilizing more sources when creating the lesson, a more thorough explanation can be given to the student.
 - Kept in final: TODO
 
 ### lesson-figure-reviewer
 
 - Kind: subagent
 - Step added: c3-split
-- Purpose: TODO
-- With and without: reviews/c3-split.md, Round 3 (without) and Round 4 (with)
-- Review: TODO
+- Purpose: This subagent was meant to assess the technical correctness and design of the figures in the lesson. It would go through each figure and assess if the figure made visual sense, and that the information it described was completely accurate. This is subagent acts as an adversarial checker to the lesson's original figures. As a result, it needs its own context window that is not polluted by the figure beliefs of the original window.
+- With and without: reviews/c3-split.md, Round 3 (without, bench/runs/_live/20261118-043114-agent-architecture-m30-r1) and bench/runs/_live/20261118-045132-agent-architecture-m30-r1 (with), the live teach run after Round 3's change, which has no round of its own
+- Review: Although this subagent was able to catch a couple issues with figures, I do not believe it made a significant enough difference to be kept in the final version. It tended to only suggest 1-2 changes each round, and those changes were small enough to not be noticeable. 
 - Kept in final: TODO
