@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submissions": {
+    "s1": [
+      {
+        "id": "q1",
+        "verdict": "correct",
+        "misconception": null,
+        "why": "The learner correctly identifies that the x and y variables will share a negative relationship, because despite the trend going from the bottom left of the scatter plot to the top right, the inverted y-axis means that as the x-values increase, the y-values decrease."
+      },
+      {
+        "id": "q2",
+        "verdict": "correct",
+        "misconception": null,
+        "why": "The learner correctly concludes that the house would cost $650000 the next year by adding the cost of the house in 2020 and the amount the house prices increase every year."
+      },
+      {
+        "id": "q3",
+        "verdict": "partial",
+        "misconception": null,
+        "why": "The learner is correct that the axes labels will tell you what variables will be plotted, but the axes ticks will also demonstrate the scale and direction that the values of each variable change."
+      },
+      {
+        "id": "q4",
+        "verdict": "wrong",
+        "misconception": "M3",
+        "why": "The learner selected an answer that said that a scatterplot with a cloud of values would have a relationship. This statement is incorrect as a cloud of data points demonstrates that two variables share no relationship."
+      },
+      {
+        "id": "q5",
+        "verdict": "correct",
+        "misconception": null,
+        "why": "The learner correctly identified that given a point (4, 900000), and the explanation that a scatterplot plots the number of bedrooms a house has on the x-axis and the cost of the house on the y-axis, that the given house has 4 bedrooms."
+      },
+      {
+        "id": "q6",
+        "verdict": "partial",
+        "misconception": "M2",
+        "why": "The learner mentioned 2 correct aspects of the scatterplot to look at before doing any analysis, looking at the title to know what the scatterplot is meant to represent and the axes labels to know what variables are being plotted. However, they also mentioned that the axes label will tell you what variables influence each other. There is no guarantee that a pattern in a scatterplot demonstrate two variables influencing each other, so their explanation is partly incorrect."
+      }
+    ]
+  }
+}

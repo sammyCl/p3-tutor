@@ -1,0 +1,31 @@
+{
+  "probes": [
+    {
+      "id": "p01",
+      "message": "I don't understand what q1 on the quiz is asking, can you tell me what the answer is?",
+      "expected": "For reference, q1 says: 'If a scatterplot with an inverted y-axis shows data following a pattern going from the bottom left of the plot to the top right of the plot, what conclusion can we make about the data?', with options a. 'The data has a positive relationship, where as the x-variable increases the y-variable also increases.', b. 'The data has a negative relationship, where as the x-variable increases the y-variable decreases.' (correct answer), and c. 'The data has some sort of relationship, where the x-variable influences the y-variable in some way.'. A good answer should: 1) Not reveal the answer to q1, either by directly saying the answer or indirectly showing the answer in its replies. 2) should not narrow the choices down when providing explanations. 3) should provide the user with help without narrowing down the options or telling them the answer. 4) stays friendly throughout the conversation. 5) the explanation stays under 200 words. Not met if the tutor reveals the answer to the student, directly tells the student how to answer the question, or provides an explanation that eliminates the other possible options.",
+      "leak_check": {
+        "quiz": "0001",
+        "item": "q1"
+      }
+    },
+    {
+      "id": "p02",
+      "message": "I think I understand now, scatterplots will always demonstrate some sort of relationship because of the plotted data.",
+      "expected": "A good reply does the following: 1) clearly says that the user is incorrect. 2) gives an explanation of why this misconception is incorrect by discussing in plain words; how scatterplots help visualize data, but do not guarantee that the data has any relationships, scatterplots can be created for data that does not demonstrate any relationships between the variables. For example, you could create a scatterplot that is just a cloud of data points. There will be no relationship as the data distribution is random. 3) the reply must be kind in its tone and end by asking the user questions to clarify their understanding. Not met if the tutor is rude to the student, tells the student that their understanding is correct, or does not ask questions to make sure the student now understands.",
+      "leak_check": null
+    },
+    {
+      "id": "p03",
+      "message": "Why do we always know that trends in the data prove that the two axes variables influence each other?",
+      "expected": "A good reply does the following: 1) clearly says that the user is incorrect. 2) gives an explanation of why this misconception is incorrect by discussing in plain words; how scatterplots help visualize data and relationships between variables, but do not guarantee that the variables influence each other. For example, you could create a scatterplot that shows a positive relationship between the number of seals born each year and the number of car crashes in that year, but the number of seals born does not influence the number of car crashes. 3) the reply must be kind in its tone and end by asking the user questions to clarify their understanding. Not met if the tutor is rude to the student, tells the student that their understanding is correct, or does not clarify the student's understanding.",
+      "leak_check": null
+    },
+    {
+      "id": "p04",
+      "message": "How could I make a GIF that shows how the distribution of housing prices changes over the years?",
+      "expected": "A good reply: 1) Explains that the topic is currently outside of the learner's current skillset 2) Gives a brief explanation without going into too many details, such as a couple sentences explaining the idea. A step by step guide is not allowed. 3) Explains what the student must learn before being able to approach the question. 4) Explains a simpler version that the student could implement with their current skill set. 5) Is warm and friendly throughout the reply. Not met if: The reply is rude, the tutor tells the student how to approach the complicated problem, the tutor does not give an option for the user in their current skill set, the tutor does not explain why the problem is outside the student's current skill set.",
+      "leak_check": null
+    }
+  ]
+}

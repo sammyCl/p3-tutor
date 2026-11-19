@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submissions": {
+    "s1": [
+      {
+        "id": "q1",
+        "verdict": "correct",
+        "misconception": null,
+        "why": "The user selected B. The correct answer is B. Getting an automatic water fountain can be beneficial because cats and kittens tend to prefer running water, so getting an automatic water fountain may encourage the kitten to drink more. Since they tend to prefer running water, a dish filled with water is not the best setup, so C is incorrect. Additionally, while an automatic water fountain does have to be filled less, that is not the main benefit to a water fountain, so A is incorrect."
+      },
+      {
+        "id": "q2",
+        "verdict": "correct",
+        "misconception": null,
+        "why": "The user said kittens have to be 5 pounds before being able to use an automatic litter box, which is correct. Otherwise, they may be too light for the litter box to detect them, and are small enough that they could get hurt in the litter box."
+      },
+      {
+        "id": "q3",
+        "verdict": "partial",
+        "misconception": null,
+        "why": "Limiting a kitten to one room to help them adjust is correct, but you also have to explain how it helps them adjust. For example, by limiting them to one room, all of their essentials are in the same room, making it easier for them to adjust."
+      },
+      {
+        "id": "q4",
+        "verdict": "wrong",
+        "misconception": "M4",
+        "why": "The user said A. Automatic feeders (A) and automatic water fountains (C) are safe for kittens, only automatic litter boxes (B) are not. This is because kittens are light and small, so the automatic litter box cannot detect them as accurately. Since the kittens are small, this means they could get stuck in the litterbox and injured. A kitten must weigh 5 pounds before they can use an automatic litterbox, M4."
+      },
+      {
+        "id": "q5",
+        "verdict": "correct",
+        "misconception": null,
+        "why": "The user selected B, the correct answer. It takes time for a kitten to get adjusted to a new place, and they may struggle to understand how the new litterbox works at first. This is part of the reason why keeping the kitten in a single room can be beneficial."
+      },
+      {
+        "id": "q6",
+        "verdict": "wrong",
+        "misconception": null,
+        "why": "When kittens are hiding while adjusting to a new place, it is not because they are independent. They hide because they are feeling overwhelmed by the new area, and hiding can help them feel more secure."
+      }
+    ]
+  }
+}

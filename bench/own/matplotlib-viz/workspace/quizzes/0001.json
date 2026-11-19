@@ -1,0 +1,72 @@
+{
+  "id": "0001",
+  "objective": "O1",
+  "title": "Interpreting scatterplots",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O1",
+      "stem": "If a scatterplot with an inverted y-axis shows data following a pattern going from the bottom left of the plot to the top right of the plot, what conclusion can we make about the data?",
+      "options": [
+        {
+          "id": "a",
+          "text": "The data has a positive relationship, where as the x-variable increases the y-variable also increases."
+        },
+        {
+          "id": "b",
+          "text": "The data has a negative relationship, where as the x-variable increases the y-variable decreases."
+        },
+        {
+          "id": "c",
+          "text": "The data has some sort of relationship, where the x-variable influences the y-variable in some way."
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O1",
+      "stem": "You have a scatterplot that shows how house prices have increased over the years. The price tends to increase by $50,000 every year. For a house at (2020, 600000), how much would you expect it to cost 1 year later?",
+      "unit": "dollars"
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O1",
+      "stem": "Explain why it is important to have labeled axes and ticks when interpreting data relationships in a scatterplot."
+    },
+    {"id": "q4",
+      "type": "mcq",
+      "objective": "O1",
+      "stem": "If your scatterplot has data points spread all around in a shapeless blob, what relationship does the data have?",
+      "options": [
+        {
+          "id": "a",
+          "text": "A positive relationship."
+        },
+        {
+          "id": "b",
+          "text": "We cannot conclude any relationship."
+        },
+        {
+          "id": "c",
+          "text": "A negative relationship."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "numeric",
+      "objective": "O1",
+      "stem": "You have a scatterplot that has the number of bedrooms in a house on the x-axis and the cost of the house on the y-axis. For a house at (4, 900000), how many bedrooms does the house have?",
+      "unit": "bedrooms"
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O1",
+      "stem": "Name 2 key steps to understanding a scatterplot before analyzing any data trends."
+    }
+  ]
+}

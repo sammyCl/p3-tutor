@@ -1,0 +1,30 @@
+{
+  "quiz": "0001",
+  "learner": "Carl",
+  "answers": [
+    {
+      "id": "q1",
+      "response": "b"
+    },
+    {
+      "id": "q2",
+      "response": "A kitten has to be 5 pounds"
+    },
+    {
+      "id": "q3",
+      "response": "You should limit the kitten to one room to help the kitten to adjust."
+    },
+    {
+      "id": "q4",
+      "response": "a"
+    },
+    {
+      "id": "q5",
+      "response": "b"
+    },
+    {
+      "id": "q6",
+      "response": "You want to have places to hide in the kittens room because they like to be more independent."
+    }
+  ]
+}

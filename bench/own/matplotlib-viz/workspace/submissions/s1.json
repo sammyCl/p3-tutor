@@ -1,0 +1,30 @@
+{
+  "quiz": "0001",
+  "learner": "Chester A. Arthur",
+  "answers": [
+    {
+      "id": "q1",
+      "response": "b"
+    },
+    {
+      "id": "q2",
+      "response": "The next year the house would be $650000"
+    },
+    {
+      "id": "q3",
+      "response": "You need to have labeled axes so you know what variables are being plotted."
+    },
+    {
+      "id": "q4",
+      "response": "a"
+    },
+    {
+      "id": "q5",
+      "response": "4"
+    },
+    {
+      "id": "q6",
+      "response": "You need to look at the title so you understand what the scatterplot is meant to represent, you also need to look at the axes labels so you know what variables influence each other."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "id": "0001",
+  "objective": "O1",
+  "title": "How to get the kitten room setup",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O1",
+      "stem": "What is the main reason to get an automatic water fountain?",
+      "options": [
+        {
+          "id": "a",
+          "text": "Automatic water fountains do not require you to fill the water fountain as often."
+        },
+        {
+          "id": "b",
+          "text": "Kittens prefer running water, and are more likely to drink more from it."
+        },
+        {
+          "id": "c",
+          "text": "None, having a dish filled with water is the best setup"
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O1",
+      "stem": "What is the minimum weight a kitten has to be for an automatic litter box?",
+      "unit": "pounds"
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O1",
+      "stem": "Why should a kitten be limited to one room when you first bring them home?"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O1",
+      "stem": "Which automatic cat essential is not safe for kittens?",
+      "options": [
+        {
+          "id": "a",
+          "text": "An automatic feeder."
+        },
+        {
+          "id": "b",
+          "text": "An automatic litter box."
+        },
+        {
+          "id": "c",
+          "text": "An automatic water fountain."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O1",
+      "stem": "Is it possible that the kitten will struggle with the litter box?",
+      "options": [
+        {
+          "id": "a",
+          "text": "No, kittens automatically know how to use a litter box."
+        },
+        {
+          "id": "b",
+          "text": "Yes, the kitten may have trouble learning how to use the new litter box."
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O1",
+      "stem": "Explain why you should have places for a kitten to hide in the kitten's room."
+    }
+  ]
+}

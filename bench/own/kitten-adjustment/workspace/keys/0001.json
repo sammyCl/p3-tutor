@@ -1,0 +1,52 @@
+{
+  "id": "0001",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "Kittens are more likely to drink water if it is running, automatic water fountains are able to run constantly, so there will always be running water available.",
+      "distractors": {
+        "c": "M5"
+      }
+    },
+    {
+      "id": "q2",
+      "answer": 5,
+      "tolerance": 0,
+      "rationale": "Because kittens are light and small, the automatic litter box cannot detect them as accurately. A kitten must weigh 5 pounds before they can use an automatic litterbox."
+    },
+    {
+      "id": "q3",
+      "answer": "Moving to a new place is a big adjustment for a kitten, so it is a smoother transition if you have them start in a single room. It can also help if the kitten is scared and hides, as you know they are in that one room.",
+      "accepted": [
+        "It takes a while for kittens to get used to a new place and people, starting them in one room makes the transition easier because all of its necessities are in one place."
+      ],
+      "rationale": "The right answer must discuss how it makes the transition to a new place easier for the kitten. The student should mention some ways a single room helps, such as a smaller space to search if the kitten is hiding, helping to make sure the kitten doesn't get lost, and making sure all of the kitten's necessities are close together."
+    },
+    {
+      "id": "q4",
+      "answer": "b",
+      "rationale": "Because kittens are light and small, the automatic litter box cannot detect them as accurately. Since the kittens are small, this means they could get stuck in the litterbox and injured. A kitten must weigh 5 pounds before they can use an automatic litterbox.",
+      "distractors": {
+        "a": "M4",
+        "c": "M4"
+      }
+    },
+    {
+      "id": "q5",
+      "answer": "b",
+      "rationale": "It takes time for a kitten to get adjusted to a new place, and they may struggle to understand how the new litterbox works at first.",
+      "distractors": {
+        "a": "M2"
+      }
+    },
+    {
+      "id": "q6",
+      "answer": "The kitten is adjusting to a new place, so they may feel overwhelmed at times. Giving the kitten somewhere to hide will help them to feel safe.",
+      "accepted": [
+        "The kitten may feel unsafe in the new place, so giving them somewhere to hide can make them feel more comfortable."
+      ],
+      "rationale": "A correct answer should discuss how a kitten may have trouble adjusting to the new place, and giving them somewhere to hide like a bed can help them to regulate."
+    }
+  ]
+}

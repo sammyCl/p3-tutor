@@ -1,0 +1,60 @@
+{
+  "id": "matplotlib-viz",
+  "title": "Utilizing matplotlib to plot real-world data.",
+  "learner_summary": "This learner wants to learn how to utilize the capabilities of matplotlib, and use it on real-world data. They have a background in Python and a basic understanding of data science and Numpy, but have never used matplotlib before.",
+  "minutes": 30,
+  "teach_objective": "O2",
+  "quiz_objective": "O3",
+  "graded_quiz": "0001",
+  "submissions": [
+    "s1"
+  ],
+  "objectives": [
+    {
+      "id": "O1",
+      "text": "Describe conclusions you can draw from a matplotlib scatterplot based on the distribution of the data and the axes labels."
+    },
+    {
+      "id": "O2",
+      "text": "Describe how to make a scatterplot in matplotlib and categorize different data points using colors and a legend."
+    },
+    {
+      "id": "O3",
+      "text": "Describe how to plot a function in matplotlib, and be able to plot multiple functions on the same plot while still being able to distinguish them with labels."
+    }
+  ],
+  "facts": [
+    {
+      "id": "F2.1",
+      "objective": "O2",
+      "text": "When creating a scatterplot in matplotlib, the data structures for x and y must have the same number of elements."
+    },
+    {
+      "id": "F2.2",
+      "objective": "O2",
+      "text": "Scatterplots should always have a title and labelled axes in order for someone viewing it to understand the relationships in the plotted data."
+    },
+    {
+      "id": "F2.3",
+      "objective": "O2",
+      "text": "When you are plotting multiple groups of data on the same matplotlib plot, it is important to include a legend with labels so someone viewing the scatterplot understands what the different colored data represents."
+    }
+  ],
+  "misconceptions": [
+    {
+      "id": "M1",
+      "text": "If data shows a relationship going from the bottom left of a scatterplot to the top right of a scatterplot, the data always has a positive relationship.",
+      "correction": "We cannot know what the relationship is without the axis labels, as sometimes an axis will be inverted. This makes it so the numbers decrease from left to right or bottom to top. "
+    },
+    {
+      "id": "M2",
+      "text": "Whenever you see a pattern or trend in the data, it is demonstrating that one variable influences the other.",
+      "correction": "Correlation is not causation, just because the data shows a pattern does not guarantee that this proves a cause. The axes may not be related at all, and it could just be coincidence that the trend is present."
+    },
+    {
+      "id": "M3",
+      "text": "You will always be able to recognize patterns in the data when using a scatterplot.",
+      "correction": "Sometimes data does not share a relationship, resulting in the scatterplot looking like a bunch of randomly placed dots instead of a specific pattern."
+    }
+  ]
+}

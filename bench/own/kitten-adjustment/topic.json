@@ -1,0 +1,70 @@
+{
+  "id": "kitten-adjustment",
+  "title": "Helping a New Kitten Adjust",
+  "learner_summary": "The learner is looking to get a new kitten, this is the learner's first time having a kitten, so they don't know what to expect. They want to know what steps they should take before the kitten arrives, the initial day of arrival, and how to introduce the kitten to the rest of the house to make sure the kitten feels safe and comfortable.",
+  "minutes": 30,
+  "teach_objective": "O2",
+  "quiz_objective": "O3",
+  "graded_quiz": "0001",
+  "submissions": [
+    "s1"
+  ],
+  "objectives": [
+    {
+      "id": "O1",
+      "text": "Create a list of tasks to complete in the kitten's safe room before bringing the kitten home."
+    },
+    {
+      "id": "O2",
+      "text": "Set up a plan of what to do with the kitten to make sure it feels comfortable with the new owner after bringing it home."
+    },
+    {
+      "id": "O3",
+      "text": "Create a plan of how to get the kitten adjusted to the rest of the house after the initial adjustment period."
+    }
+  ],
+  "facts": [
+    {
+      "id": "F2.1",
+      "objective": "O2",
+      "text": "During the first couple days, kitten should be limited to one room, like a spare bathroom, so it can adjust to the new area."
+    },
+    {
+      "id": "F2.2",
+      "objective": "O2",
+      "text": "The new owner should leave things that smell like them in the room so the kitten can get used to their smell."
+    },
+    {
+      "id": "F2.3",
+      "objective": "O2",
+      "text": "The new owner should have play sessions with the kitten, but leave time for the kitten to rest and explore the new space."
+    }
+  ],
+  "misconceptions": [
+    {
+      "id": "M1",
+      "text": "The kitten should be allowed to explore the whole house or apartment on the first day.",
+      "correction": "The kitten needs an adjustment period to get used to the new area. Allowing them to get used to a smaller area, like a spare bathroom, will allow them to get adjusted more easily."
+    },
+    {
+      "id": "M2",
+      "text": "The kitten is already litterbox trained, so the new owner does not have to do any litterbox training.",
+      "correction": "Kittens naturally will look for a litterbox, but since they are in a new place they will need to learn where the litterbox is."
+    },
+    {
+      "id": "M3",
+      "text": "Kittens are more independent than puppies, so it is not necessary to spend as much time with them or get them toys.",
+      "correction": "Kittens are still young and playful, and still crave human contact. It is important to spend time with them and play with them so they are entertained."
+    },
+    {
+      "id": "M4",
+      "text": "Automatic litter boxes are safe for kittens.",
+      "correction": "Because kittens are light and small, the automatic litter box cannot detect them as accurately. Since the kittens are small, this means they could get stuck in the litterbox and injured. A kitten must weigh 5 pounds before they can use an automatic litterbox."
+    },
+    {
+      "id": "M5",
+      "text": "Having a dish filled with water is the best setup for a kitten.",
+      "correction": "Cats and kittens prefer running water, and may drink more if they have an automatic water fountain. To avoid kidney issues, an automatic water fountain is a safer option."
+    }
+  ]
+}

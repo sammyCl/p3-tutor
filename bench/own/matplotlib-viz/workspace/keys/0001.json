@@ -1,0 +1,51 @@
+{
+  "id": "0001",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The scatterplot has an inverted y-axis, as a result its values decrease as they get to the top of the plot. If the pattern goes from the bottom left of the scatterplot to the top right, that means the y-values are decreasing as the x-values increase, resulting in a negative relationship. Option a does not take the inverted axis into consideration, and Option C implies that the x-axis must be causing changes in the y-axis, which is not guaranteed.",
+      "distractors": {
+        "a": "M1",
+        "c": "M2"
+      }
+    },
+    {
+      "id": "q2",
+      "answer": 650000,
+      "tolerance": 0,
+      "rationale": "The cost of the house in 2021 would be 650000 dollars. To calculate this, we take the y-value from the given data point, 600000, and add how much the price changes every year, 50000, resulting in 650000."
+    },
+    {
+      "id": "q3",
+      "answer": "The axes labels let you know which variables may share a relationship, and the axes ticks show you the direction and scale of that relationship. Without having these labels you cannot say which variables are related and by how much.",
+      "accepted": [
+        "So you know what variables you are looking at, along with the scale and direction."
+      ],
+      "rationale": "A right answer must mention that the axes labels tell you what variables are plotted, it should also mention how the axes ticks tell you the scale and direction of the axes. Both axes labels and axes ticks are needed to properly understand the relationship between data points as they show what variables are related, and how much they are related."
+    },
+    {
+      "id": "q4",
+      "answer": "b",
+      "rationale": "If a scatterplot appears to be a cloud of datapoints, there is no trend in the data as the distribution is random. Therefore, we cannot conclude any relationship between the datapoints.",
+      "distractors": {
+        "a": "M3",
+        "c": "M3"
+      }
+    },
+    {
+      "id": "q5",
+      "answer": 4,
+      "tolerance": 0,
+      "rationale": "The x-axis for the scatterplot is the number of bedrooms in a house, the y-axis is the cost of the house. When given the datapoint (4, 900000), we are being told that a four bedroom house costs $900000."
+    },
+    {
+      "id": "q6",
+      "answer": "You should review the axes labels, as they tell you what variables are being plotted. You should also review the axes scales, as they tell you how much the values of the variables change.",
+      "accepted": [
+        "You should review the title of the scatterplot to understand what is being plotted and the axes scales so you know how the direction of the axes changes."
+      ],
+      "rationale": "A correct answer must mention 2 of the following options: the axes labels because they tell us the variables being plotted, the axes ticks because they tell us the direction and magnitude of how the variables change, and the title because it tells us what the scatterplot demonstrates."
+    }
+  ]
+}
