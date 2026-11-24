@@ -64,7 +64,7 @@ TODO: your answer to prompt 4.
 Which component did you remove, and what did you predict would happen to quality and to cost before you ran it?
 Then the result, with the numbers of the ablation's run beside `final`'s, and what one run lets you claim and what it does not.
 
-TODO: your answer to prompt 5.
+I chose to remove my `lesson-figure-reviewer`, as I did not feel like it had made significant changes in previous runs. The changes tended to be small things, like correcting an arrow or making sure words did not spill out of boxes. While this is valuable for overall lesson quality, I did not feel like the small changes justified the extra cost of the subagent. I believe that removing `lesson-figure-reviewer` will not have obvious differences in overall quality, such as no obvious changes in layout or technical correctness, but will result in a measurable difference in cost, with the cost being lower as fewer subagents will be spawned. There will be fewer subagents spawned, and I believe the number of tokens used, the time taken, and the $ cost will all decrease. 
 
 ---
 
