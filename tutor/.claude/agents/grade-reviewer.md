@@ -15,9 +15,10 @@ You only report. Never write or edit any file.
 
 ## What you are handed
 
-The task message names the draft grades file, the quiz, its key, the submission and, if there is one, the lesson on the quiz's objective.
+The task message names the draft grades file, the quiz, the submission and, if there is one, the lesson on the quiz's objective.
 Read all of them, then `PREFERENCES.md` (how this learner likes feedback and explanations) and `NOTES.md`.
-Read each item's feedback beside the learner's answer and the key, the way the learner will read it after the quiz.
+Never read `keys/` or a draft key: the keys guard blocks you from `keys/`, and the verdicts in the draft come from the grader, which has read the key, so treat them as given.
+Read each item's feedback beside the learner's answer and the item's stem, the way the learner will read it after the quiz.
 
 ## The checklist
 

@@ -139,3 +139,30 @@ An example of a finished entry:
 - With and without: reviews/c3-split.md, Round 3 (without, bench/runs/_live/20261118-043114-agent-architecture-m30-r1) and bench/runs/_live/20261118-045132-agent-architecture-m30-r1 (with), the live teach run after Round 3's change, which has no round of its own
 - Review: Although this subagent was able to catch a couple issues with figures, I do not believe it made a significant enough difference to be kept in the final version. It tended to only suggest 1-2 changes each round, and those changes were small enough to not be noticeable. 
 - Kept in final: TODO
+
+### feedback
+
+- Kind: skill
+- Step added: final
+- Purpose: TODO
+- With and without: reviews/final.md, Round 1 (without) and Round 2 (with)
+- Review: TODO
+- Kept in final: TODO
+
+### out-of-scope
+
+- Kind: skill
+- Step added: final
+- Purpose: TODO
+- With and without: reviews/final.md, Round 2 (without) and Round 3 (with)
+- Review: TODO
+- Kept in final: TODO
+
+### grader
+
+- Kind: subagent
+- Step added: final
+- Purpose: TODO
+- With and without: reviews/final.md, Round 3 (without) and Round 4 (with); Round 3's run has no grading, so the grades without it are grade-s1 in bench/runs/_live/20261123-231313-agent-architecture-m30-r1 (grade was unchanged after Round 1 until Round 3)
+- Review: TODO
+- Kept in final: TODO

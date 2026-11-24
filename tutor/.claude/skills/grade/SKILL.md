@@ -19,48 +19,31 @@ When the learner gives a complete set of answers in the chat instead of naming a
 ## Read first
 
 Read `FORMATS.md`, `MISSION.md`, `PREFERENCES.md`, `NOTES.md` and every file in `learning-records/` (they are short).
-Then read the quiz in `quizzes/`, its key in `keys/`, the submission in `submissions/`, and the lesson on the quiz's objective in `lessons/` if there is one.
+Then read the quiz in `quizzes/`, the submission in `submissions/`, and the lesson on the quiz's objective in `lessons/` if there is one.
+Never read `keys/` or a draft key in `drafts/`: the keys guard blocks the main conversation from `keys/`, and the `grader` subagent reads the key for you.
 Use Read, Glob and Grep to look around and Write to create files; this job needs no shell.
 Never write anything under `.claude/`, and never edit `PREFERENCES.md` or `FORMATS.md`.
 
 `FORMATS.md` gives the exact shape of the grades file: follow it down to the file name, the verdict words and the JSON keys.
 
-## 1. Verdicts
+## 1. Verdicts and misconceptions, from the grader
 
-- Judge what the response means, not how it is worded: it is `correct` when it means what the key's answer means, even if it is oddly worded, misspelled, or reached by a valid route the key did not expect.
-- The key's `accepted` list gives examples of correct wordings, not the only ones.
-- It is `partial` when part of it is right: the right method with a slip or the wrong unit, one half of a two-part idea, or the right answer with a stated reason or an added claim that is wrong.
-- It is `wrong` when it misses the idea, contradicts it, or is blank.
-- For `mcq`, compare the option chosen with the key; if the learner wrote out an option's text instead of its id, match it to its option.
-- For `numeric`, the number is right when it is within the key's tolerance (1% of the answer when the key gives none), after converting any unit the learner stated; a reason given with it is still judged by the rules above.
-- If you are sure the key itself is wrong, grade against what is actually correct, and say so in the summary.
+1. Start the `grader` subagent with the Agent tool.
+   Its task message names the quiz (`quizzes/NNNN.json`), its key (`keys/NNNN.json`) and the submission (`submissions/sN.json`), and nothing else.
+2. Wait for its report before you do anything else. Do not write feedback, drafts or grades while it is still running.
+3. Take each item's verdict and misconception id exactly as the report gives them; do not change them, because you cannot see the key.
+   Write the feedback from the report's Idea and Their answer lines.
+4. If the report names a key problem, say so in the summary.
+5. If the grader does not return a verdict for every item, start it once more; if it still does not, finish without writing grades and tell the learner the grading could not be completed.
 
 ## 2. Misconceptions
 
-- Name a misconception id when the response shows that misconception: for `mcq`, the key's `distractors` entry for the chosen option; for other items, the misconception the answer or its reasoning shows, from the ids the workspace already uses (the keys' distractors and rationales, `NOTES.md`, the learning records).
-- Use `null` for a correct response, a slip, a blank, or a wrong answer that shows no known misconception, and never invent an id.
+The grader names a misconception id for each item, or `null`; explain it to the learner in words, never by its id alone.
 
 ## 3. Feedback
 
-Feedback is written to the learner, and it should leave them encouraged and knowing exactly what to keep and what to fix.
-Be warm without flattery: name what they actually did well, and do not praise effort, the question, or the learner.
-
-The verdict is already in its own field, so the feedback does not repeat it:
-
-- Never open with, or use as a sentence of its own, a verdict word such as "Right", "Correct", "Wrong", "Incorrect" or "Not quite".
-- Never announce the key, as in "The answer is 4" or "The correct option is c". Explain the idea, and let the right answer appear inside the reason ("each tool result needs one more call to the model, so three tools make four calls").
-- Open with what the learner did: the idea they used, the part they got, or the belief their answer shows.
-
-Keep each item's feedback exact: one to three sentences, at most about 50 words, with one idea per item.
-Cut anything that restates the question, repeats the learner's answer back at length, or explains a second idea; an analogy only when it does more than the plain sentence would.
-
-By verdict:
-
-- **correct:** name the idea they used, then add at most one short insight that links it to what comes next.
-- **partial:** say what they have, then exactly what is missing or off, and how to put it right.
-- **wrong:** say what their answer shows they were thinking, then the idea that holds and why, in plain words; when a misconception is behind it, say why it is tempting, without blame.
-
-Follow `PREFERENCES.md` for the tone and the kind of example, within these limits.
+Write each item's feedback by the feedback skill: read `.claude/skills/feedback/SKILL.md` and follow it, its shape, its rules by verdict and its limits.
+Every item, `correct` included, says why and ends with one next step.
 
 ## 4. The summary
 
@@ -74,14 +57,7 @@ No verdict words, no list of scores, and no more than about 80 words.
 
 ## 5. Check before you write
 
-For every item, reread the feedback and check that it:
-
-- has no verdict word as its first word or as a sentence of its own, and no "the answer is";
-- is three sentences or fewer, and about 50 words or fewer, or within the longer limit in "The review loop" for an item the reviewer found too short;
-- says what was right or what the learner was thinking, and what to keep or fix;
-- matches its verdict and misconception fields.
-
-Rewrite any item that fails.
+For every item, run the checks in the feedback skill's "Check each item", and rewrite any item that fails.
 
 ## 6. The review loop
 
@@ -90,12 +66,12 @@ A reviewer with a fresh context then reads the feedback the way the learner will
 Run at most two passes of review and revision. For each pass:
 
 1. Start the `grade-reviewer` subagent with the Agent tool.
-   Its task message names the draft's path, the quiz, its key, the submission, and the lesson on the quiz's objective in `lessons/` if there is one (or says there is none).
+   Its task message names the draft's path, the quiz, the submission, and the lesson on the quiz's objective in `lessons/` if there is one (or says there is none), but not the key: the reviewer checks the feedback, and the verdicts in the draft are the grader's.
    Hand it nothing else: not your reasoning, and not why you wrote any feedback the way you did.
 2. Wait for its report before you do anything else. Do not revise, write the final grades or finish while it is still running.
 3. If the report ends `Findings: 0`, the loop is over.
 4. Otherwise fix every finding in the draft, or decide not to and note why.
-   When the reviewer finds a `partial` or `wrong` item too short to explain why or to give a next step, that item may run to about 90 words and four sentences; every other rule in sections 3 to 5 still holds.
+   Keep to the feedback skill's limits while you fix them.
    If this was the second pass, the loop is over; otherwise start the next pass.
 
 Then write `review-records/NNNN-sN-grade.md`, with the quiz's number and the submission's id:
