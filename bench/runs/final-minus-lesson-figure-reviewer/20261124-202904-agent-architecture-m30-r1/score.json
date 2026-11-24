@@ -1,0 +1,184 @@
+{
+  "run_id": "20261124-202904-agent-architecture-m30-r1",
+  "scored_at": "2026-11-24T20:48:11Z",
+  "judge_model": "claude-sonnet-5-5",
+  "solver_models": [
+    "claude-sonnet-5-5",
+    "claude-haiku-5-5"
+  ],
+  "offline": false,
+  "no_model": false,
+  "jobs": {
+    "teach": {
+      "scenario": "teach",
+      "status": "ok",
+      "objective": "O3",
+      "requested_minutes": 30.0,
+      "warnings": [],
+      "ok": true,
+      "error": null,
+      "lesson": "lessons/0001-context-and-memory.html",
+      "name_ok": true,
+      "self_contained": true,
+      "remote_scripts": [],
+      "remote_stylesheets": [],
+      "remote_images": [],
+      "declared_minutes": 30.0,
+      "declared_objective": "O3",
+      "minutes_declared_ok": true,
+      "objective_declared_ok": true,
+      "words": 4276,
+      "est_minutes": 28.51,
+      "length_ratio": 0.95,
+      "length_ok": true,
+      "links": [
+        {
+          "url": "https://huggingface.co/learn/llm-course/en/chapter2/4?fw=pt",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://platform.claude.com/docs/en/build-with-claude/context-windows",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://anthropic.com/engineering/effective-context-engineering-for-ai-agents",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://arxiv.org/abs/2307.03172v3",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/concepts/memory",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://www.deeplearning.ai/short-courses/llms-as-operating-systems-agent-memory",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://docs.langchain.com/oss/python/langchain/rag",
+          "status": "ok",
+          "code": 200
+        },
+        {
+          "url": "https://forum.langchain.com",
+          "status": "ok",
+          "code": 200
+        }
+      ],
+      "dead_links": 0,
+      "judge": {
+        "facts": [
+          {
+            "id": "F3.1",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.2",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.3",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.4",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.5",
+            "present": true,
+            "correct": true
+          },
+          {
+            "id": "F3.6",
+            "present": true,
+            "correct": true
+          }
+        ],
+        "misconceptions_asserted": [],
+        "level_fit": 5,
+        "notes": "All six facts are stated and accurate. The lesson also says the window is wiped when the call ends and that the model keeps nothing between calls, which matches the facts. It builds on the two earlier sessions, defines tokens and the context window before using them, and uses Python and RAM analogies and makerspace examples suited to this learner. The pace is brisk, but the terms are introduced where they first appear."
+      },
+      "model_scored": true,
+      "facts_present": 1.0,
+      "facts_correct": 1.0
+    },
+    "quiz": null,
+    "grade": null,
+    "tutor": null
+  },
+  "summary": {
+    "teach_facts_correct": 1.0,
+    "teach_misconceptions": 0,
+    "teach_length_ratio": 0.95,
+    "teach_dead_links": 0,
+    "quiz_key_agreement": null,
+    "quiz_ambiguous": null,
+    "quiz_wrong_key": null,
+    "grade_verdict_agreement": null,
+    "grade_false_wrong": null,
+    "grade_misconception_hit": null,
+    "tutor_leaks": null,
+    "tutor_behavior_met": null,
+    "cost": {
+      "teach": {
+        "scenarios": 1,
+        "tokens_total": 4963039,
+        "tokens_output": 136294,
+        "minutes": 19.01,
+        "subagents": 11,
+        "cost_usd_list": 2.7769
+      },
+      "quiz": {
+        "scenarios": 0,
+        "tokens_total": 0,
+        "tokens_output": 0,
+        "minutes": 0.0,
+        "subagents": 0,
+        "cost_usd_list": null
+      },
+      "grade": {
+        "scenarios": 0,
+        "tokens_total": 0,
+        "tokens_output": 0,
+        "minutes": 0.0,
+        "subagents": 0,
+        "cost_usd_list": null
+      },
+      "tutor": {
+        "scenarios": 0,
+        "tokens_total": 0,
+        "tokens_output": 0,
+        "minutes": 0.0,
+        "subagents": 0,
+        "cost_usd_list": null
+      },
+      "total": {
+        "scenarios": 1,
+        "tokens_total": 4963039,
+        "tokens_output": 136294,
+        "minutes": 19.01,
+        "subagents": 11,
+        "cost_usd_list": 2.7769
+      }
+    }
+  },
+  "scoring_cost": {
+    "tokens": 17717,
+    "cost_usd_list": 0.0591,
+    "calls": 1
+  },
+  "warnings": []
+}

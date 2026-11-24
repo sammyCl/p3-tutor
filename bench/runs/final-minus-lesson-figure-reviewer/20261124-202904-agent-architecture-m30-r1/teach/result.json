@@ -1,0 +1,144 @@
+{
+  "duration_api_ms": 900485,
+  "stop_reason": "end_turn",
+  "session_id": "2c2e2404-4631-437e-83ff-3efc9edbfa97",
+  "total_cost_usd": 2.7769333699999996,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 2843,
+    "cache_read_input_tokens": 281010,
+    "output_tokens": 180,
+    "output_tokens_details": {
+      "thinking_tokens": 22
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 2843,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 103,
+        "cache_read_input_tokens": 141819,
+        "cache_creation_input_tokens": 215,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 215
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 164,
+      "outputTokens": 103640,
+      "cacheReadInputTokens": 3972470,
+      "cacheCreationInputTokens": 397722,
+      "webSearchRequests": 0,
+      "costUSD": 2.6248145000000007,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 31791,
+      "cacheCreationEphemeral5mInputTokens": 266699,
+      "cacheCreationEphemeral1hInputTokens": 131023,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 435541,
+      "outputTokens": 32654,
+      "cacheReadInputTokens": 3202,
+      "cacheCreationInputTokens": 17646,
+      "webSearchRequests": 9,
+      "costUSD": 0.15211886999999996,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 18291,
+      "cacheCreationEphemeral5mInputTokens": 17646,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 11,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 11
+    },
+    "started_in_background": 10,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 11,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "lesson-sources-finder": 1,
+      "web-fetch": 1,
+      "lesson-timer": 1,
+      "lesson-fact-checker": 2,
+      "lesson-pedagogy-reviewer": 2,
+      "lesson-alignment-reviewer": 2,
+      "lesson-quality-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 2,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Nothing left to do, so I stopped the loop. The lesson is at `lessons/0001-context-and-memory.html`, with the review record in `review-records/0001-lesson.md`. It is waiting on you: ask for a quiz when you're ready, or tell me if you want it shorter or split into two lessons.",
+  "ttft_ms": 1323,
+  "type": "result",
+  "duration_ms": 2656,
+  "uuid": "fdee8b7c-0cea-4192-a0dc-9161c6efb6a5",
+  "ttft_stream_ms": 1048,
+  "time_to_request_ms": 272,
+  "first_content_frame_ms": 1049,
+  "queued_turn_count": 0,
+  "result_index": 10,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 180,
+      "cacheReadInputTokens": 281010,
+      "cacheCreationInputTokens": 2843,
+      "webSearchRequests": 0,
+      "costUSD": 0.041285,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 22,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 2843,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-12-20T01:11:02.473Z"
+}
