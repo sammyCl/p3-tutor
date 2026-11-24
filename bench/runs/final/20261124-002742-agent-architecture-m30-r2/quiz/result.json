@@ -1,0 +1,147 @@
+{
+  "duration_api_ms": 237492,
+  "stop_reason": "end_turn",
+  "session_id": "f825b0c2-75e8-490a-9f62-1986f70944cf",
+  "total_cost_usd": 0.658994,
+  "usage": {
+    "input_tokens": 20,
+    "cache_creation_input_tokens": 52033,
+    "cache_read_input_tokens": 407326,
+    "output_tokens": 21846,
+    "output_tokens_details": {
+      "thinking_tokens": 5499
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 52033,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 458,
+        "cache_read_input_tokens": 58948,
+        "cache_creation_input_tokens": 4096,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4096
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 30,
+      "outputTokens": 33448,
+      "cacheReadInputTokens": 444395,
+      "cacheCreationInputTokens": 80786,
+      "webSearchRequests": 0,
+      "costUSD": 0.658994,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 11167,
+      "cacheCreationEphemeral5mInputTokens": 28753,
+      "cacheCreationEphemeral1hInputTokens": 52033,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [
+    {
+      "tool_name": "Read",
+      "tool_use_id": "toolu_01WZD9mmw8VUYJjoBc38K72K",
+      "tool_input": {
+        "file_path": "/private/var/folders/m0/g2r68gtx0_bbw8y2466rlwnh0000gn/T/p3-54dp2lnu/keys/0001.json"
+      }
+    },
+    {
+      "tool_name": "Grep",
+      "tool_use_id": "toolu_01PCTBeVhb84cvDbTrWhZDws",
+      "tool_input": {
+        "pattern": "M1[0-9]",
+        "path": "/private/var/folders/m0/g2r68gtx0_bbw8y2466rlwnh0000gn/T/p3-54dp2lnu",
+        "glob": "!drafts/*",
+        "output_mode": "content"
+      }
+    },
+    {
+      "tool_name": "Bash",
+      "tool_use_id": "toolu_016LD3QY9SafUToyuDriNTsf",
+      "tool_input": {
+        "command": "python3 -I - <<'EOF'\nimport json\nq=json.load(open('drafts/quiz-0002.json')); k=json.load(open('drafts/key-0002.json'))\nI={i['id']:i for i in q['items']}; K={i['id']:i for i in k['items']}\nI['q1']['options']=[\n {\"id\":\"a\",\"text\":\"Agents call tools to get information, and workflows never do\"},\n {\"id\":\"b\",\"text\":\"An agent's tools run inside the model, while a workflow's tools run in the program\"},\n {\"id\":\"c\",\"text\":\"In a workflow, code fixes the order of steps; in an agent, the model decides the next step\"},\n {\"id\":\"d\",\"text\":\"One model call per request makes a workflow, and several calls make an agent\"}]\nI['q3']['stem']=\"An agent keeps calling the model until it decides to stop, while a fixed workflow makes a set number of calls. What does an agent therefore do more of, which makes each request cost more? Answer in a few words.\"\nK['q3']['answer']=\"model calls\"\nK['q3']['accepted']=[\"more model calls\",\"calls to the model\",\"model calls per request\",\"calls\",\"tokens\",\"it makes more model calls\",\"extra model calls\",\"steps\"]\nK['q3']['rationale']=\"An agent loops until it decides to stop, so a request takes more model calls, and how many is not known in advance; a workflow has a fixed, small number. An answer about the agent using a bigger or smarter model misses that the extra cost comes from the loop.\"\nI['q4']['options'][2]={\"id\":\"c\",\"text\":\"An agent's output varies from run to run, so it cannot be tested at all\"}\nK['q4']['rationale']=K['q4']['rationale'].replace(\"the belief that an agent cannot be inspected or tested\",\"the belief that an agent cannot be tested at all because its output varies\")\nI['q5']['stem']=\"Each evening the assistant reminds every student who has a booking tomorrow. It does this in three steps:\\n- Look up tomorrow's bookings.\\n- Write one friendly message per booking.\\n- Send each message.\\nNo student is involved while it runs. Which design is the cheapest and most predictable?\"\nI['q5']['options'][1]={\"id\":\"b\",\"text\":\"An agent, because deciding when to send needs judgment, so the model must decide it\"}\nI['q5']['options'][2]={\"id\":\"c\",\"text\":\"A workflow, because every night follows the same known steps, and code can loop over the bookings\"}\nK['q5']['rationale']=K['q5']['rationale'].replace(\"b shows M11, that acting through tools makes a system an agent\",\"b shows M20, that any step needing judgment means the model must own the control flow\")\nK['q5']['distractors']['b']=\"M20\"\nI['q6']['stem']=\"A student asks:\\n\\\"I want to cut a 6 mm acrylic case with a hinge. Which machine should I use, do I need training, and when can I get time?\\\"\\nWhich tools are needed, and in what order, depends on what each answer turns up. The possible combinations are too many to write out. Which design is best for handling requests like this within a small budget?\"\nI['q6']['options'][1]={\"id\":\"b\",\"text\":\"Let the model pick which tool to use next, with a limit on how long it can work so cost stays bounded\"}\nI['q6']['options'][3]={\"id\":\"d\",\"text\":\"Let the model keep working until it says it is done, because a limit could cut answers short\"}\njson.dump(q,open('drafts/quiz-0002.json','w'),indent=2)\njson.dump(k,open('drafts/key-0002.json','w'),indent=2)\njson.dump(q,open('quizzes/0002.json','w'),indent=2)\njson.dump(k,open('keys/0002.json','w'),indent=2)\nEOF\nmkdir -p review-records && cat > review-records/0002-quiz.md <<'EOF'\n# Review of quiz 0002\n\nPasses: 2 (stopped because: the cap of two passes)\n\n## Pass 1\n- Findings: 17\n- 1a/2b/5a q3: leaned on tokens and context the learner has not met -> reduced to \"more model calls\"\n- 1b: no stretch item -> replaced q4 (duplicate of q5) with testability, and made q5 and q6 new makerspace situations\n- 1c: weak distractors -> rewrote q1, q5, q6 options (dropped the no-tools option, added the per-case-branch option)\n- 2a: q4 duplicated q5 -> q4 now tests testability\n- 3a: long stems -> bullets in q2\n- 3b/3c: option openings and echoed words -> varied openings, reworded q2 d and q5 c\n- 3e: q3 answer too long for exact match -> shortened and widened accepted\n- 3f: q4 stem leaked the definition; q5 reran q2 -> rewrote both\n- 4a-4c: weak options and the q2 c mapping -> reworded options and rationales\n- 4d: draft paths -> final files written to quizzes/ and keys/ at the end\n- 5b: q5 close to q2 -> new reminder scenario\n\n## Pass 2\n- Findings: 8\n- 1a q3/q4: no lesson exists -> q3 stem now supplies the premise; q4 kept, because it asks for a reason that can be reasoned from the idea of a fixed path\n- 1b: stretch item last -> not moved, because item ids stay stable and q5 also stretches\n- 1c: weak distractors -> q4 c and q5 b rewritten; q1 a, q4 d and q5 d kept, as they encode real misconceptions\n- 3a: long stems -> q5 and q6 now use bullets and put the quote on its own line\n- 3b: correct option has a different opening -> q1 options reworded; q2 and q5 kept, because a \"Workflow\" distractor with a bad reason would be a joke option\n- 3c: q5 c echoed the stem -> reworded\n- 3e: q3 phrasing risk -> stem narrowed to one phrasing\n- 3f: q6 b hinted at q3 -> reworded without \"loop\" or \"cap\"; q1 c kept, as the definition must be among the options\nEOF"
+      }
+    }
+  ],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 2,
+    "requested": {
+      "background": 0,
+      "foreground": 2,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 2,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "quiz-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 22,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Quiz 0002 is written at `quizzes/0002.json`, with its key at `keys/0002.json`.\n\nIt has six questions on O4, \"Workflows and agents: who owns the control flow\". Four check the core ideas and two apply them to makerspace situations:\n- **Core ideas:** who owns the control flow (code in a workflow, the model in an agent), and why using tools or several model calls doesn't make something an agent. It also covers why agents cost more per request, and why a fixed workflow is easier to test.\n- **Applying:** a nightly booking-reminder job, and an open-ended student request with a small budget.\n\n- **Ahead of the lessons:** there is no lesson on this objective yet, so the quiz is ahead of the lessons. The cost and testing questions rely on ideas Riley hasn't been taught, and I made the cost question's stem supply its premise.\n- **Misconception ids:** I couldn't read `keys/0001.json`, so I used M11–M22 for the misconceptions in this key. If quiz 0001's key already uses any of those ids for something else, they will need renumbering.\n- **Reviews:** both review passes ran, and the second one still had 8 findings. I fixed most of them and left a few on purpose. For example, I did not reorder the items, because the item ids stay stable. The review record is `review-records/0002-quiz.md`.\n\nRiley can take it when they are ready.",
+  "ttft_ms": 1202,
+  "type": "result",
+  "duration_ms": 240752,
+  "uuid": "69ed8053-6af6-4883-acd9-2f6ee6cdef4e",
+  "ttft_stream_ms": 709,
+  "time_to_request_ms": 193,
+  "first_content_frame_ms": 709,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 30,
+      "outputTokens": 33448,
+      "cacheReadInputTokens": 444395,
+      "cacheCreationInputTokens": 80786,
+      "webSearchRequests": 0,
+      "costUSD": 0.658994,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 11167,
+      "cacheCreationEphemeral5mInputTokens": 28753,
+      "cacheCreationEphemeral1hInputTokens": 52033,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-12-20T01:11:02.473Z"
+}

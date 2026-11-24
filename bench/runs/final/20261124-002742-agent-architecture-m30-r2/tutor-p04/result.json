@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 12254,
+  "stop_reason": "end_turn",
+  "session_id": "03629c79-c069-4b56-a3c9-7794c8830b19",
+  "total_cost_usd": 0.1131708,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 22512,
+    "cache_read_input_tokens": 99968,
+    "output_tokens": 1311,
+    "output_tokens_details": {
+      "thinking_tokens": 23
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 22512,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 495,
+        "cache_read_input_tokens": 33215,
+        "cache_creation_input_tokens": 308,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 308
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1311,
+      "cacheReadInputTokens": 99968,
+      "cacheCreationInputTokens": 22512,
+      "webSearchRequests": 0,
+      "costUSD": 0.1131708,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 23,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22512,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 8,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Five or ten is the wrong question, because \"more agents always give better results\" isn't true. It's a tempting idea, since more workers sounds like more capacity. But an agent here is a model running in its own loop, and each one adds costs.\n\n- **Money:** every agent makes its own model calls, and each call re-reads its instructions and context. Ten agents means roughly ten times the context to pay for. Your sponsor's budget is small.\n- **Coordination:** agents have to pass information to each other as text. Each handoff can lose or garble details. For example, a \"booking\" agent might not get the student's training status from a \"manuals\" agent.\n- **More places to fail:** with ten agents, you have ten sets of instructions to get right and ten places a bug can hide.\n\nSplitting pays off in a few cases:\n\n- The subtasks are truly independent, so they can run in parallel.\n- One agent's context gets too big or cluttered with unrelated material.\n- The tools or instructions for different jobs conflict.\n\nThink of it like splitting a program into services. It helps when the parts are independent, and it hurts when you add network calls between things that could have been function calls.\n\nFor your assistant, start with one agent that has three tools: manual search, calendar check and booking. Booking is a fixed sequence (check availability, then confirm, then book), so it may fit better as a plain workflow than as an agent. Only split if you can name a specific problem a single agent can't handle.\n\nCan you name one thing in your assistant that is independent enough from the rest to justify its own agent? What would make it independent?",
+  "ttft_ms": 1413,
+  "type": "result",
+  "duration_ms": 12602,
+  "uuid": "e263e84e-ce23-4d5c-8f24-d639b7d34665",
+  "ttft_stream_ms": 912,
+  "time_to_request_ms": 174,
+  "first_content_frame_ms": 912,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1311,
+      "cacheReadInputTokens": 99968,
+      "cacheCreationInputTokens": 22512,
+      "webSearchRequests": 0,
+      "costUSD": 0.1131708,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 23,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 22512,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-12-20T01:11:02.473Z"
+}

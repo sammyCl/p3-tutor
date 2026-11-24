@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "An agent is a model inside a loop: it picks an action, the program runs it, and the result comes back for the next decision. A longer prompt or bigger context window only changes what one call sees, which is why they don't make an agent. Can you say what the loop adds that a single call lacks?"
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "A model only writes text, so to use a tool it writes a request naming the tool and its arguments, here the laser cutter and tomorrow's date; the program then runs it. Can you write that request as a Python dict?"
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "You picked 'run it longer', a fair hope if each step moved closer to the fix. But a loop needs a stopping condition, because an agent does not always make progress. This one repeats the same edit and sees the same failure, so more steps add cost and no new information. A step limit is a cap on loop turns, like `while steps < MAX`. Write that loop and say what it reports when it stops."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "Each model call produces one thing: a tool request or the final answer. Your count and sequence are right; the part to fix is that the model does not run the tools. It only asks, and the program around it runs each one.\n- Calls 1 to 3: the model requests a tool; the program runs it.\n- Call 4: the model writes the answer.\nRedraw this run as two columns, model on the left and program on the right."
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "The model keeps nothing between calls, so the program must put the tool's result into the next input and call the model again. Your group-chat picture fits. What do you think happens to that thread's size after 40 steps?"
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "The name is a start, but the model picks a tool from a description the program gives it: the name, what the tool does and what arguments it takes. check_calendar alone does not say when to choose it or what to pass in, and the description does. Write a two-sentence description of check_calendar that a model could choose by."
+    }
+  ],
+  "summary": "You have the loop down: the model requests a tool by name and arguments, and the result is fed back in. The idea to work on is that a loop needs a stopping condition, because a stuck agent otherwise burns your sponsor's model budget; tool descriptions come second. Next, write a step limit for the assistant and say what it reports when it fires."
+}

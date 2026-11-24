@@ -1,0 +1,110 @@
+{
+  "duration_api_ms": 201672,
+  "stop_reason": "end_turn",
+  "session_id": "fe822050-b558-4fba-826f-5f4e087807c7",
+  "total_cost_usd": 0.5750598,
+  "usage": {
+    "input_tokens": 10,
+    "cache_creation_input_tokens": 15015,
+    "cache_read_input_tokens": 194403,
+    "output_tokens": 9765,
+    "output_tokens_details": {
+      "thinking_tokens": 2376
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 15015,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 344,
+        "cache_read_input_tokens": 53693,
+        "cache_creation_input_tokens": 4585,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 4585
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 32,
+      "outputTokens": 27382,
+      "cacheReadInputTokens": 414828,
+      "cacheCreationInputTokens": 75517,
+      "webSearchRequests": 0,
+      "costUSD": 0.5750598,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 10292,
+      "cacheCreationEphemeral5mInputTokens": 28250,
+      "cacheCreationEphemeral1hInputTokens": 47267,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwty84cq-13fecfaa"
+  },
+  "subagent_stats": {
+    "spawned": 2,
+    "requested": {
+      "background": 0,
+      "foreground": 1,
+      "unset": 1
+    },
+    "started_in_background": 1,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 2,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "quiz-reviewer": 2
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The quiz is ready at `quizzes/0002.json`, and its key is at `keys/0002.json`. You can take it when you're ready.\n\nIt has six questions on O4, one of them a short answer. The first four check the ideas: what separates a workflow from an agent by who decides the order of steps, who owns the flow in a loop where the code runs the tools, what has to be true of a task for an agent to be worth its extra cost, and which kind of task should stay a fixed workflow. The last two put you in makerspace decisions: how to build a booking request, and how to split the assistant at your design review.\n\nThere is no lesson on O4 yet, so this quiz is ahead of the lessons. I didn't write one.\n\nI couldn't read the misconception ids in `keys/0001.json`, so I numbered the new ones M20–M28 to avoid clashing with any existing id. Each is explained in plain words in the key's rationales.\n\nThe reviewer ran two passes and the second still had findings. I fixed most of them and left a few for the reasons in `review-records/0002-quiz.md`.",
+  "ttft_ms": 19316,
+  "type": "result",
+  "duration_ms": 106535,
+  "uuid": "e7c58720-1eb3-40bc-a971-c6859eec1558",
+  "ttft_stream_ms": 750,
+  "time_to_request_ms": 86,
+  "first_content_frame_ms": 751,
+  "queued_turn_count": 0,
+  "result_index": 1,
+  "model_usage_since_last_result": {},
+  "credential_expires_at": "2026-12-20T01:11:02.473Z"
+}

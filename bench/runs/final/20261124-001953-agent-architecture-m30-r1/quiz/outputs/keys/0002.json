@@ -1,0 +1,41 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "d",
+      "rationale": "Who owns the control flow is the difference: in a workflow the code fixes the order of steps, in an agent the model chooses the next step. Picking a means thinking a workflow has no model in it (M21); picking b means thinking that using tools is what makes something an agent (M23); picking c means thinking that any system that calls the model several times is an agent (M20).",
+      "distractors": {"a": "M21", "b": "M23", "c": "M20"}
+    },
+    {
+      "id": "q2",
+      "answer": "b",
+      "rationale": "The model picks each next action, so the model owns the control flow; the code only carries out its choices and enforces a limit. Picking a or d shows the belief that whoever runs the tools or passes results around owns the flow (M28); picking c shows the belief that a step limit hands the flow to the code, when it only caps the run (M24).",
+      "distractors": {"a": "M28", "c": "M24", "d": "M28"}
+    },
+    {
+      "id": "q3",
+      "answer": "its steps cannot be known in advance",
+      "accepted": ["the steps are unpredictable", "the path depends on earlier results", "each step depends on the previous result", "the steps can't be planned ahead", "the steps can't be known ahead of time", "the path can't be known ahead", "open-ended", "the number and order of steps varies", "steps differ each time", "the next step depends on what was found", "the steps are not known in advance"],
+      "rationale": "An agent is worth its extra calls only when the path cannot be written ahead of time, because each next step depends on what the last one found. If the steps are known, a fixed workflow does the same job for less."
+    },
+    {
+      "id": "q4",
+      "answer": "c",
+      "rationale": "Lookup then a fixed reminder has steps known in advance, so the code can own them. Picking a or d shows the belief that a workflow can handle any task if enough branches are written, even when the next check depends on what the last one found (M27); picking b shows the same belief for a task where the choice and order of tools is open (M27).",
+      "distractors": {"a": "M27", "b": "M27", "d": "M27"}
+    },
+    {
+      "id": "q5",
+      "answer": "b",
+      "rationale": "The steps are known, so the code should own them and call the model only where language is needed: reading the request and writing the reply. That means the fewest model calls and the most predictable run. Picking a shows the belief that an agent is better everywhere (M22); picking c shows the belief that capping steps turns an agent into a workflow, but the model still chooses the steps (M24); picking d shows the belief that a workflow cannot use a model (M21), though plain code cannot read a free-text message.",
+      "distractors": {"a": "M22", "c": "M24", "d": "M21"}
+    },
+    {
+      "id": "q6",
+      "answer": "a",
+      "rationale": "Use an agent only where the path cannot be known ahead (open-ended manual search) and a fixed workflow where the steps are known (the training check). Picking b shows the belief that workflows are right for everything because they are cheaper, even when the lookups cannot be planned (M25); picking c shows the belief that an agent is better everywhere (M22); picking d reverses the split, paying for a model to choose steps that never vary while forcing a fixed path on open-ended searching.",
+      "distractors": {"b": "M25", "c": "M22"}
+    }
+  ]
+}

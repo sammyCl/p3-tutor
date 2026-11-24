@@ -1,0 +1,132 @@
+{
+  "duration_api_ms": 657216,
+  "stop_reason": "end_turn",
+  "session_id": "7b46ea93-a096-47b4-a56d-e7fcafaca20f",
+  "total_cost_usd": 2.0074113000000002,
+  "usage": {
+    "input_tokens": 14,
+    "cache_creation_input_tokens": 20219,
+    "cache_read_input_tokens": 597591,
+    "output_tokens": 14150,
+    "output_tokens_details": {
+      "thinking_tokens": 1847
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 20219,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 697,
+        "cache_read_input_tokens": 109558,
+        "cache_creation_input_tokens": 1366,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 1366
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 108,
+      "outputTokens": 76923,
+      "cacheReadInputTokens": 2054122,
+      "cacheCreationInputTokens": 298010,
+      "webSearchRequests": 0,
+      "costUSD": 1.8697527,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 23974,
+      "cacheCreationEphemeral5mInputTokens": 198097,
+      "cacheCreationEphemeral1hInputTokens": 99913,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 369381,
+      "outputTokens": 21441,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 9,
+      "costUSD": 0.13765859999999996,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 9940,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "origin": {
+    "kind": "task-notification",
+    "producer": "session-task",
+    "runId": "0mwtydf1p-8f1fc0b6"
+  },
+  "subagent_stats": {
+    "spawned": 7,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 7
+    },
+    "started_in_background": 7,
+    "max_depth": 1,
+    "spawned_by_subagents": 0,
+    "completed": 7,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {
+      "lesson-sources-finder": 1,
+      "lesson-timer": 1,
+      "lesson-fact-checker": 1,
+      "lesson-pedagogy-reviewer": 1,
+      "lesson-alignment-reviewer": 1,
+      "lesson-quality-reviewer": 1,
+      "lesson-figure-reviewer": 1
+    }
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 37,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I wrote the O3 lesson at `lessons/0001-context-and-memory.html` (30 minutes, about 5,000 words). It has not been through a second review pass.\n\nBy the end, you can say whether any piece of information in the makerspace assistant belongs in the context window, a saved note or a searchable manual, and why. The sections cover:\n- **Context window and tokens:** what the model can see in one call, and why tokens set both the size limit and the cost.\n- **Between steps:** the history is re-sent on every call, shown with a worked token-cost example (10,750 input tokens versus 4,950 when the calendar tool returns a short result).\n- **When the window fills:** trimming, summarising and clearing old tool results.\n- **Between sessions:** saved notes, such as a student's training status.\n- **Retrieval:** how the assistant finds the right page in a long manual.\n- **Practice:** a decision table, two worked examples, two \"your turn\" tasks, and check questions in the other sections.\n\nThe rest of the lesson:\n- The warm-up recalls your earlier work on the agent loop.\n- The lesson cites Anthropic, OpenAI, LangChain, DeepLearning.AI and Hugging Face, and ends with a community link.\n- I added the sources to `RESOURCES.md`.\n- I noted the lesson in `NOTES.md`.\n- The review log is `review-records/0001-lesson.md`.\n\nI ran one review pass (fact check, pedagogy, alignment, quality, figures) and fixed the findings, then stopped to save cost. The revisions themselves were not re-reviewed. The review log also records two findings I left alone: the two \"Your turn\" tasks still run from open to guided rather than the reverse, and Figure 2's drawing still shows no question going in (its title and caption say so). I did not write a cheat sheet or a learning record, since a lesson alone is not evidence of learning.\n\nYou can ask me for a quiz on this lesson when you're ready, or ask me anything in it that's unclear.\n\nA question for you: in \"Your turn 1\", where do you put the student's claim \"I finished the CNC router training today\", and why?",
+  "ttft_ms": 12469,
+  "type": "result",
+  "duration_ms": 108859,
+  "uuid": "7c2b1e81-b301-4bbd-b1b6-d646a3ffadf8",
+  "ttft_stream_ms": 588,
+  "time_to_request_ms": 27,
+  "first_content_frame_ms": 589,
+  "queued_turn_count": 0,
+  "result_index": 7,
+  "model_usage_since_last_result": {},
+  "credential_expires_at": "2026-12-20T01:11:02.473Z"
+}

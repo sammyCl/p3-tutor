@@ -1,0 +1,73 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows and agents: who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "In a system built around a language model, what is the clearest difference between a workflow and an agent?",
+      "options": [
+        {"id": "a", "text": "A workflow calls no language model, while an agent calls one"},
+        {"id": "b", "text": "An agent can call tools, while a workflow cannot call any tools"},
+        {"id": "c", "text": "An agent calls the model several times, while a workflow calls it once"},
+        {"id": "d", "text": "In a workflow the code sets the order of steps, in an agent the model does"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A program gives a model a goal and three tools. On each turn the model picks the next tool or finishes. The code runs the chosen tool, hands back the result, and stops the loop after at most 5 turns. Who owns the control flow?",
+      "options": [
+        {"id": "a", "text": "The code, because it is the part that actually runs every tool"},
+        {"id": "b", "text": "The model, because it chooses each next action until it finishes"},
+        {"id": "c", "text": "The code, because its 5-turn limit caps how long the run can last"},
+        {"id": "d", "text": "Neither, because the loop makes the order of actions random"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O4",
+      "stem": "An agent costs more model calls than a fixed workflow. In a few words, what must be true about a task for that extra cost to be worth it?"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which of these tasks should stay a fixed workflow, because its steps and their order are known before the request arrives?",
+      "options": [
+        {"id": "a", "text": "Working out why a laser cut failed, where each check depends on the last finding"},
+        {"id": "b", "text": "Handling a free-form request that may need any of five tools in any order"},
+        {"id": "c", "text": "Looking up a student's training record, then sending the same reminder if it has lapsed"},
+        {"id": "d", "text": "Choosing which of 12 machines suits a new project by comparing manuals as it goes"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A student writes, \"Book the 3D printer for Friday at 2 pm.\" Every booking needs the same steps:\n- pull the machine, day and time out of the message\n- check the calendar\n- book the slot if it is free\n- reply to the student\nYour sponsor's model budget is small. Which design is best, judged on cost and predictability?",
+      "options": [
+        {"id": "a", "text": "An agent given every tool, deciding the steps on each request"},
+        {"id": "b", "text": "Fixed code for the steps, with model calls only to read and reply"},
+        {"id": "c", "text": "An agent capped at 3 steps, since a cap turns it into a workflow"},
+        {"id": "d", "text": "Plain code with no model calls, since workflows never use a model"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "At your design review you must split the assistant into two parts.\n- Part 1 answers open-ended questions from many manuals; the number and order of searches depends on what each search returns.\n- Part 2 checks a student's training record on arrival: look it up, then either list the missing course or confirm access, every time.\nWhich split would you defend, judged on cost and reliability?",
+      "options": [
+        {"id": "a", "text": "Part 1 as an agent, part 2 as a fixed workflow, since only part 1 has unknown steps"},
+        {"id": "b", "text": "Both as fixed workflows, since a workflow is cheaper and more predictable than an agent"},
+        {"id": "c", "text": "Both as one agent, since a single loop is simpler to build and to explain"},
+        {"id": "d", "text": "Part 1 as a fixed workflow, part 2 as an agent, since part 2 acts on a student's record"}
+      ]
+    }
+  ]
+}

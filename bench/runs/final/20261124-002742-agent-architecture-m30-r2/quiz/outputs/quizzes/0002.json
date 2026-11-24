@@ -1,0 +1,73 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows and agents: who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which statement correctly separates a workflow from an agent?",
+      "options": [
+        {"id": "a", "text": "Agents call tools to get information, and workflows never do"},
+        {"id": "b", "text": "An agent's tools run inside the model, while a workflow's tools run in the program"},
+        {"id": "c", "text": "In a workflow, code fixes the order of steps; in an agent, the model decides the next step"},
+        {"id": "d", "text": "One model call per request makes a workflow, and several calls make an agent"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A makerspace booking handler always runs the same three steps:\n- Step 1: a model call reads the student's message and extracts the machine and the date.\n- Step 2: the program's code calls check_calendar with those values.\n- Step 3: a second model call writes the reply.\nHow should you classify this system?",
+      "options": [
+        {"id": "a", "text": "Agent: the system uses a tool to read the booking calendar"},
+        {"id": "b", "text": "Agent: the model is called twice for each request"},
+        {"id": "c", "text": "Agent: models read the student's text and choose the tool's arguments"},
+        {"id": "d", "text": "Workflow: nothing the model writes changes which step runs next"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "short",
+      "objective": "O4",
+      "stem": "An agent keeps calling the model until it decides to stop, while a fixed workflow makes a set number of calls. What does an agent therefore do more of, which makes each request cost more? Answer in a few words."
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Your team must test the assistant before the design review. Which statement is a real reason a fixed workflow is easier to test than an agent?",
+      "options": [
+        {"id": "a", "text": "The same kind of input always passes through the same steps, so each step can be checked alone"},
+        {"id": "b", "text": "Its model calls return identical text every time, so outputs can be compared exactly"},
+        {"id": "c", "text": "An agent's output varies from run to run, so it cannot be tested at all"},
+        {"id": "d", "text": "Code written by people is always correct, so a workflow needs little testing at all"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Each evening the assistant reminds every student who has a booking tomorrow. It does this in three steps:\n- Look up tomorrow's bookings.\n- Write one friendly message per booking.\n- Send each message.\nNo student is involved while it runs. Which design is the cheapest and most predictable?",
+      "options": [
+        {"id": "a", "text": "An agent, because each reminder is worded differently, so the model must own the control flow"},
+        {"id": "b", "text": "An agent, because deciding when to send needs judgment, so the model must decide it"},
+        {"id": "c", "text": "A workflow, because every night follows the same known steps, and code can loop over the bookings"},
+        {"id": "d", "text": "An agent, because the number of bookings changes each night, which a fixed program cannot handle"}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A student asks:\n\"I want to cut a 6 mm acrylic case with a hinge. Which machine should I use, do I need training, and when can I get time?\"\nWhich tools are needed, and in what order, depends on what each answer turns up. The possible combinations are too many to write out. Which design is best for handling requests like this within a small budget?",
+      "options": [
+        {"id": "a", "text": "Write a fixed branch of steps for each machine and question type, and route each message to one"},
+        {"id": "b", "text": "Let the model pick which tool to use next, with a limit on how long it can work so cost stays bounded"},
+        {"id": "c", "text": "Run the manual, calendar and training tools in a fixed order every time, then write the answer"},
+        {"id": "d", "text": "Let the model keep working until it says it is done, because a limit could cut answers short"}
+      ]
+    }
+  ]
+}

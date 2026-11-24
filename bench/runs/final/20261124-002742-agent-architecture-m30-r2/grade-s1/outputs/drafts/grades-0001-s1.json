@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "An agent is a model run inside a loop, like a while loop in code: the model picks an action, the program runs it, and the result goes back in. Anything else only changes what one call sees. Next: where would the makerspace assistant's loop stop?"
+    },
+    {
+      "id": "q2",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "A model only writes text, so it cannot open a system. It returns a tool request: a message naming the tool and its arguments, the details passed to it. Picturing the model doing the action is an easy mix-up, since the loop feels like one system. Here:\n- the model writes check_calendar with the laser cutter and tomorrow's date;\n- the program runs it.\nNext: who runs check_calendar, and how do you know?"
+    },
+    {
+      "id": "q3",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "A stuck model keeps repeating itself, so the loop needs a stopping condition outside the model's own judgment. A step limit ends the loop and reports back, while a bigger context window would only show it more of the same failures. Next: what step limit would you set for the assistant, and why?"
+    },
+    {
+      "id": "q4",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Each model call ends with one tool request or the final answer. The model can only write a request; it cannot run a tool, so after each request the program runs it and calls the model again. Counting that as one call is an easy slip. Here:\n- call 1: request check_calendar; program runs it;\n- call 2: request search_manuals; program runs it;\n- call 3: request check_training_record; program runs it;\n- call 4: final answer.\nNext: relabel each line MODEL or PROGRAM, then count the MODEL lines."
+    },
+    {
+      "id": "q5",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "A model keeps nothing between calls, so the program must put the tool result into the next input and call the model again. You have the sending back. Missing is why: the model reads the result to choose its next step or write the final answer. Next: what would the model have to say if the calendar result never reached it?"
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": "M3",
+      "feedback": "The model knows its tools only from the descriptions the program sends it, and it picks the one that fits; you have that part. It is natural to assume a model remembers, but it does not remember which tool it used in earlier sessions: it has no automatic memory, so the program must supply any memory in its input. Next: how could a student's training status reach the model on their next visit?"
+    }
+  ],
+  "summary": "You have the shape of the agent loop and know a step limit is the safeguard when it gets stuck. The idea to fix is who does what: the model only writes a request, and the program runs the tool and calls the model again. Your assistant will check bookings this way. Redo the three-tool count on paper, labeling each line MODEL or PROGRAM."
+}

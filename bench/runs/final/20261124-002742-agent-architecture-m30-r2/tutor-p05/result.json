@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 14464,
+  "stop_reason": "end_turn",
+  "session_id": "95ddf9e2-59f5-4219-8127-4102de84d645",
+  "total_cost_usd": 0.1195562,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 23931,
+    "cache_read_input_tokens": 68302,
+    "output_tokens": 1699,
+    "output_tokens_details": {
+      "thinking_tokens": 367
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 23931,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 512,
+        "cache_read_input_tokens": 34239,
+        "cache_creation_input_tokens": 703,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 703
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1699,
+      "cacheReadInputTokens": 68302,
+      "cacheCreationInputTokens": 23931,
+      "webSearchRequests": 0,
+      "costUSD": 0.1195562,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 367,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 23931,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 8,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I won't derive PPO here, because the derivation is math-heavy and training sits outside your mission. Here is the idea in plain words.\n\n**The basic idea.** Reinforcement learning (RL) trains a model by trial and score. The model attempts a task, something scores the attempt, and the model is nudged to repeat what scored well. PPO is one popular recipe for those nudges. Its main feature is a limit on how far one update can move the model, so a single lucky result can't wreck what already works. I'm leaving out how that limit is built.\n\n**Why the rest waits.**\n- The derivation needs probability and calculus beyond your one statistics course.\n- You haven't yet called a model from code, so there's nothing to train or compare against.\n- Your mission lists training and fine-tuning as out of scope. It also isn't needed for the assistant: strong agents mostly come from a good loop, clear tool descriptions and good context, not from custom training.\n\n**Try this instead.** The \"score\" idea works without any training.\n- Write 15 realistic makerspace requests, such as \"Is the laser cutter free Friday at 3?\"\n- For each one, note which tool the assistant should call.\n- Run them and count how often it picks right.\n- Rewrite a tool description and run them again.\n\nThat is how you'd improve tool calling within your budget.\n\n**The way in, for later.** Learn how models are evaluated first, then how training uses those scores. I can teach that as a lesson.\n\nQuick check: if \"Book the 3D printer\" sometimes triggers the calendar-check tool instead of the booking tool, what would you change first?",
+  "ttft_ms": 1357,
+  "type": "result",
+  "duration_ms": 14732,
+  "uuid": "849b1b6c-7d25-4d5f-8290-57bc099aed20",
+  "ttft_stream_ms": 870,
+  "time_to_request_ms": 151,
+  "first_content_frame_ms": 870,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1699,
+      "cacheReadInputTokens": 68302,
+      "cacheCreationInputTokens": 23931,
+      "webSearchRequests": 0,
+      "costUSD": 0.1195562,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 367,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 23931,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-12-20T01:11:02.473Z"
+}

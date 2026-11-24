@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "An agent is a model run in a loop: it picks an action, the program carries it out, and the result goes back for the next step. A longer prompt, memory or a bigger model still gives you one call; the repeat is what lets it act on results. Next, where does the loop repeat in the laser-cutter question?"
+    },
+    {
+      "id": "q2",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "A model only writes text, so to use a tool it writes a request naming the tool and its arguments (the values you would pass to a function), and the program runs it, like your code calling a function. You pictured the model opening the booking system itself, which is tempting because the whole assistant looks like one thing. But the model has no connection to it. Next, what exact request would the model write here?"
+    },
+    {
+      "id": "q3",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "A loop needs a stopping rule that does not rely on the model's own judgment. A model stuck repeating one edit will not change with more context or a sterner prompt; a step limit (a cap on how many times the loop may run) ends the run and reports back. Next, what limit would suit the laser-cutter question, which needs about three tool calls?"
+    },
+    {
+      "id": "q4",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Each model call takes one input and gives one output: a tool request or the final answer. You had the model run all three tools inside one call, but the program runs each tool between calls, so each result needs a new call:\n- Call 1: the question; it asks for check_calendar.\n- Call 2: plus the calendar result; it asks for search_manuals.\n- Call 3: plus the manual result; it asks for check_training_record.\n- Call 4: plus the training result; it writes the answer.\nNext, how many calls would two tools need?"
+    },
+    {
+      "id": "q5",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "The model cannot see a tool's result unless the program puts it in the model's next input. You have the what: the result goes back to the model. The why is missing: the model needs it to decide its next step or write the final answer, and the program then calls the model again. Next, finish this sentence: \"Without the result, the model could not ...\""
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": "M3",
+      "feedback": "The model knows its tools only from the descriptions the program gives it: each tool's name, what it does and its parameters (the inputs it takes). You have that, including picking the fitting tool. The memory claim does not hold: nothing is kept inside the model between calls, so anything it should know must be written into the input again. Next, what would the model need to be given tomorrow to know which tool you picked today?"
+    }
+  ],
+  "summary": "You have the shape of the agent loop and the reason it needs a stopping rule. The idea to fix is who does what: the model only writes text, such as a tool request, and the program runs the tool and calls the model again for each step. That matters for your assistant's cost, since every step is a separate call. Redo q4 by drawing the four calls and what each one receives."
+}

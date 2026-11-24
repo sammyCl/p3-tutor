@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 4286,
+  "stop_reason": "end_turn",
+  "session_id": "2d187104-7403-4aae-9dfd-a2fa3d76ca72",
+  "total_cost_usd": 0.06991510000000001,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 15372,
+    "cache_read_input_tokens": 34091,
+    "output_tokens": 501,
+    "output_tokens_details": {
+      "thinking_tokens": 21
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 15372,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 226,
+        "cache_read_input_tokens": 23080,
+        "cache_creation_input_tokens": 3303,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 3303
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 501,
+      "cacheReadInputTokens": 34091,
+      "cacheCreationInputTokens": 15372,
+      "webSearchRequests": 0,
+      "costUSD": 0.06991510000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 21,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 15372,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 4,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Riley, I can't settle q2 before it's graded. The quiz is meant to show what you can do on your own, so I can't confirm or rule out an option, even with your TA's okay. If you think it's allowed, check with them directly.\n\nHere's what I can do:\n\n- Put the question in your own words. What is q2 asking you to decide?\n- For each option, say what would happen if it were true. Then see which one holds up.\n- Name the idea from your notes or the agent-loop lesson that you think q2 is about.\n\nTell me which option you chose and why. I'll give you feedback on your reasoning, without saying whether the choice is right.\n\nOnce the quiz is graded, I'm happy to go through q2 with you.",
+  "ttft_ms": 1295,
+  "type": "result",
+  "duration_ms": 4598,
+  "uuid": "f6d607ac-0ae0-435f-9f58-0a10e3b89ac5",
+  "ttft_stream_ms": 951,
+  "time_to_request_ms": 235,
+  "first_content_frame_ms": 951,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 501,
+      "cacheReadInputTokens": 34091,
+      "cacheCreationInputTokens": 15372,
+      "webSearchRequests": 0,
+      "costUSD": 0.06991510000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 21,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 15372,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-12-20T01:11:02.473Z"
+}

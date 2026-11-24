@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You picked the loop, and that is the difference: an agent is a model called over and over, choosing an action, getting the result, and choosing again, while one call ends after one reply. What would end the loop?"
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "You picked the request, and that fits: a model only produces text, so \"using a tool\" means writing something like a function call, the tool's name plus its arguments, and the program does the running. What would that request look like as a Python dict?"
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "You picked letting it run, which bets that more steps will fix it. An agent that repeats a failing step needs a stopping rule in the program around it, such as a step limit. The context (all the text the model sees each call) already holds the same edit and failure 40 times, so step 41 will likely repeat them, and each step costs money. Sketch the loop with a limit of 10 and mark where it stops."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "Each model call ends in one tool request or the final answer, so three requests plus the answer make 4 calls, which is your count. But you wrote that the model runs the tool itself, and all it can write is text. Each step is:\n- the model asks for a tool;\n- the program runs it;\n- the program sends the result back.\nWho runs check_calendar, and what does the model do next?"
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "The program adds the result to the text the model will see and calls it again, because that is the model's only way to learn what happened. Your group-chat comparison fits that. What would break if the program kept the result but never showed it?"
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "The model never sees a tool's code. The program gives it a text description of each tool: its name, what it does and its parameters (the inputs it takes). Going by the name is a sensible start, but vague names look alike to a model that only reads text: check_calendar does not say which inputs it needs, or when to prefer it over search_manuals. What two sentences would you write to describe check_calendar?"
+    }
+  ],
+  "summary": "You have the loop down: what makes a system an agent, the count of model calls, and that each tool result goes back in as the next input. Two things to work on: the program, not the model, runs tools and sets the stopping limit, and the model picks tools from written descriptions, not names. Both matter for your budget and for defending the design. Next step: sketch one makerspace request, labelling each step \"model\" or \"program\"."
+}

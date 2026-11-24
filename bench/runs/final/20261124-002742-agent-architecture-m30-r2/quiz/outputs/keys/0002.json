@@ -1,0 +1,41 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The difference is who owns the control flow: in a workflow the code fixes the order of steps, in an agent the model decides what happens next. Option a shows the belief that tool use is what makes something an agent (M11, that using tools or models in the steps makes a system an agent); b mixes up who runs a tool with who decides the next step (M14); d treats the number of model calls as the dividing line (M15).",
+      "distractors": {"a": "M11", "b": "M14", "d": "M15"}
+    },
+    {
+      "id": "q2",
+      "answer": "d",
+      "rationale": "The code fixes the three steps and their order, so it is a workflow, even though models are used inside two of the steps. Picking a or c shows M11, the belief that using a tool or a model inside the steps makes a system an agent; b shows M15, the belief that several model calls make an agent.",
+      "distractors": {"a": "M11", "b": "M15", "c": "M11"}
+    },
+    {
+      "id": "q3",
+      "answer": "model calls",
+      "accepted": ["more model calls", "calls to the model", "model calls per request", "calls", "tokens", "it makes more model calls", "extra model calls", "steps"],
+      "rationale": "An agent loops until it decides to stop, so a request takes more model calls, and how many is not known in advance; a workflow has a fixed, small number. An answer about the agent using a bigger or smarter model misses that the extra cost comes from the loop."
+    },
+    {
+      "id": "q4",
+      "answer": "a",
+      "rationale": "In a workflow the path is fixed, so you can test each step alone and know which step failed. Option b shows M17, the belief that model calls give identical text every time; c shows M18, the belief that an agent cannot be tested at all because its output varies; d shows M19, the belief that a fixed workflow needs no real testing.",
+      "distractors": {"b": "M17", "c": "M18", "d": "M19"}
+    },
+    {
+      "id": "q5",
+      "answer": "c",
+      "rationale": "The steps are known and always in the same order, so code can own the flow and loop over the bookings, with the model only writing each message. Option a shows M20, the belief that varied wording means the model must own the control flow; b shows M20 too, that any step needing judgment means the model must own the control flow; d shows M21, the belief that a changing amount of data needs an agent, when a program loop handles it.",
+      "distractors": {"a": "M20", "b": "M20", "d": "M21"}
+    },
+    {
+      "id": "q6",
+      "answer": "b",
+      "rationale": "When the next step depends on what comes back and the paths cannot be listed in advance, the model has to own the control flow, so an agent fits; a limit on its work keeps the cost bounded. Option a tries to write out a fixed workflow for a task whose paths are too many to list (M22, the belief that a workflow can be made to fit any task); c runs every tool every time, wasting budget on requests that need fewer (also M22); d removes the limit that protects the budget.",
+      "distractors": {"a": "M22", "c": "M22"}
+    }
+  ]
+}
